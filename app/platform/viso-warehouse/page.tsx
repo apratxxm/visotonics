@@ -1,3 +1,5 @@
+import { ComingSoon } from "@/components/coming-soon";
+
 export default function VisoWarehousePage() {
   return (
     <div>
@@ -7,6 +9,7 @@ export default function VisoWarehousePage() {
       <section id="work-vision"></section>
       <section id="secure-vision"></section>
       <section id="document-vision"></section>
+      <ComingSoon />
     </div>
   );
 }

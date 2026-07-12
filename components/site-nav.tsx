@@ -80,6 +80,13 @@ const COMPANY_COL_2: LinkItem[] = [
   { name: "Offices", href: "/company/offices" },
 ];
 
+const LANGUAGES = [
+  { code: "EN", name: "English" },
+  { code: "HI", name: "हिन्दी" },
+  { code: "AR", name: "العربية" },
+  { code: "ES", name: "Español" },
+] as const;
+
 const monoLabel: CSSProperties = {
   fontFamily: "var(--font-mono)",
   fontSize: "var(--text-mono-label)",
@@ -121,14 +128,16 @@ const navLink: CSSProperties = {
 };
 
 export function SiteNav() {
-  const [openMenu, setOpenMenu] = useState<"platform" | "resources" | "company" | null>(null);
+  const [openMenu, setOpenMenu] = useState<"platform" | "resources" | "company" | "language" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [accordions, setAccordions] = useState<Record<number, boolean>>({});
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
+  const [mobileLanguageOpen, setMobileLanguageOpen] = useState(false);
+  const [language, setLanguage] = useState<(typeof LANGUAGES)[number]>(LANGUAGES[0]);
   const headerRef = useRef<HTMLElement>(null);
 
-  function toggleMenu(name: "platform" | "resources" | "company") {
+  function toggleMenu(name: "platform" | "resources" | "company" | "language") {
     setOpenMenu((current) => (current === name ? null : name));
   }
 
@@ -143,11 +152,25 @@ export function SiteNav() {
     return () => document.removeEventListener("pointerdown", handlePointerDown);
   }, [openMenu]);
 
+  // any link click inside the header (mega menus, mobile overlay) closes all
+  // open menus so navigation never leaves a panel hanging open.
+  function handleHeaderClick(event: React.MouseEvent) {
+    if ((event.target as HTMLElement).closest("a")) {
+      setOpenMenu(null);
+      setMobileOpen(false);
+      setMobileResourcesOpen(false);
+      setMobileCompanyOpen(false);
+      setMobileLanguageOpen(false);
+      setAccordions({});
+    }
+  }
+
   return (
     <header
       ref={headerRef}
       className="sticky top-0 z-40 border-b"
       style={{ background: "var(--canvas-dark)", borderColor: "var(--border-dark)" }}
+      onClickCapture={handleHeaderClick}
     >
       {/* DESKTOP NAV */}
       <div
@@ -236,13 +259,69 @@ export function SiteNav() {
           </button>
         </nav>
 
-        <div className="flex items-center justify-self-end" style={{ gap: "var(--spacing-s6)" }}>
-          <span
-            className="flex items-center"
-            style={{ gap: "var(--spacing-s2)", ...monoLabel, letterSpacing: "0.06em", fontSize: 14 }}
+        <div className="flex items-center justify-self-end" style={{ gap: "var(--spacing-s6)", position: "relative" }}>
+          <button
+            type="button"
+            onClick={() => toggleMenu("language")}
+            className="flex cursor-pointer items-center bg-transparent p-0"
+            style={{ gap: "var(--spacing-s2)", ...monoLabel, letterSpacing: "0.06em", fontSize: 14, color: openMenu === "language" ? "var(--text-dark-primary)" : "var(--text-dark-secondary)" }}
           >
-            EN <span style={{ fontSize: 11 }}>▾</span>
-          </span>
+            {language.code}
+            <span
+              style={{
+                fontSize: 11,
+                display: "inline-block",
+                transition: "transform var(--duration-dur-2) var(--ease-standard)",
+                transform: openMenu === "language" ? "rotate(180deg)" : "rotate(0deg)",
+              }}
+            >
+              ▾
+            </span>
+          </button>
+
+          {/* language dropdown — variant B: mono code + hairline rows */}
+          {openMenu === "language" && (
+            <div
+              className="absolute"
+              style={{
+                top: "calc(100% + 16px)",
+                right: 0,
+                width: 200,
+                boxSizing: "border-box",
+                background: "#101216",
+                border: "1px solid rgba(244,245,247,0.14)",
+                display: "flex",
+                flexDirection: "column",
+                zIndex: 10,
+              }}
+            >
+              {LANGUAGES.map((l, i) => (
+                <button
+                  key={l.code}
+                  type="button"
+                  onClick={() => {
+                    setLanguage(l);
+                    setOpenMenu(null);
+                  }}
+                  className="flex w-full cursor-pointer items-baseline bg-transparent hover:opacity-80"
+                  style={{
+                    gap: 12,
+                    padding: "12px 14px",
+                    borderBottom: i === LANGUAGES.length - 1 ? "none" : "1px solid rgba(244,245,247,0.10)",
+                    textAlign: "left",
+                  }}
+                >
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, flex: "0 0 auto", color: language.code === l.code ? "#ED510C" : "#6B7078" }}>
+                    {l.code}
+                  </span>
+                  <span style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 500, color: language.code === l.code ? "var(--text-dark-primary)" : "var(--text-dark-secondary)" }}>
+                    {l.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+
           <Link href="/client-portal" className="hover:opacity-80" style={navLink}>
             Log in
           </Link>
@@ -537,6 +616,51 @@ export function SiteNav() {
                     <Link key={l.name} href={l.href} style={caption}>
                       {l.name}
                     </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="border-t" style={{ borderColor: "var(--border-dark)" }}>
+              <button
+                type="button"
+                onClick={() => setMobileLanguageOpen((v) => !v)}
+                className="flex w-full cursor-pointer items-center justify-between bg-transparent text-left"
+                style={{ minHeight: 56, padding: "var(--spacing-s3) var(--spacing-s4)" }}
+              >
+                <span style={columnHeading}>Language</span>
+                <span className="flex items-center" style={{ gap: "var(--spacing-s3)" }}>
+                  <span style={monoLabel}>{language.code}</span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 12,
+                      color: "var(--text-dark-secondary)",
+                      display: "inline-block",
+                      transition: "transform var(--duration-dur-2) var(--ease-standard)",
+                      transform: mobileLanguageOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    }}
+                  >
+                    ▾
+                  </span>
+                </span>
+              </button>
+              {mobileLanguageOpen && (
+                <div className="flex flex-col" style={{ padding: "0 var(--spacing-s4) var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
+                  {LANGUAGES.map((l) => (
+                    <button
+                      key={l.code}
+                      type="button"
+                      onClick={() => {
+                        setLanguage(l);
+                        setMobileLanguageOpen(false);
+                      }}
+                      className="flex w-full items-center bg-transparent p-0 text-left"
+                      style={{ gap: 12 }}
+                    >
+                      <span style={{ ...monoLabel, fontSize: 12, width: 20, flex: "0 0 auto", color: language.code === l.code ? "#ED510C" : "var(--text-dark-secondary)" }}>{l.code}</span>
+                      <span style={{ fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 600, color: "var(--text-dark-primary)" }}>{l.name}</span>
+                    </button>
                   ))}
                 </div>
               )}

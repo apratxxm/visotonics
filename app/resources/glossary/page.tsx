@@ -1,3 +1,5 @@
+import { ComingSoon } from "@/components/coming-soon";
+
 export default function GlossaryPage() {
-  return <div></div>;
+  return <ComingSoon />;
 }

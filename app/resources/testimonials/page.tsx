@@ -1,3 +1,5 @@
+import { ComingSoon } from "@/components/coming-soon";
+
 export default function TestimonialsPage() {
-  return <div></div>;
+  return <ComingSoon />;
 }
