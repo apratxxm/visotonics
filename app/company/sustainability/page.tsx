@@ -1,3 +1,5 @@
+import { ComingSoon } from "@/components/coming-soon";
+
 export default function SustainabilityPage() {
-  return <div></div>;
+  return <ComingSoon />;
 }

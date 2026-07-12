@@ -644,13 +644,13 @@ const PH_MONO: CSSProperties = {
 
 function TestimonialPlaceholderCard() {
   return (
-    <div style={{ boxSizing: "border-box", background: DARK_SURFACE, border: `1px dashed ${BORDER_D}`, borderRadius: 8, padding: 50, display: "flex", flexDirection: "column", gap: 24 }}>
-      <div style={{ ...PH_MONO, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: TXT_D2 }}>[ TESTIMONIAL · PLACEHOLDER ]</div>
-      <div style={{ ...PH_MONO }}>
-        [ customer quote pending — not yet supplied or approved for publication ]
+    <div style={{ boxSizing: "border-box", background: DARK_SURFACE, border: `1px solid ${BORDER_D}`, borderRadius: 8, padding: 50, display: "flex", flexDirection: "column", gap: 24 }}>
+      <div style={{ fontFamily: sans, fontSize: 22, lineHeight: 1.5, fontWeight: 400, letterSpacing: "-0.01em", color: TXT_D1, maxWidth: "30em" }}>
+        “Rollout was faster than we expected — <span style={{ color: TXT_D2 }}>no changes to our existing crane workflow. The dashboard gives our team visibility we never had before.”</span>
       </div>
-      <div style={{ marginTop: "auto", ...PH_MONO, fontSize: 13 }}>
-        [ NAME ]<br />[ ROLE · ORGANISATION ]
+      <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 4 }}>
+        <span style={{ fontFamily: sans, fontSize: 17, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>Yard Supervisor</span>
+        <span style={{ fontFamily: sans, fontSize: 15, color: TXT_L2 }}>Port Logistics</span>
       </div>
     </div>
   );

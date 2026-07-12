@@ -43,12 +43,12 @@ const BRANDS = [
 ];
 
 const TEAM = [
-  { name: "Pranav Asthana", role: "COFOUNDER (BUSINESS)", founder: true, bio: "Cofounded Checko, Upjao. 20+ research papers, 10+ patents. Ex-Intel, IIT Kanpur." },
-  { name: "Ritu Mishra", role: "COFOUNDER (PRODUCT)", founder: true, bio: "Cofounded Upjao. 7 years building deep tech products. Ex-researcher at NCFlexe, IIT Kanpur." },
-  { name: "Mohini Behera", role: "COFOUNDER (TECH)", founder: true, bio: "Cofounded Upjao. Developed 10+ AI products for large enterprises. IIT Jodhpur, NIT Rourkela." },
-  { name: "Ravish Sangani", role: "SVP (MARKETING)", founder: false, bio: "Founded multiple rubber manufacturing units, ran pan-India sales. 20+ years of experience." },
-  { name: "Gurudev Singh", role: "SVP (CONTAINER BUSINESS)", founder: false, bio: "15+ years in shipping. Ex-Econship Marine. MBA in Port & Logistics." },
-  { name: "Shreyan Awasthi", role: "PARTNERSHIP MANAGER", founder: false, bio: "Cofounded Externship. 4 years in B2B sales & marketing. Ex-researcher at IIT Hyderabad." },
+  { name: "Pranav Asthana", role: "COFOUNDER (BUSINESS)", founder: true, bio: "Cofounded Checko, Upjao. 20+ research papers, 10+ patents. Ex-Intel, IIT Kanpur.", image: "/images/team/pranav-asthana.png" },
+  { name: "Ritu Mishra", role: "COFOUNDER (PRODUCT)", founder: true, bio: "Cofounded Upjao. 7 years building deep tech products. Ex-researcher at NCFlexe, IIT Kanpur.", image: "/images/team/ritu-mishra.png" },
+  { name: "Mohini Behera", role: "COFOUNDER (TECH)", founder: true, bio: "Cofounded Upjao. Developed 10+ AI products for large enterprises. IIT Jodhpur, NIT Rourkela.", image: "/images/team/mohini-behera.png" },
+  { name: "Ravish Sangani", role: "SVP (MARKETING)", founder: false, bio: "Founded multiple rubber manufacturing units, ran pan-India sales. 20+ years of experience.", image: "/images/team/ravish-sangani.png" },
+  { name: "Gurudev Singh", role: "SVP (CONTAINER BUSINESS)", founder: false, bio: "15+ years in shipping. Ex-Econship Marine. MBA in Port & Logistics.", image: "/images/team/gurudev-singh.png" },
+  { name: "Shreyan Awasthi", role: "PARTNERSHIP MANAGER", founder: false, bio: "Cofounded Externship. 4 years in B2B sales & marketing. Ex-researcher at IIT Hyderabad.", image: "/images/team/shreyan.webp" },
 ];
 
 function AboutSection() {
@@ -96,13 +96,6 @@ function AboutSection() {
             <span style={{ fontFamily: sans, fontSize: 16, fontWeight: 600, color: SIGNAL }}>Visotonics</span>
           </div>
         </div>
-        {/* mobile: simple wrap list */}
-        <div className="md:hidden" style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: "12px 20px" }}>
-          {BRANDS.map((b) => (
-            <span key={b.name} style={{ fontSize: 14, fontWeight: b.strong ? 600 : 500, color: b.strong ? TXT_D1 : TXT_D2 }}>{b.name}</span>
-          ))}
-          <span style={{ fontFamily: sans, fontSize: 15, fontWeight: 600, color: SIGNAL }}>Visotonics</span>
-        </div>
       </div>
     </div>
   );
@@ -119,7 +112,13 @@ function TeamSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24" style={{ marginTop: 64 }}>
         {TEAM.map((m) => (
           <div key={m.name} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <div aria-hidden="true" style={{ width: 260, maxWidth: "100%", aspectRatio: "4 / 5", background: "#cccccc", borderRadius: 2 }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={m.image}
+              alt={m.name}
+              className="mx-auto md:mx-0"
+              style={{ display: "block", width: 260, maxWidth: "100%", aspectRatio: "4 / 5", objectFit: "cover", borderRadius: 2, background: "#cccccc" }}
+            />
             <div>
               <span style={{ fontFamily: sans, fontSize: 24, fontWeight: 600, color: TXT_D1 }}>{m.name}</span>
               <span style={{ display: "block", marginTop: 6, fontFamily: mono, fontSize: 12, letterSpacing: "0.06em", color: m.founder ? SIGNAL : TXT_D2 }}>{m.role}</span>

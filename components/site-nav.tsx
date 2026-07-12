@@ -54,30 +54,30 @@ function productHref(envHref: string, name: string) {
 }
 
 const RESOURCES_COL_1: LinkItem[] = [
+  { name: "FAQs", href: "/resources/faqs" },
+  { name: "Blog", href: "/resources/blog" },
   { name: "Case Studies", href: "/resources/case-studies" },
   { name: "Testimonials", href: "/resources/testimonials" },
   { name: "ROI Calculator", href: "/resources/roi-calculator" },
-  { name: "Blog", href: "/resources/blog" },
-  { name: "Whitepapers", href: "/resources/whitepapers" },
 ];
 const RESOURCES_COL_2: LinkItem[] = [
+  { name: "Whitepapers", href: "/resources/whitepapers" },
   { name: "Webinars", href: "/resources/webinars" },
   { name: "Documentation", href: "/resources/documentation" },
   { name: "Glossary", href: "/resources/glossary" },
-  { name: "FAQs", href: "/resources/faqs" },
   { name: "Press Kit", href: "/resources/press-kit" },
 ];
 
 const COMPANY_COL_1: LinkItem[] = [
   { name: "About", href: "/company/about" },
+  { name: "Offices", href: "/company/offices" },
   { name: "Careers", href: "/company/careers" },
   { name: "Newsroom", href: "/company/newsroom" },
-  { name: "Investor Relations", href: "/company/investor-relations" },
 ];
 const COMPANY_COL_2: LinkItem[] = [
+  { name: "Investor Relations", href: "/company/investor-relations" },
   { name: "Partners", href: "/company/partners" },
   { name: "Sustainability", href: "/company/sustainability" },
-  { name: "Offices", href: "/company/offices" },
 ];
 
 const LANGUAGES = [

@@ -1,3 +1,5 @@
+import { ComingSoon } from "@/components/coming-soon";
+
 export default function NewsroomPage() {
-  return <div></div>;
+  return <ComingSoon />;
 }
