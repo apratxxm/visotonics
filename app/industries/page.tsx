@@ -1,3 +1,5 @@
+import { ComingSoon } from "@/components/coming-soon";
+
 export default function IndustriesPage() {
   return (
     <div>
@@ -7,6 +9,7 @@ export default function IndustriesPage() {
       <section id="shipyards-automotive-yards"></section>
       <section id="retail-distribution"></section>
       <section id="oil-gas-tank-storage"></section>
+      <ComingSoon />
     </div>
   );
 }
