@@ -85,6 +85,102 @@ export default function OfficesPage() {
           ))}
         </div>
       </div>
+
+      <OfficesGlobe />
     </section>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Section 10 · Offices · globe · graticule world map with two labeled nodes.
+--------------------------------------------------------------------------- */
+function OfficesGlobe() {
+  return (
+    <div style={{ borderTop: `1px solid ${BORDER_D}` }}>
+      {/* DESKTOP */}
+      <div className="hidden md:block" style={{ position: "relative", maxWidth: 1440, margin: "0 auto", minHeight: 900, boxSizing: "border-box", padding: "64px 96px 96px" }}>
+        <span style={eyebrow}>Where we operate</span>
+        <h1 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 40, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
+          Two sites, one vision layer.
+        </h1>
+
+        <div style={{ position: "relative", marginTop: 48, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ position: "relative", width: "100%", maxWidth: 1100 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/world-map-line-art.png"
+              alt="World map line art"
+              style={{ display: "block", width: "100%", height: "auto", filter: "invert(1)", mixBlendMode: "screen", opacity: 0.85 }}
+            />
+            <svg viewBox="0 0 1094 700" style={{ position: "absolute", inset: 0, width: "109.4%", height: "105.4%", left: "-7.4%", top: "-6.6%" }} fontFamily={mono}>
+              <path d="M 295 275 Q 520 160 790 335" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 5" fill="none" opacity={0.55} />
+              <circle cx={295} cy={275} r={6} fill={TXT_D1} />
+              <text x={295} y={252} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>WASHINGTON</text>
+              <text x={295} y={296} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>U.S.A.</text>
+
+              <circle cx={790} cy={335} r={6} fill={SIGNAL} />
+              <text x={790} y={312} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>LUCKNOW</text>
+              <text x={790} y={356} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
+            </svg>
+          </div>
+        </div>
+
+        <div
+          style={{
+            marginTop: 48,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            borderTop: `1px solid ${BORDER_D}`,
+            paddingTop: 24,
+          }}
+        >
+          <span style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", color: "#6B7078" }}>2 SITES · 2 COUNTRIES</span>
+          <a href="#offices-list" style={{ fontSize: 15, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 3 }}>
+            View full list
+          </a>
+        </div>
+      </div>
+
+      {/* MOBILE */}
+      <div className="md:hidden" style={{ padding: "48px 24px 64px" }}>
+        <span style={{ ...eyebrow, fontSize: 11 }}>Where we operate</span>
+        <h1 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 32, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
+          Two sites, one vision layer.
+        </h1>
+
+        <div style={{ position: "relative", marginTop: 40 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/world-map-line-art.png"
+            alt="World map line art"
+            style={{ display: "block", width: "100%", height: "auto", filter: "invert(1)", mixBlendMode: "screen", opacity: 0.85 }}
+          />
+          <svg viewBox="0 0 1094 700" style={{ position: "absolute", inset: 0, width: "109.4%", height: "105.4%", left: "-7.4%", top: "-6.6%" }} fontFamily={mono}>
+            <path d="M 295 275 Q 520 160 790 335" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 5" fill="none" opacity={0.55} />
+            <circle cx={295} cy={275} r={6} fill={TXT_D1} />
+            <text x={295} y={252} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>WASHINGTON</text>
+            <text x={295} y={296} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>U.S.A.</text>
+
+            <circle cx={790} cy={335} r={6} fill={SIGNAL} />
+            <text x={790} y={312} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>LUCKNOW</text>
+            <text x={790} y={356} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
+          </svg>
+        </div>
+
+        <div
+          style={{
+            marginTop: 32,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            borderTop: `1px solid ${BORDER_D}`,
+            paddingTop: 20,
+          }}
+        >
+          <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.06em", color: "#6B7078" }}>2 SITES · 2 COUNTRIES</span>
+        </div>
+      </div>
+    </div>
   );
 }
