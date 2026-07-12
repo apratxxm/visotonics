@@ -1,26 +1,496 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================================
+   VISOTONICS DESIGN SYSTEM — TOKENS + SPECIMEN V0.2
+   Near-monochrome, cool, dark-led. No colored accent exists; orange is
+   reserved for detection UI and registration dots only.
+
+   SIGNAL #ED510C is the only colour in the system. Detection UI +
+   registration dots only. NEVER on buttons. NEVER as link colour.
+   NEVER decorative.
+   ========================================================================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- 01 / 02 — palette: raw values (dark = default, dark-led) ---- */
+  --canvas-dark: #0a0b0e;
+  --surface-dark-1: #101216;
+  --surface-dark-2: #171a20;
+  --text-dark-primary: #f4f5f7;
+  --text-dark-secondary: #a6adb8;
+  --border-dark: rgba(244, 245, 247, 0.1);
+  --border-dark-strong: rgba(244, 245, 247, 0.18);
+  --interactive-dark-primary-bg: #f4f5f7;
+  --interactive-dark-primary-fg: #0a0b0e;
+  --interactive-dark-secondary-border: rgba(244, 245, 247, 0.28);
+  --interactive-dark-secondary-fg: #f4f5f7;
+
+  --canvas-light: #ecedef;
+  --surface-light: #f6f7f8;
+  --text-light-primary: #13151a;
+  --text-light-secondary: #5a5f6a;
+  --border-light: #d4d6db;
+  --interactive-light-primary-bg: #13151a;
+  --interactive-light-primary-fg: #f6f7f8;
+  --interactive-light-secondary-border: #b9bcc4;
+  --interactive-light-secondary-fg: #13151a;
+
+  /* signal — the only colour in the system */
+  --signal: #ed510c;
+  --signal-fill: rgba(237, 81, 12, 0.14);
+  --signal-bbox-width: 1.5px;
+
+  --link-dark: var(--text-dark-primary);
+  --link-dark-hover: var(--text-dark-secondary);
+  --link-light: var(--text-light-primary);
+  --link-light-hover: var(--text-light-secondary);
+
+  --gridline-dark: rgba(244, 245, 247, 0.08);
+  --gridline-light: #d4d6db;
+  --registration-cross: rgba(244, 245, 247, 0.4);
+  --registration-dot: var(--signal);
+
+  /* ---- active surface (defaults to dark; .on-light scopes override) ---- */
+  --canvas: var(--canvas-dark);
+  --surface-1: var(--surface-dark-1);
+  --surface-2: var(--surface-dark-2);
+  --text-primary: var(--text-dark-primary);
+  --text-secondary: var(--text-dark-secondary);
+  --border: var(--border-dark);
+  --border-strong: var(--border-dark-strong);
+  --interactive-primary-bg: var(--interactive-dark-primary-bg);
+  --interactive-primary-fg: var(--interactive-dark-primary-fg);
+  --interactive-secondary-border: var(--interactive-dark-secondary-border);
+  --interactive-secondary-fg: var(--interactive-dark-secondary-fg);
+  --link: var(--link-dark);
+  --link-hover: var(--link-dark-hover);
+  --gridline: var(--gridline-dark);
+
+  /* ---- 04 — type scale (desktop) — size / line-height / weight / tracking ---- */
+  --text-slab: 8.5rem; /* 136px */
+  --text-slab--line-height: 0.94;
+  --font-weight-slab: 600;
+  --tracking-slab: -0.035em; /* uppercase */
+
+  --text-display: 5.5rem; /* 88px */
+  --text-display--line-height: 1;
+  --font-weight-display: 600;
+  --tracking-display: -0.03em;
+
+  --text-headline: 3.5rem; /* 56px */
+  --text-headline--line-height: 1.06;
+  --font-weight-headline: 600;
+  --tracking-headline: -0.02em;
+
+  --text-title: 1.875rem; /* 30px */
+  --text-title--line-height: 1.2;
+  --font-weight-title: 600;
+  --tracking-title: -0.01em;
+
+  --text-metric: 6rem; /* 96px */
+  --text-metric--line-height: 1;
+  --font-weight-metric: 500;
+  --tracking-metric: -0.02em; /* tabular-nums, verified metrics only */
+
+  --text-body-lg: 1.25rem; /* 20px — default body on desktop */
+  --text-body-lg--line-height: 1.5;
+  --font-weight-body-lg: 400;
+
+  --text-body: 1rem; /* 16px — compact contexts only */
+  --text-body--line-height: 1.55;
+  --font-weight-body: 400;
+
+  --text-caption: 0.9375rem; /* 15px — all breakpoints */
+  --text-caption--line-height: 1.5;
+  --font-weight-caption: 400;
+
+  --text-mono-label: 0.8125rem; /* 13px — corner numbers, eyebrows, kickers */
+  --text-mono-label--line-height: 1.4;
+  --font-weight-mono-label: 500;
+  --tracking-mono-label: 0.08em; /* uppercase */
+
+  --text-mono-log: 0.875rem; /* 14px — console, log, telemetry, no transform */
+  --text-mono-log--line-height: 1.6;
+  --font-weight-mono-log: 400;
+
+  /* ---- 05 — space (8px base unit) ---- */
+  --spacing-s1: 0.25rem; /* 4 */
+  --spacing-s2: 0.5rem; /* 8 */
+  --spacing-s3: 0.75rem; /* 12 */
+  --spacing-s4: 1rem; /* 16 */
+  --spacing-s6: 1.5rem; /* 24 */
+  --spacing-s8: 2rem; /* 32 */
+  --spacing-s12: 3rem; /* 48 */
+  --spacing-s16: 4rem; /* 64 */
+  --spacing-s24: 6rem; /* 96 */
+  --spacing-s32: 8rem; /* 128 */
+
+  --section-padding: var(--spacing-s32); /* 128, mobile: s-16 (64) */
+  --card-padding: var(--spacing-s8); /* 32, mobile: s-6 (24) */
+
+  /* ---- radii ---- */
+  --radius-r1: 0.375rem; /* 6 — inputs, chips */
+  --radius-r2: 0.75rem; /* 12 — cards */
+  --radius-r3: 1.25rem; /* 20 — media frames */
+  --radius-r-pill: 999px; /* buttons */
+
+  /* ---- elevation ---- */
+  --shadow-lift-dark: inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+    0 24px 48px -12px rgba(0, 0, 0, 0.5);
+  --lift-dark-border: rgba(255, 255, 255, 0.08);
+  --shadow-lift-light: 0 1px 2px rgba(19, 21, 26, 0.05),
+    0 16px 40px -8px rgba(19, 21, 26, 0.1);
+
+  /* ---- 06 — grid ---- */
+  --grid-columns: 12;
+  --grid-gutter: 1.5rem; /* 24 */
+  --grid-margin: 4rem; /* 64 */
+  --grid-container-max: 85rem; /* 1360 */
+  --grid-columns-mobile: 4;
+  --grid-gutter-mobile: 1rem; /* 16 */
+  --grid-margin-mobile: 1.25rem; /* 20 */
+
+  /* ---- 07 — motion ---- */
+  --duration-dur-1: 120ms; /* hover, focus, pressed */
+  --duration-dur-2: 240ms; /* component transitions */
+  --duration-dur-3: 480ms; /* section reveals */
+  --duration-dur-4: 800ms; /* full-canvas / hero-scale moves */
+
+  --ease-standard: cubic-bezier(0.32, 0, 0.16, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --radius: 0.625rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (prefers-reduced-motion: reduce) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --duration-dur-1: 0ms;
+    --duration-dur-2: 0ms;
+    --duration-dur-3: 0ms;
+    --duration-dur-4: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---- mobile type scale ---- */
+@media (max-width: 767px) {
+  :root {
+    --text-slab: 4rem; /* 64px */
+    --text-display: 3rem; /* 48px */
+    --text-headline: 2.25rem; /* 36px */
+    --text-title: 1.5rem; /* 24px */
+    --text-metric: 3.5rem; /* 56px */
+    --text-body-lg: 1.125rem; /* 18px */
+
+    --section-padding: var(--spacing-s16); /* 64 */
+    --card-padding: var(--spacing-s6); /* 24 */
+
+    --grid-columns: var(--grid-columns-mobile);
+    --grid-gutter: var(--grid-gutter-mobile);
+    --grid-margin: var(--grid-margin-mobile);
+  }
+}
+
+/* ---- 02 — light surfaces (contrast sections) ----
+   Scope with `.on-light` around a section; only canvas, surface, text,
+   border and interactive fill change — everything else is shared. ---- */
+.on-light {
+  --canvas: var(--canvas-light);
+  --surface-1: var(--surface-light);
+  --surface-2: var(--surface-light);
+  --text-primary: var(--text-light-primary);
+  --text-secondary: var(--text-light-secondary);
+  --border: var(--border-light);
+  --border-strong: var(--border-light);
+  --interactive-primary-bg: var(--interactive-light-primary-bg);
+  --interactive-primary-fg: var(--interactive-light-primary-fg);
+  --interactive-secondary-border: var(--interactive-light-secondary-border);
+  --interactive-secondary-fg: var(--interactive-light-secondary-fg);
+  --link: var(--link-light);
+  --link-hover: var(--link-light-hover);
+  --gridline: var(--gridline-light);
+}
+
+@theme inline {
+  /* ---- Visotonics color tokens ---- */
+  --color-canvas: var(--canvas);
+  --color-canvas-dark: var(--canvas-dark);
+  --color-canvas-light: var(--canvas-light);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-dark-1: var(--surface-dark-1);
+  --color-surface-dark-2: var(--surface-dark-2);
+  --color-surface-light: var(--surface-light);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-dark-primary: var(--text-dark-primary);
+  --color-text-dark-secondary: var(--text-dark-secondary);
+  --color-text-light-primary: var(--text-light-primary);
+  --color-text-light-secondary: var(--text-light-secondary);
+  --color-border-hairline: var(--border);
+  --color-border-hairline-strong: var(--border-strong);
+  --color-border-dark: var(--border-dark);
+  --color-border-dark-strong: var(--border-dark-strong);
+  --color-border-light: var(--border-light);
+  --color-interactive-primary-bg: var(--interactive-primary-bg);
+  --color-interactive-primary-fg: var(--interactive-primary-fg);
+  --color-interactive-secondary-border: var(--interactive-secondary-border);
+  --color-interactive-secondary-fg: var(--interactive-secondary-fg);
+  --color-signal: var(--signal);
+  --color-signal-fill: var(--signal-fill);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-gridline: var(--gridline);
+  --color-registration-cross: var(--registration-cross);
+  --color-registration-dot: var(--registration-dot);
+
+  /* ---- fonts ---- */
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-plex-mono);
+  --font-heading: var(--font-archivo);
+
+  /* ---- type scale ---- */
+  --text-slab: var(--text-slab);
+  --text-slab--line-height: var(--text-slab--line-height);
+  --text-display: var(--text-display);
+  --text-display--line-height: var(--text-display--line-height);
+  --text-headline: var(--text-headline);
+  --text-headline--line-height: var(--text-headline--line-height);
+  --text-title: var(--text-title);
+  --text-title--line-height: var(--text-title--line-height);
+  --text-metric: var(--text-metric);
+  --text-metric--line-height: var(--text-metric--line-height);
+  --text-body-lg: var(--text-body-lg);
+  --text-body-lg--line-height: var(--text-body-lg--line-height);
+  --text-body: var(--text-body);
+  --text-body--line-height: var(--text-body--line-height);
+  --text-caption: var(--text-caption);
+  --text-caption--line-height: var(--text-caption--line-height);
+  --text-mono-label: var(--text-mono-label);
+  --text-mono-label--line-height: var(--text-mono-label--line-height);
+  --text-mono-log: var(--text-mono-log);
+  --text-mono-log--line-height: var(--text-mono-log--line-height);
+
+  --font-weight-slab: var(--font-weight-slab);
+  --font-weight-display: var(--font-weight-display);
+  --font-weight-headline: var(--font-weight-headline);
+  --font-weight-title: var(--font-weight-title);
+  --font-weight-metric: var(--font-weight-metric);
+  --font-weight-body-lg: var(--font-weight-body-lg);
+  --font-weight-body: var(--font-weight-body);
+  --font-weight-caption: var(--font-weight-caption);
+  --font-weight-mono-label: var(--font-weight-mono-label);
+  --font-weight-mono-log: var(--font-weight-mono-log);
+
+  --tracking-slab: var(--tracking-slab);
+  --tracking-display: var(--tracking-display);
+  --tracking-headline: var(--tracking-headline);
+  --tracking-title: var(--tracking-title);
+  --tracking-metric: var(--tracking-metric);
+  --tracking-mono-label: var(--tracking-mono-label);
+
+  /* ---- space (8px base) ---- */
+  --spacing-s1: var(--spacing-s1);
+  --spacing-s2: var(--spacing-s2);
+  --spacing-s3: var(--spacing-s3);
+  --spacing-s4: var(--spacing-s4);
+  --spacing-s6: var(--spacing-s6);
+  --spacing-s8: var(--spacing-s8);
+  --spacing-s12: var(--spacing-s12);
+  --spacing-s16: var(--spacing-s16);
+  --spacing-s24: var(--spacing-s24);
+  --spacing-s32: var(--spacing-s32);
+  --spacing-section: var(--section-padding);
+  --spacing-card: var(--card-padding);
+
+  /* ---- radii ---- */
+  --radius-r1: var(--radius-r1);
+  --radius-r2: var(--radius-r2);
+  --radius-r3: var(--radius-r3);
+  --radius-r-pill: var(--radius-r-pill);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* ---- elevation ---- */
+  --shadow-lift-dark: var(--shadow-lift-dark);
+  --shadow-lift-light: var(--shadow-lift-light);
+
+  /* ---- grid ---- */
+  --spacing-grid-gutter: var(--grid-gutter);
+  --spacing-grid-margin: var(--grid-margin);
+  --breakpoint-container-max: 85rem; /* = var(--grid-container-max); Tailwind breakpoints must be static lengths */
+
+  /* ---- motion ---- */
+  --duration-dur-1: var(--duration-dur-1);
+  --duration-dur-2: var(--duration-dur-2);
+  --duration-dur-3: var(--duration-dur-3);
+  --duration-dur-4: var(--duration-dur-4);
+  --ease-standard: var(--ease-standard);
+  --ease-enter: var(--ease-enter);
+  --ease-exit: var(--ease-exit);
+
+  /* ---- shadcn compatibility mappings ---- */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+}
+
+/* ---- shadcn tokens, mapped onto the Visotonics palette (dark-led) ---- */
+:root {
+  --background: var(--canvas-dark);
+  --foreground: var(--text-dark-primary);
+  --card: var(--surface-dark-1);
+  --card-foreground: var(--text-dark-primary);
+  --popover: var(--surface-dark-2);
+  --popover-foreground: var(--text-dark-primary);
+  --primary: var(--interactive-dark-primary-bg);
+  --primary-foreground: var(--interactive-dark-primary-fg);
+  --secondary: var(--surface-dark-2);
+  --secondary-foreground: var(--text-dark-primary);
+  --muted: var(--surface-dark-2);
+  --muted-foreground: var(--text-dark-secondary);
+  --accent: var(--surface-dark-2);
+  --accent-foreground: var(--text-dark-primary);
+  --destructive: var(--text-dark-primary);
+  --border: var(--border-dark);
+  --input: var(--border-dark-strong);
+  --ring: var(--border-dark-strong);
+  --chart-1: var(--text-dark-primary);
+  --chart-2: var(--text-dark-secondary);
+  --chart-3: var(--border-dark-strong);
+  --chart-4: var(--surface-dark-2);
+  --chart-5: var(--text-dark-secondary);
+  --sidebar: var(--surface-dark-1);
+  --sidebar-foreground: var(--text-dark-primary);
+  --sidebar-primary: var(--interactive-dark-primary-bg);
+  --sidebar-primary-foreground: var(--interactive-dark-primary-fg);
+  --sidebar-accent: var(--surface-dark-2);
+  --sidebar-accent-foreground: var(--text-dark-primary);
+  --sidebar-border: var(--border-dark);
+  --sidebar-ring: var(--border-dark-strong);
+}
+
+.on-light {
+  --background: var(--canvas-light);
+  --foreground: var(--text-light-primary);
+  --card: var(--surface-light);
+  --card-foreground: var(--text-light-primary);
+  --popover: var(--surface-light);
+  --popover-foreground: var(--text-light-primary);
+  --primary: var(--interactive-light-primary-bg);
+  --primary-foreground: var(--interactive-light-primary-fg);
+  --secondary: var(--surface-light);
+  --secondary-foreground: var(--text-light-primary);
+  --muted: var(--surface-light);
+  --muted-foreground: var(--text-light-secondary);
+  --accent: var(--surface-light);
+  --accent-foreground: var(--text-light-primary);
+  --border: var(--border-light);
+  --input: var(--border-light);
+  --ring: var(--interactive-light-secondary-border);
+  --sidebar: var(--surface-light);
+  --sidebar-foreground: var(--text-light-primary);
+  --sidebar-primary: var(--interactive-light-primary-bg);
+  --sidebar-primary-foreground: var(--interactive-light-primary-fg);
+  --sidebar-accent: var(--surface-light);
+  --sidebar-accent-foreground: var(--text-light-primary);
+  --sidebar-border: var(--border-light);
+  --sidebar-ring: var(--interactive-light-secondary-border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ---- home page (Drafting Table) interactive states ----
+   Durations are inherited from the tokens above; the reduced-motion block
+   zeroes every transition globally. ---- */
+.dt-card {
+  transition: border-color var(--duration-dur-1) var(--ease-standard),
+    transform var(--duration-dur-1) var(--ease-standard);
+}
+.dt-card:hover {
+  border-color: rgba(244, 245, 247, 0.24);
+  transform: translateY(-2px);
+  z-index: 2;
+}
+.dt-outline {
+  transition: border-color var(--duration-dur-1) var(--ease-standard);
+}
+.dt-outline:hover {
+  border-color: rgba(244, 245, 247, 0.6);
+}
+.dt-fill {
+  transition: background var(--duration-dur-1) var(--ease-standard),
+    color var(--duration-dur-1) var(--ease-standard);
+}
+.dt-fill:hover {
+  background: #a6adb8;
+  color: #13151a;
+}
+.dt-underline {
+  transition: color var(--duration-dur-1) var(--ease-standard);
+}
+.dt-underline:hover {
+  color: #a6adb8;
+}
+.dt-signal-fill {
+  transition: background var(--duration-dur-1) var(--ease-standard);
+}
+.dt-signal-fill:hover {
+  background: #f4f5f7;
 }

@@ -1,0 +1,221 @@
+import Link from "next/link";
+import type { CSSProperties } from "react";
+
+type LinkItem = { name: string; href: string };
+
+const PLATFORM_LINKS: LinkItem[] = [
+  { name: "Viso Yard", href: "/platform/viso-yard" },
+  { name: "Viso Warehouse", href: "/platform/viso-warehouse" },
+  { name: "Viso Factory", href: "/platform/viso-factory" },
+  { name: "Viso Data", href: "/platform/viso-data" },
+];
+
+const monoLabel: CSSProperties = {
+  fontFamily: "var(--font-mono)",
+  fontSize: "var(--text-mono-label)",
+  lineHeight: "var(--text-mono-label--line-height)",
+  fontWeight: "var(--font-weight-mono-label)",
+  letterSpacing: "var(--tracking-mono-label)",
+  textTransform: "uppercase",
+  color: "var(--text-dark-secondary)",
+};
+
+const caption: CSSProperties = {
+  fontSize: "var(--text-caption)",
+  lineHeight: "var(--text-caption--line-height)",
+  color: "var(--text-dark-secondary)",
+};
+
+const footerLink: CSSProperties = {
+  fontSize: "var(--text-caption)",
+  color: "var(--text-dark-primary)",
+};
+
+const columnHeading: CSSProperties = {
+  fontFamily: "var(--font-sans)",
+  fontSize: "var(--text-body-lg)",
+  fontWeight: 600,
+  letterSpacing: "-0.02em",
+  color: "var(--text-dark-primary)",
+};
+
+export function SiteFooter() {
+  return (
+    <footer
+      className="relative overflow-hidden border-t"
+      style={{ background: "var(--canvas-dark)", borderColor: "var(--border-dark)" }}
+    >
+      <div className="relative z-[1] mx-auto max-w-[1360px] px-5 md:px-16">
+        {/* DESKTOP GRID */}
+        <div
+          className="hidden md:grid"
+          style={{ gridTemplateColumns: "2fr 1fr 1fr 1.4fr", padding: "var(--spacing-s16) 0 var(--spacing-s24)" }}
+        >
+          <div className="flex flex-col" style={{ paddingRight: "var(--spacing-s12)", gap: "var(--spacing-s6)" }}>
+            <span style={columnHeading}>Visotonics</span>
+            <span style={{ ...caption, color: "var(--text-dark-secondary)", maxWidth: 320 }}>
+              Vision-AI platform for inspection and monitoring across the physical world.
+            </span>
+          </div>
+
+          <div
+            className="flex flex-col border-l"
+            style={{ borderColor: "var(--gridline-dark)", paddingLeft: "var(--spacing-s6)", gap: "var(--spacing-s4)" }}
+          >
+            <span style={monoLabel}>Platform</span>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+              {PLATFORM_LINKS.map((l) => (
+                <Link key={l.name} href={l.href} className="hover:opacity-80" style={footerLink}>
+                  {l.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="flex flex-col border-l"
+            style={{ borderColor: "var(--gridline-dark)", paddingLeft: "var(--spacing-s6)", gap: "var(--spacing-s4)" }}
+          >
+            <span style={monoLabel}>Industries</span>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+              <Link href="/industries" className="hover:opacity-80" style={footerLink}>
+                Industries
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className="flex flex-col border-l"
+            style={{ borderColor: "var(--gridline-dark)", paddingLeft: "var(--spacing-s6)", gap: "var(--spacing-s4)" }}
+          >
+            <span style={monoLabel}>Contact</span>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+              <a href="mailto:contact@excl.ai" className="hover:opacity-80" style={footerLink}>
+                contact@excl.ai
+              </a>
+              <a href="tel:+918924006395" className="hover:opacity-80" style={footerLink}>
+                +91 89240 06395
+              </a>
+            </div>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s2)" }}>
+              <span style={monoLabel}>India</span>
+              <span style={caption}>
+                Plot No-11, KH. No.-501SA-502SA, Shukla Vihar, Devpur, Rajajipuram, Lucknow, Uttar Pradesh-226017
+              </span>
+            </div>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s2)" }}>
+              <span style={monoLabel}>USA</span>
+              <span style={caption}>1317, 191ST SE Bothell, Washington, USA 98012</span>
+            </div>
+          </div>
+        </div>
+
+        {/* MOBILE STACK */}
+        <div className="flex flex-col md:hidden" style={{ padding: "var(--spacing-s8) 0 var(--spacing-s12)", gap: "var(--spacing-s8)" }}>
+          <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+            <span style={columnHeading}>Visotonics</span>
+            <span style={caption}>Vision-AI platform for inspection and monitoring across the physical world.</span>
+          </div>
+
+          <div
+            className="flex flex-col border-t"
+            style={{ borderColor: "var(--gridline-dark)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s4)" }}
+          >
+            <span style={monoLabel}>Platform</span>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+              {PLATFORM_LINKS.map((l) => (
+                <Link key={l.name} href={l.href} style={footerLink}>
+                  {l.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="flex flex-col border-t"
+            style={{ borderColor: "var(--gridline-dark)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s4)" }}
+          >
+            <span style={monoLabel}>Industries</span>
+            <Link href="/industries" style={footerLink}>
+              Industries
+            </Link>
+          </div>
+
+          <div
+            className="flex flex-col border-t"
+            style={{ borderColor: "var(--gridline-dark)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s4)" }}
+          >
+            <span style={monoLabel}>Contact</span>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+              <a href="mailto:contact@excl.ai" style={footerLink}>
+                contact@excl.ai
+              </a>
+              <a href="tel:+918924006395" style={footerLink}>
+                +91 89240 06395
+              </a>
+            </div>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s2)" }}>
+              <span style={monoLabel}>India</span>
+              <span style={caption}>
+                Plot No-11, KH. No.-501SA-502SA, Shukla Vihar, Devpur, Rajajipuram, Lucknow, Uttar Pradesh-226017
+              </span>
+            </div>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s2)" }}>
+              <span style={monoLabel}>USA</span>
+              <span style={caption}>1317, 191ST SE Bothell, Washington, USA 98012</span>
+            </div>
+          </div>
+        </div>
+
+        {/* BOTTOM BAR */}
+        <div
+          className="flex flex-wrap items-center justify-between border-t"
+          style={{
+            borderColor: "var(--gridline-dark)",
+            padding: "var(--spacing-s4) 0 var(--spacing-s3)",
+            gap: "var(--spacing-s6)",
+          }}
+        >
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-mono-label)", letterSpacing: "0.02em", color: "var(--text-dark-secondary)" }}>
+            © 2026 Visotonics
+          </span>
+          <span
+            className="hidden md:inline"
+            style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-mono-label)", letterSpacing: "0.02em", color: "var(--text-dark-secondary)" }}
+          >
+            Patented damage detection · CII Best Industry AI Application 2025 · Supported by IIT Kharagpur
+          </span>
+          <span
+            className="md:hidden"
+            style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-mono-label)", lineHeight: "var(--text-mono-log--line-height)", color: "var(--text-dark-secondary)" }}
+          >
+            Patented damage detection · CII Best Industry AI Application 2025 · Supported by IIT Kharagpur
+          </span>
+        </div>
+
+        {/* GIANT WORDMARK */}
+        <div
+          aria-hidden="true"
+          className="hidden justify-center md:flex"
+          style={{ padding: "var(--spacing-s12) 0" }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "220px",
+              lineHeight: "var(--text-slab--line-height)",
+              fontWeight: "var(--font-weight-slab)",
+              letterSpacing: "var(--tracking-slab)",
+              color: "var(--text-dark-primary)",
+              opacity: 0.09,
+              whiteSpace: "nowrap",
+              userSelect: "none",
+            }}
+          >
+            Visotonics
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}

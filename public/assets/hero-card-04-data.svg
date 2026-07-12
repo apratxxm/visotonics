@@ -1,0 +1,44 @@
+<svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono',monospace">
+<rect width="640" height="480" fill="#101216"/>
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+<g opacity="0.15">
+<line x1="40" y1="90" x2="600" y2="90"/><line x1="40" y1="140" x2="600" y2="140"/><line x1="40" y1="190" x2="600" y2="190"/><line x1="40" y1="240" x2="600" y2="240"/><line x1="40" y1="290" x2="600" y2="290"/><line x1="40" y1="340" x2="600" y2="340"/>
+<line x1="90" y1="70" x2="90" y2="360"/><line x1="180" y1="70" x2="180" y2="360"/><line x1="270" y1="70" x2="270" y2="360"/><line x1="360" y1="70" x2="360" y2="360"/><line x1="450" y1="70" x2="450" y2="360"/><line x1="540" y1="70" x2="540" y2="360"/>
+</g>
+
+<g id="compress" opacity="0.8">
+<rect x="48" y="100" width="12" height="12"/><rect x="66" y="100" width="12" height="12"/><rect x="84" y="100" width="12" height="12"/><rect x="102" y="100" width="12" height="12"/><rect x="120" y="100" width="12" height="12"/><rect x="138" y="100" width="12" height="12"/><rect x="156" y="100" width="12" height="12"/>
+<rect x="48" y="118" width="12" height="12"/><rect x="66" y="118" width="12" height="12"/><rect x="84" y="118" width="12" height="12"/><rect x="102" y="118" width="12" height="12"/><rect x="120" y="118" width="12" height="12"/><rect x="138" y="118" width="12" height="12"/><rect x="156" y="118" width="12" height="12"/>
+<rect x="48" y="136" width="12" height="12"/><rect x="66" y="136" width="12" height="12"/><rect x="84" y="136" width="12" height="12"/><rect x="102" y="136" width="12" height="12"/><rect x="120" y="136" width="12" height="12"/><rect x="138" y="136" width="12" height="12"/><rect x="156" y="136" width="12" height="12"/>
+<rect x="48" y="154" width="12" height="12"/><rect x="66" y="154" width="12" height="12"/><rect x="84" y="154" width="12" height="12"/><rect x="102" y="154" width="12" height="12"/><rect x="120" y="154" width="12" height="12"/><rect x="138" y="154" width="12" height="12"/><rect x="156" y="154" width="12" height="12"/>
+</g>
+<line x1="192" y1="133" x2="264" y2="133" opacity="0.6"/>
+<path d="M256,128 L266,133 L256,138" opacity="0.6"/>
+<g opacity="0.8">
+<rect x="290" y="100" width="12" height="12"/><rect x="326" y="100" width="12" height="12"/><rect x="362" y="100" width="12" height="12"/>
+<rect x="290" y="136" width="12" height="12"/><rect x="326" y="136" width="12" height="12"/><rect x="362" y="136" width="12" height="12"/>
+<rect x="290" y="172" width="12" height="12"/><rect x="326" y="172" width="12" height="12"/><rect x="362" y="172" width="12" height="12"/>
+</g>
+
+<polyline points="48,300 96,272 144,318 192,258 240,296 288,242 336,286 384,236 432,278 480,230" opacity="0.75"/>
+<g opacity="0.5">
+<circle cx="48" cy="300" r="3"/><circle cx="96" cy="272" r="3"/><circle cx="144" cy="318" r="3"/><circle cx="192" cy="258" r="3"/><circle cx="240" cy="296" r="3"/><circle cx="288" cy="242" r="3"/><circle cx="336" cy="286" r="3"/><circle cx="384" cy="236" r="3"/><circle cx="432" cy="278" r="3"/><circle cx="480" cy="230" r="3"/>
+</g>
+</g>
+
+<g stroke="#ED510C" fill="none">
+<rect x="274" y="228" width="28" height="28" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"/>
+<polyline points="288,256 330,352 362,352" stroke-width="1"/>
+</g>
+<text x="368" y="356" fill="#ED510C" font-size="11" letter-spacing="1">ANOMALY · FLAGGED</text>
+
+<g fill="#F4F5F7" font-size="11" letter-spacing="1.5" opacity="0.85">
+<text x="48" y="88">COMPRESSION</text>
+<text x="290" y="88">↓ 3:1</text>
+<text x="48" y="336">TRACE</text>
+</g>
+<g fill="#F4F5F7" font-size="10" letter-spacing="1" opacity="0.45">
+<text x="40" y="446">COMPRESSION · TRACE · DETECT</text>
+<text x="40" y="464">PIPELINE</text>
+</g>
+</svg>

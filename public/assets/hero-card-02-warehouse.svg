@@ -1,0 +1,45 @@
+<svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono',monospace">
+<rect width="640" height="480" fill="#101216"/>
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+<g id="racking" opacity="0.6">
+<line x1="48" y1="120" x2="48" y2="356"/><line x1="188" y1="120" x2="188" y2="356"/><line x1="328" y1="120" x2="328" y2="356"/><line x1="468" y1="120" x2="468" y2="356"/>
+<line x1="40" y1="120" x2="476" y2="120" opacity="0.75"/>
+<line x1="40" y1="196" x2="476" y2="196"/><line x1="40" y1="272" x2="476" y2="272"/>
+</g>
+<g opacity="0.8">
+<rect x="64" y="152" width="50" height="38"/><rect x="122" y="152" width="50" height="38"/>
+<rect x="204" y="152" width="50" height="38"/>
+<rect x="344" y="152" width="50" height="38"/><rect x="402" y="152" width="50" height="38"/>
+<rect x="64" y="228" width="50" height="38"/>
+<rect x="204" y="228" width="50" height="38"/><rect x="262" y="228" width="50" height="38"/>
+<rect x="402" y="228" width="50" height="38"/>
+</g>
+<line x1="30" y1="392" x2="610" y2="392" opacity="0.6"/>
+<line x1="30" y1="356" x2="610" y2="356" opacity="0.5"/>
+<g opacity="0.5">
+<circle cx="52" cy="372" r="6"/><circle cx="88" cy="372" r="6"/><circle cx="124" cy="372" r="6"/><circle cx="160" cy="372" r="6"/><circle cx="196" cy="372" r="6"/><circle cx="232" cy="372" r="6"/><circle cx="268" cy="372" r="6"/><circle cx="304" cy="372" r="6"/><circle cx="340" cy="372" r="6"/><circle cx="376" cy="372" r="6"/><circle cx="412" cy="372" r="6"/><circle cx="448" cy="372" r="6"/><circle cx="484" cy="372" r="6"/><circle cx="520" cy="372" r="6"/>
+</g>
+<g opacity="0.85">
+<rect x="70" y="322" width="38" height="34"/><rect x="176" y="322" width="38" height="34"/><rect x="282" y="322" width="38" height="34"/><rect x="388" y="322" width="38" height="34"/><rect x="494" y="322" width="38" height="34"/>
+</g>
+<rect x="560" y="140" width="30" height="18" opacity="0.85"/><circle cx="575" cy="149" r="5" opacity="0.85"/>
+<line x1="575" y1="158" x2="420" y2="322" stroke-dasharray="4 5" opacity="0.35"/>
+</g>
+
+<g stroke="#ED510C" fill="none">
+<rect x="172" y="318" width="46" height="42" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"/>
+<rect x="278" y="318" width="46" height="42" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"/>
+<polyline points="301,318 340,288 372,288" stroke-width="1"/>
+</g>
+<text x="378" y="284" fill="#ED510C" font-size="11" letter-spacing="1">COUNT ▲ · WITH VIDEO PROOF</text>
+
+<g fill="#F4F5F7" font-size="11" letter-spacing="1.5" opacity="0.85">
+<text x="40" y="108">RACKING</text>
+<text x="30" y="422">CONVEYOR</text>
+<text x="530" y="132" text-anchor="end">CAM</text>
+</g>
+<g fill="#F4F5F7" font-size="10" letter-spacing="1" opacity="0.45">
+<text x="40" y="446">CARGO · AUDIT · DIMENSION · DOCUMENT</text>
+<text x="40" y="464">BLOCK STACK / RACK</text>
+</g>
+</svg>
