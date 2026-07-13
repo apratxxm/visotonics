@@ -114,7 +114,7 @@ function TeamSection() {
         A decade of computer vision &amp; AI experience.
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24" style={{ marginTop: 64 }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16" style={{ marginTop: 64 }}>
         {TEAM.map((m) => (
           <div key={m.name} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}

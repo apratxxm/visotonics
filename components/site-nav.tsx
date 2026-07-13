@@ -180,7 +180,7 @@ export function SiteNav() {
         className="mx-auto hidden h-[72px] max-w-[1360px] grid-cols-[1fr_auto_1fr] items-center px-16 md:grid"
       >
         <Link href="/" className="justify-self-start" aria-label="Visotonics home">
-          <Brand height={20} />
+          <Brand height={30} />
         </Link>
 
         <nav className="flex items-center justify-self-center" style={{ gap: "var(--spacing-s8)" }}>
@@ -427,7 +427,7 @@ export function SiteNav() {
         style={{ borderColor: "var(--border-dark)" }}
       >
         <Link href="/" aria-label="Visotonics home">
-          <Brand height={18} />
+          <Brand height={27} />
         </Link>
         <button
           type="button"
@@ -449,7 +449,7 @@ export function SiteNav() {
             className="flex h-16 flex-none items-center justify-between border-b px-5"
             style={{ borderColor: "var(--border-dark)" }}
           >
-            <Brand height={18} />
+            <Brand height={27} />
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
