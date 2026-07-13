@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { Brand } from "@/components/brand";
 
 type LinkItem = { name: string; href: string };
 
@@ -52,7 +53,7 @@ export function SiteFooter() {
           style={{ gridTemplateColumns: "2fr 1fr 1fr 1.4fr", padding: "var(--spacing-s16) 0 var(--spacing-s24)" }}
         >
           <div className="flex flex-col" style={{ paddingRight: "var(--spacing-s12)", gap: "var(--spacing-s6)" }}>
-            <span style={columnHeading}>Visotonics</span>
+            <Brand height={22} />
             <span style={{ ...caption, color: "var(--text-dark-secondary)", maxWidth: 320 }}>
               Vision-AI platform for inspection and monitoring across the physical world.
             </span>
@@ -113,7 +114,7 @@ export function SiteFooter() {
         {/* MOBILE STACK */}
         <div className="flex flex-col md:hidden" style={{ padding: "var(--spacing-s8) 0 var(--spacing-s12)", gap: "var(--spacing-s8)" }}>
           <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
-            <span style={columnHeading}>Visotonics</span>
+            <Brand height={22} />
             <span style={caption}>Vision-AI platform for inspection and monitoring across the physical world.</span>
           </div>
 

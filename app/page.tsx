@@ -145,7 +145,7 @@ function Hero() {
           }}
         >
           <span style={{ ...eyebrow("rgba(244,245,247,0.3)"), whiteSpace: "nowrap" }}>OUR PLATFORM&nbsp;— YOUR CAMERAS</span>
-          <span style={{ ...eyebrow("rgba(244,245,247,0.3)"), whiteSpace: "nowrap" }}>PATENTED DAMAGE DETECTION</span>
+          <span style={{ ...eyebrow("rgba(244,245,247,0.3)"), whiteSpace: "nowrap" }}>PATENTED TECHNOLOGY</span>
         </div>
 
         {/* card band */}
@@ -202,7 +202,7 @@ function Hero() {
         </div>
         <div style={{ position: "relative", zIndex: 1, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 6, borderBottom: `1px solid ${GRID_D}` }}>
           <span style={{ ...eyebrow("rgba(244,245,247,0.3)"), fontSize: 11, letterSpacing: "0.06em" }}>OUR PLATFORM&nbsp;— YOUR CAMERAS</span>
-          <span style={{ ...eyebrow("rgba(244,245,247,0.3)"), fontSize: 11, letterSpacing: "0.06em" }}>PATENTED DAMAGE DETECTION</span>
+          <span style={{ ...eyebrow("rgba(244,245,247,0.3)"), fontSize: 11, letterSpacing: "0.06em" }}>PATENTED TECHNOLOGY</span>
         </div>
         <div style={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr 1fr" }}>
           {HERO_CARDS.map((c, i) => (
@@ -270,8 +270,8 @@ function Statement() {
           <div style={{ position: "absolute", left: 28, bottom: 300, width: 9, height: 1, background: "rgba(19,21,26,0.20)" }} />
         </div>
         <div style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 64px", boxSizing: "border-box" }}>
-          <h2 style={{ margin: 0, fontFamily: sans, fontSize: "clamp(56px, 10vw, 144px)", lineHeight: 1.0, fontWeight: 600, letterSpacing: "-0.03em", color: TXT_L1, textAlign: "center", maxWidth: 1312, textWrap: "balance" }}>
-            Every dent, rust &amp; crack. Documented automatically.
+          <h2 style={{ margin: 0, fontFamily: sans, fontSize: "clamp(32px, 5vw, 64px)", lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, textAlign: "center", maxWidth: 1000, textWrap: "balance" }}>
+            Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable.
           </h2>
         </div>
       </div>
@@ -286,8 +286,8 @@ function Statement() {
           <div style={{ position: "absolute", left: "50%", bottom: 64, width: 3, height: 3, background: SIGNAL }} />
         </div>
         <div style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 24px", boxSizing: "border-box" }}>
-          <h2 style={{ margin: 0, fontFamily: sans, fontSize: 44, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.03em", color: TXT_L1, textAlign: "center", textWrap: "balance" }}>
-            Every dent, rust &amp; crack. Documented automatically.
+          <h2 style={{ margin: 0, fontFamily: sans, fontSize: 26, lineHeight: 1.3, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, textAlign: "center", textWrap: "balance" }}>
+            Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable.
           </h2>
         </div>
       </div>
@@ -441,7 +441,7 @@ function Metrics() {
         </div>
 
         <div style={{ position: "relative", zIndex: 1, padding: "96px 64px 64px" }}>
-          <span style={{ ...eyebrow(TXT_L2), display: "block", padding: "0 4px" }}>MEASURED ACROSS 25+ SITES</span>
+          <span style={{ ...eyebrow(TXT_L2), display: "block", padding: "0 4px" }}>MEASURED ACROSS LIVE SITES</span>
           <h2 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 54, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, maxWidth: "18.68ch" }}>
             Same cameras. Different economics.
           </h2>
@@ -474,7 +474,7 @@ function Metrics() {
 
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
-        <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>MEASURED ACROSS 25+ SITES</span>
+        <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>MEASURED ACROSS LIVE SITES</span>
         <h2 style={{ margin: "16px 0 32px", fontFamily: sans, fontSize: 30, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Same cameras. Different economics.
         </h2>
@@ -557,7 +557,7 @@ function ProofPartners() {
             <div style={{ marginTop: 48, display: "flex", alignItems: "flex-start", gap: 80 }}>
               <div>
                 <span style={{ display: "block", fontFamily: sans, fontSize: "clamp(120px, 16.1vw, 232px)", lineHeight: 0.82, fontWeight: 500, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}>400,000</span>
-                <span style={{ display: "block", marginTop: 56, ...eyebrow(TXT_L2), fontSize: 26, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS 25+ SITES</span>
+                <span style={{ display: "block", marginTop: 56, ...eyebrow(TXT_L2), fontSize: 26, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS LIVE SITES</span>
               </div>
               <span style={{ flex: 1, alignSelf: "center", fontFamily: sans, fontSize: 34, lineHeight: 1.35, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1, maxWidth: "16.11ch", paddingBottom: 84, paddingLeft: 65 }}>
                 Reading moving containers in night, rain, fog and dust.
@@ -602,7 +602,7 @@ function ProofPartners() {
           <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>PROVEN WHERE IT&apos;S HARDEST</span>
           <h2 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 30, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>Trusted at the busiest yards, in the country.</h2>
           <span style={{ display: "block", marginTop: 28, fontFamily: sans, fontSize: 72, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}>400,000</span>
-          <span style={{ display: "block", marginTop: 16, ...eyebrow(TXT_L2), fontSize: 13, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS 25+ SITES</span>
+          <span style={{ display: "block", marginTop: 16, ...eyebrow(TXT_L2), fontSize: 13, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS LIVE SITES</span>
           <span style={{ display: "block", marginTop: 24, fontFamily: sans, fontSize: 20, lineHeight: 1.4, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1, maxWidth: "24ch" }}>Reading moving containers in night, rain, fog and dust.</span>
         </div>
         <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "24px 0 32px" }}>
@@ -757,7 +757,7 @@ function Convert() {
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", background: "radial-gradient(ellipse 640px 340px at 50% 50%, rgba(0,0,0,0.15), rgba(0,0,0,0) 70%)" }} />
         <div style={{ position: "absolute", inset: 0, zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 64px", boxSizing: "border-box" }}>
           <h2 style={{ margin: 0, fontFamily: sans, fontSize: 84, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1, maxWidth: "20ch" }}>
-            Join 25+ sites running 400,000 reads a day.
+            Join industry leaders running AI-enabled sites with 400,000+ daily reads.
           </h2>
           <span style={{ display: "block", marginTop: 24, fontSize: 29, lineHeight: 1.5, color: TXT_D2 }}>Bring a gate feed. We&apos;ll read it live.</span>
           <div style={{ marginTop: 48, display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
@@ -780,7 +780,7 @@ function Convert() {
           <div style={{ position: "absolute", left: "50%", top: 389, width: 3, height: 3, background: SIGNAL }} />
         </div>
         <div style={{ position: "absolute", inset: 0, zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 24px", boxSizing: "border-box" }}>
-          <h2 style={{ margin: 0, fontFamily: sans, fontSize: 34, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1, textWrap: "balance" }}>Join 25+ sites running 400,000 reads a day.</h2>
+          <h2 style={{ margin: 0, fontFamily: sans, fontSize: 34, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1, textWrap: "balance" }}>Join industry leaders running AI-enabled sites with 400,000+ daily reads.</h2>
           <span style={{ display: "block", marginTop: 16, fontSize: 17, lineHeight: 1.5, color: TXT_D2 }}>Bring a gate feed. We&apos;ll read it live.</span>
           <div style={{ marginTop: 32, display: "flex", flexDirection: "column", alignItems: "stretch", gap: 12, width: "100%", maxWidth: 280 }}>
             <a href="/contact" className="dt-fill" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 52, background: TXT_D1, color: TXT_L1, borderRadius: 999, fontFamily: sans, fontSize: 17, fontWeight: 500, textDecoration: "none" }}>Talk to us</a>

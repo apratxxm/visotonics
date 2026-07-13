@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { Brand } from "@/components/brand";
 
 type LinkItem = { name: string; href: string };
 
@@ -176,18 +177,8 @@ export function SiteNav() {
       <div
         className="mx-auto hidden h-[72px] max-w-[1360px] grid-cols-[1fr_auto_1fr] items-center px-16 md:grid"
       >
-        <Link
-          href="/"
-          className="justify-self-start"
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "var(--text-body-lg)",
-            fontWeight: 600,
-            letterSpacing: "-0.02em",
-            color: "var(--text-dark-primary)",
-          }}
-        >
-          Visotonics
+        <Link href="/" className="justify-self-start" aria-label="Visotonics home">
+          <Brand height={20} />
         </Link>
 
         <nav className="flex items-center justify-self-center" style={{ gap: "var(--spacing-s8)" }}>
@@ -447,17 +438,8 @@ export function SiteNav() {
         className="flex h-16 items-center justify-between px-5 md:hidden"
         style={{ borderColor: "var(--border-dark)" }}
       >
-        <Link
-          href="/"
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "var(--text-body)",
-            fontWeight: 600,
-            letterSpacing: "-0.02em",
-            color: "var(--text-dark-primary)",
-          }}
-        >
-          Visotonics
+        <Link href="/" aria-label="Visotonics home">
+          <Brand height={18} />
         </Link>
         <button
           type="button"
@@ -479,17 +461,7 @@ export function SiteNav() {
             className="flex h-16 flex-none items-center justify-between border-b px-5"
             style={{ borderColor: "var(--border-dark)" }}
           >
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "var(--text-body-lg)",
-                fontWeight: 600,
-                letterSpacing: "-0.02em",
-                color: "var(--text-dark-primary)",
-              }}
-            >
-              Visotonics
-            </span>
+            <Brand height={18} />
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
