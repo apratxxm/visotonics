@@ -380,7 +380,7 @@ export function SiteNav() {
         <div className="hidden border-t md:block" style={{ borderColor: "var(--border-dark)", background: "var(--canvas-dark)" }}>
           <div
             className="mx-auto grid max-w-[1360px] px-16"
-            style={{ gridTemplateColumns: "1.1fr 1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
+            style={{ gridTemplateColumns: "1.1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
           >
             <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
               <span style={monoLabel}>Menu</span>
@@ -388,14 +388,7 @@ export function SiteNav() {
               <span style={caption}>Guides, tools and proof for evaluating the platform.</span>
             </div>
             <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-              {RESOURCES_COL_1.map((l) => (
-                <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
-                  {l.name}
-                </Link>
-              ))}
-            </div>
-            <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-              {RESOURCES_COL_2.map((l) => (
+              {[...RESOURCES_COL_1, ...RESOURCES_COL_2].map((l) => (
                 <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
                   {l.name}
                 </Link>
@@ -410,7 +403,7 @@ export function SiteNav() {
         <div className="hidden border-t md:block" style={{ borderColor: "var(--border-dark)", background: "var(--canvas-dark)" }}>
           <div
             className="mx-auto grid max-w-[1360px] px-16"
-            style={{ gridTemplateColumns: "1.1fr 1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
+            style={{ gridTemplateColumns: "1.1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
           >
             <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
               <span style={monoLabel}>Menu</span>
@@ -418,14 +411,7 @@ export function SiteNav() {
               <span style={caption}>Who&apos;s building the platform, and where.</span>
             </div>
             <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-              {COMPANY_COL_1.map((l) => (
-                <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
-                  {l.name}
-                </Link>
-              ))}
-            </div>
-            <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-              {COMPANY_COL_2.map((l) => (
+              {[...COMPANY_COL_1, ...COMPANY_COL_2].map((l) => (
                 <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
                   {l.name}
                 </Link>
