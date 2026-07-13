@@ -525,10 +525,10 @@
   }
   /* §3.1 headline decode — each char is a block from frame 1, then resolves */
   .v-dec {
-    background: currentColor;
+    background: rgba(244, 245, 247, 0.28);
     color: transparent;
-    border-radius: 1px;
-    transition: background var(--duration-dur-1) linear,
+    border-radius: 2px;
+    transition: background var(--duration-dur-2) linear,
       color var(--duration-dur-1) linear;
   }
 }
@@ -541,3 +541,6 @@
   background: transparent;
   color: inherit;
 }
+
+/* DecryptedText — encrypted (unresolved) characters read as dimmed. */
+.v-enc { opacity: 0.55; }

@@ -1,3 +1,4 @@
+import DecryptedText from "@/components/decrypted-text";
 import { WarehouseRailDesktop, WarehouseRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
@@ -53,7 +54,7 @@ function Hero() {
       <div className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 900, padding: "104px 64px 0", boxSizing: "border-box" }}>
         <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>OUR PLATFORM — YOUR CAMERAS · INBOUND TO OUTBOUND</span>
         <h1 style={{ margin: "72px 0 0", paddingLeft: 6, fontFamily: sans, fontSize: 136, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
-          Viso Warehouse
+          <DecryptedText text="Viso Warehouse" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
         <p style={{ margin: "40px 0 0", paddingLeft: 24, maxWidth: 592, fontFamily: sans, fontSize: 20, lineHeight: 1.5, color: TXT_D1 }}>
           Every case counted, every pallet dimensioned, every order proven — on the cameras already covering your floor.
@@ -79,7 +80,7 @@ function Hero() {
       <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "40px 24px 0" }}>
         <span style={{ ...eyebrow(TXT_D2), fontSize: 11 }}>OUR PLATFORM — YOUR CAMERAS · INBOUND TO OUTBOUND</span>
         <h1 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 54, lineHeight: 0.98, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
-          Viso<br />Warehouse
+          <DecryptedText text="Viso Warehouse" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
         <p style={{ margin: "32px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D1 }}>
           Every case counted, every pallet dimensioned, every order proven — on the cameras already covering your floor.

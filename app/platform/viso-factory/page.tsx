@@ -1,3 +1,4 @@
+import DecryptedText from "@/components/decrypted-text";
 import { FactoryRailDesktop, FactoryRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
@@ -58,7 +59,7 @@ function Hero() {
       <div className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 860, padding: "104px 64px 0", boxSizing: "border-box" }}>
         <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>OUR PLATFORM — YOUR CAMERAS · ON THE LINE</span>
         <h1 style={{ margin: "72px 0 0", paddingLeft: 6, fontFamily: sans, fontSize: 136, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
-          Viso Factory
+          <DecryptedText text="Viso Factory" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
         <p style={{ margin: "40px 0 0", paddingLeft: 24, maxWidth: 620, fontFamily: sans, fontSize: 20, lineHeight: 1.5, color: TXT_D1 }}>
           Production and process, watched continuously — from the cameras already on your line.
@@ -84,7 +85,7 @@ function Hero() {
       <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "40px 24px 0" }}>
         <span style={{ ...eyebrow(TXT_D2), fontSize: 11 }}>OUR PLATFORM — YOUR CAMERAS · ON THE LINE</span>
         <h1 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 54, lineHeight: 0.98, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
-          Viso<br />Factory
+          <DecryptedText text="Viso Factory" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
         <p style={{ margin: "32px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D1 }}>
           Production and process, watched continuously — from the cameras already on your line.

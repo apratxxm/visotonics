@@ -1,3 +1,4 @@
+import DecryptedText from "@/components/decrypted-text";
 import { YardRailDesktop, YardRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
@@ -70,7 +71,7 @@ function Hero() {
       <div className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 900, padding: "104px 64px 0", boxSizing: "border-box" }}>
         <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>VISO YARD — NINE SYSTEMS, YOUR CAMERAS</span>
         <h1 style={{ margin: "72px 0 0", paddingLeft: 6, fontFamily: sans, fontSize: 136, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
-          Viso Yard
+          <DecryptedText text="Viso Yard" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
 
         <div style={{ marginTop: 64, paddingLeft: 6, display: "flex", gap: 96 }}>
@@ -89,7 +90,7 @@ function Hero() {
       <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "40px 24px 0" }}>
         <span style={{ ...eyebrow(TXT_D2), fontSize: 11 }}>VISO YARD — NINE SYSTEMS, YOUR CAMERAS</span>
         <h1 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 64, lineHeight: 0.98, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
-          Viso Yard
+          <DecryptedText text="Viso Yard" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
         <div style={{ margin: "40px 0 0", display: "flex", flexDirection: "column" }}>
           {MANIFEST.map((m) => (

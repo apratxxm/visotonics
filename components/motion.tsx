@@ -154,15 +154,16 @@ export function DecodeHeadline({
 }) {
   const chars = Array.from(text);
   const [on, setOn] = useState(false);
-  const stagger = Math.max(2, Math.min(12, Math.floor(480 / Math.max(1, chars.length))));
+  const stagger = Math.max(3, Math.min(14, Math.floor(420 / Math.max(1, chars.length))));
 
   useEffect(() => {
     if (prefersReducedMotion()) {
       setOn(true);
       return;
     }
-    const r = requestAnimationFrame(() => setOn(true));
-    return () => cancelAnimationFrame(r);
+    // brief hold so the block state registers before it resolves
+    const t = window.setTimeout(() => setOn(true), 150);
+    return () => window.clearTimeout(t);
   }, []);
 
   return (

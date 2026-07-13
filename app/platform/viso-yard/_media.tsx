@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { CSSProperties } from "react";
+import { DrawSchematic } from "@/components/draw-schematic";
 
 /* ---------------------------------------------------------------------------
    Schematic — inlines an approved SVG asset from /public/assets so the drawing's
@@ -45,13 +46,5 @@ export function Schematic({
   className?: string;
   style?: CSSProperties;
 }) {
-  return (
-    <div
-      role="img"
-      aria-label={label}
-      className={className}
-      style={style}
-      dangerouslySetInnerHTML={{ __html: loadSvg(file, fit) }}
-    />
-  );
+  return <DrawSchematic html={loadSvg(file, fit)} label={label} className={className} style={style} />;
 }
