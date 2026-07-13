@@ -141,8 +141,8 @@ export default function VisoYardPage() {
               <PlatformBand />
               <SectionCargo />
               <SectionDocument />
-              <SectionWork />
-              <SectionSecure />
+              <SectionWork n="08" />
+              <SectionSecure n="09" />
             </div>
           </div>
         </div>
