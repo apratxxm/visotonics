@@ -65,9 +65,18 @@ export function DrawSchematic({
           el.style.opacity = "0";
           return;
         }
-        const stroke = el.getAttribute("stroke");
-        const hasStroke = stroke && stroke !== "none";
-        if (!hasStroke) return; // background fills etc. stay visible
+        // effective stroke — resolve inheritance from a parent <g stroke="…">
+        let strokeVal: string | null = null;
+        let a: Element | null = el;
+        while (a && a !== svg.parentElement) {
+          const s = a.getAttribute?.("stroke");
+          if (s) {
+            strokeVal = s;
+            break;
+          }
+          a = a.parentElement;
+        }
+        if (!strokeVal || strokeVal === "none") return; // fills / bg stay visible
         el.setAttribute("pathLength", "1");
         el.style.strokeDasharray = "1";
         el.style.strokeDashoffset = "1";
