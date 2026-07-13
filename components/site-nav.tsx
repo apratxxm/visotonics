@@ -30,9 +30,9 @@ const PLATFORM_ENVIRONMENTS = [
       "Cargo Vision",
       "Audit Vision",
       "Dimension Vision",
+      "Document Vision",
       "Work Vision",
       "Secure Vision",
-      "Document Vision",
     ],
   },
   {
@@ -531,12 +531,14 @@ export function SiteNav() {
                 </button>
                 {accordions[i] && (
                   <div className="flex flex-col" style={{ padding: "0 var(--spacing-s4) var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-                    <Link
-                      href={env.href}
-                      style={{ fontSize: "var(--text-caption)", color: "var(--text-dark-primary)", textDecoration: "underline", textUnderlineOffset: 3 }}
-                    >
-                      All of {env.name}
-                    </Link>
+                    {env.href !== "/platform/viso-data" && (
+                      <Link
+                        href={env.href}
+                        style={{ fontSize: "var(--text-caption)", color: "var(--text-dark-primary)", textDecoration: "underline", textUnderlineOffset: 3 }}
+                      >
+                        Home
+                      </Link>
+                    )}
                     {env.products.map((p) => (
                       <a key={p} href={productHref(env.href, p)} style={caption}>
                         {p}

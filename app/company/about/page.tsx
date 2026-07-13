@@ -68,10 +68,15 @@ function AboutSection() {
         {STATS.map((s, i) => (
           <div
             key={s.label}
-            style={{
-              borderRight: i === STATS.length - 1 ? "none" : `1px solid ${BORDER_D}`,
-              padding: i === 0 ? "32px 32px 0 0" : "32px 32px 0 32px",
-            }}
+            className={[
+              "pt-8 pr-8",
+              // mobile 2x2: divider after left column only, no left padding on left column
+              i % 2 === 0 ? "border-r pl-0" : "border-r-0 pl-8",
+              // desktop 4-across: divider after first three cells, no left padding on first
+              i === 0 ? "md:pl-0" : "md:pl-8",
+              i === STATS.length - 1 ? "md:border-r-0" : "md:border-r",
+            ].join(" ")}
+            style={{ borderColor: BORDER_D }}
           >
             <span className="text-4xl md:text-[56px]" style={{ display: "block", fontFamily: sans, fontWeight: 500, letterSpacing: "-0.02em", color: s.accent ? SIGNAL : TXT_D1 }}>{s.n}</span>
             <span style={{ display: "block", marginTop: 8, fontFamily: mono, fontSize: 12, letterSpacing: "0.06em", textTransform: "uppercase", color: TXT_D2 }}>{s.label}</span>

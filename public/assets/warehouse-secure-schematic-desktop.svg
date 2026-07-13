@@ -1,0 +1,61 @@
+<svg viewBox="0 0 1046 340" xmlns="http://www.w3.org/2000/svg" font-family="&#39;IBM Plex Mono&#39;,monospace">
+<rect width="1046" height="340" fill="#101216"></rect>
+
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+
+<g id="axis" opacity="0.35">
+<line x1="40" y1="230" x2="1006" y2="230"></line>
+<line x1="40" y1="86" x2="40" y2="230"></line>
+<line x1="40" y1="230" x2="40" y2="248"></line>
+<line x1="1006" y1="230" x2="1006" y2="248"></line>
+</g>
+
+<g id="ticks" opacity="0.22">
+<line x1="128" y1="230" x2="128" y2="238"></line>
+<line x1="216" y1="230" x2="216" y2="238"></line>
+<line x1="304" y1="230" x2="304" y2="238"></line>
+<line x1="392" y1="230" x2="392" y2="238"></line>
+<line x1="480" y1="230" x2="480" y2="238"></line>
+<line x1="568" y1="230" x2="568" y2="238"></line>
+<line x1="656" y1="230" x2="656" y2="238"></line>
+<line x1="744" y1="230" x2="744" y2="238"></line>
+<line x1="832" y1="230" x2="832" y2="238"></line>
+<line x1="920" y1="230" x2="920" y2="238"></line>
+</g>
+
+<g id="threshold" opacity="0.3" stroke-dasharray="6 6">
+<line x1="40" y1="152" x2="1006" y2="152"></line>
+</g>
+
+<g id="trace" opacity="0.9">
+<polyline points="40,224 68,222 96,226 118,221 128,204 140,224 168,223 196,220 214,225 232,206 246,224 274,222 302,225 330,221 352,224 370,209 386,225 414,222 442,224 470,220 498,226 520,222 540,196 556,224 584,223 612,221 640,225 660,220 668,178 676,120 684,96 692,132 700,186 708,216 716,225 744,221 772,224 800,222 828,225 856,221 884,224 912,222 940,225 968,221 1006,223"></polyline>
+</g>
+
+<g id="nuisance-marks" opacity="0.45">
+<circle cx="128" cy="204" r="9"></circle>
+<circle cx="232" cy="206" r="9"></circle>
+<circle cx="370" cy="209" r="9"></circle>
+<circle cx="540" cy="196" r="9"></circle>
+</g>
+
+<g id="event-box" opacity="0.95" stroke-width="1.5">
+<rect x="652" y="72" width="72" height="88"></rect>
+</g>
+<g opacity="0.4">
+<line x1="688" y1="160" x2="688" y2="196"></line>
+<path d="M683,190 L688,200 L693,190"></path>
+</g>
+
+<g id="case" opacity="0.8">
+<rect x="620" y="260" width="136" height="34"></rect>
+</g>
+</g>
+
+<g fill="#F4F5F7" letter-spacing="1.2">
+<text x="40" y="288" font-size="11" opacity="0.5">NUISANCE — TARP · SHADOW · RAIN · FILTERED</text>
+<text x="1006" y="288" font-size="11" text-anchor="end" opacity="0.5">CONTINUOUS · EVERY FEED · NO GAPS</text>
+<text x="40" y="144" font-size="10" opacity="0.5">THRESHOLD</text>
+<text x="688" y="60" font-size="12" text-anchor="middle" opacity="0.9">EVENT</text>
+<text x="688" y="282" font-size="12" text-anchor="middle" opacity="0.95">CASE — OPENED</text>
+</g>
+</svg>

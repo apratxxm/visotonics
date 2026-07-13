@@ -1,0 +1,64 @@
+<svg viewBox="0 0 813 560" xmlns="http://www.w3.org/2000/svg" font-family="&#39;IBM Plex Mono&#39;, monospace">
+  <text x="28" y="44" fill="#13151A" font-size="15" letter-spacing="1.6">DIMENSIONS</text>
+  <text x="28" y="64" fill="#13151A" font-size="15" letter-spacing="1.6">OVERVIEW</text>
+  <line x1="28" y1="80" x2="180" y2="80" stroke="#13151A" stroke-width="1" opacity="0.3"></line>
+  <rect x="150" y="150" width="260" height="240" fill="none" stroke="#13151A" stroke-width="1" opacity="1.0"></rect>
+  <line x1="150" y1="210.0" x2="410" y2="210.0" stroke="#13151A" stroke-width="1" opacity="0.55"></line>
+  <line x1="150" y1="270.0" x2="410" y2="270.0" stroke="#13151A" stroke-width="1" opacity="0.55"></line>
+  <line x1="150" y1="330.0" x2="410" y2="330.0" stroke="#13151A" stroke-width="1" opacity="0.55"></line>
+  <line x1="236.66666666666669" y1="150.0" x2="236.66666666666669" y2="210.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="323.33333333333337" y1="150.0" x2="323.33333333333337" y2="210.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="193.33333333333334" y1="210.0" x2="193.33333333333334" y2="270.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="280.0" y1="210.0" x2="280.0" y2="270.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="366.66666666666663" y1="210.0" x2="366.66666666666663" y2="270.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="236.66666666666669" y1="270.0" x2="236.66666666666669" y2="330.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="323.33333333333337" y1="270.0" x2="323.33333333333337" y2="330.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="193.33333333333334" y1="330.0" x2="193.33333333333334" y2="390.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="280.0" y1="330.0" x2="280.0" y2="390.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="366.66666666666663" y1="330.0" x2="366.66666666666663" y2="390.0" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <line x1="228.0" y1="144" x2="228.0" y2="396" stroke="#13151A" stroke-width="0.75" opacity="0.35"></line>
+  <line x1="332.0" y1="144" x2="332.0" y2="396" stroke="#13151A" stroke-width="0.75" opacity="0.35"></line>
+  <rect x="140" y="398" width="280" height="26" fill="none" stroke="#13151A" stroke-width="1" opacity="1.0"></rect>
+  <line x1="170" y1="398" x2="170" y2="424" stroke="#13151A" stroke-width="1" opacity="0.5"></line>
+  <line x1="220" y1="398" x2="220" y2="424" stroke="#13151A" stroke-width="1" opacity="0.5"></line>
+  <line x1="340" y1="398" x2="340" y2="424" stroke="#13151A" stroke-width="1" opacity="0.5"></line>
+  <line x1="390" y1="398" x2="390" y2="424" stroke="#13151A" stroke-width="1" opacity="0.5"></line>
+  <text x="150" y="450" fill="#13151A" font-size="10" letter-spacing="1.4" opacity="0.6">FRONT ELEVATION</text>
+  <rect x="560" y="150" width="120" height="240" fill="none" stroke="#13151A" stroke-width="1" opacity="1.0"></rect>
+  <line x1="560" y1="210.0" x2="680" y2="210.0" stroke="#13151A" stroke-width="1" opacity="0.55"></line>
+  <line x1="560" y1="270.0" x2="680" y2="270.0" stroke="#13151A" stroke-width="1" opacity="0.55"></line>
+  <line x1="560" y1="330.0" x2="680" y2="330.0" stroke="#13151A" stroke-width="1" opacity="0.55"></line>
+  <line x1="620.0" y1="150" x2="620.0" y2="390" stroke="#13151A" stroke-width="1" opacity="0.4"></line>
+  <rect x="552" y="398" width="136" height="26" fill="none" stroke="#13151A" stroke-width="1" opacity="1.0"></rect>
+  <line x1="576" y1="398" x2="576" y2="424" stroke="#13151A" stroke-width="1" opacity="0.5"></line>
+  <line x1="664" y1="398" x2="664" y2="424" stroke="#13151A" stroke-width="1" opacity="0.5"></line>
+  <text x="560" y="450" fill="#13151A" font-size="10" letter-spacing="1.4" opacity="0.6">SIDE ELEVATION</text>
+  <line x1="140" y1="112" x2="420" y2="112" stroke="#13151A" stroke-width="0.75"></line>
+  <path d="M140,112 L147.0,109.4 M140,112 L147.0,114.6" stroke="#13151A" stroke-width="0.75" fill="none"></path>
+  <path d="M420,112 L413.0,109.4 M420,112 L413.0,114.6" stroke="#13151A" stroke-width="0.75" fill="none"></path>
+  <line x1="140" y1="120" x2="140" y2="142" stroke="#13151A" stroke-width="0.75" opacity="0.4"></line>
+  <line x1="420" y1="120" x2="420" y2="142" stroke="#13151A" stroke-width="0.75" opacity="0.4"></line>
+  <rect x="246.0" y="100" width="68" height="22" fill="#ECEDEF"></rect>
+  <text x="280.0" y="116" fill="#13151A" font-size="14" letter-spacing="1.2" text-anchor="middle">L ——</text>
+  <line x1="106" y1="150" x2="106" y2="424" stroke="#13151A" stroke-width="0.75"></line>
+  <path d="M106,150 L108.6,157.0 M106,150 L103.4,157.0" stroke="#13151A" stroke-width="0.75" fill="none"></path>
+  <path d="M106,424 L108.6,417.0 M106,424 L103.4,417.0" stroke="#13151A" stroke-width="0.75" fill="none"></path>
+  <line x1="114" y1="150" x2="136" y2="150" stroke="#13151A" stroke-width="0.75" opacity="0.4"></line>
+  <line x1="114" y1="424" x2="136" y2="424" stroke="#13151A" stroke-width="0.75" opacity="0.4"></line>
+  <rect x="72" y="259.0" width="66" height="22" fill="#ECEDEF"></rect>
+  <text x="105" y="274.0" fill="#13151A" font-size="14" letter-spacing="1.2" text-anchor="middle">H ——</text>
+  <line x1="720" y1="150" x2="720" y2="424" stroke="#13151A" stroke-width="0.75"></line>
+  <path d="M720,150 L722.6,157.0 M720,150 L717.4,157.0" stroke="#13151A" stroke-width="0.75" fill="none"></path>
+  <path d="M720,424 L722.6,417.0 M720,424 L717.4,417.0" stroke="#13151A" stroke-width="0.75" fill="none"></path>
+  <line x1="692" y1="150" x2="712" y2="150" stroke="#13151A" stroke-width="0.75" opacity="0.4"></line>
+  <line x1="692" y1="424" x2="712" y2="424" stroke="#13151A" stroke-width="0.75" opacity="0.4"></line>
+  <rect x="688" y="259.0" width="66" height="22" fill="#ECEDEF"></rect>
+  <text x="721" y="274.0" fill="#13151A" font-size="14" letter-spacing="1.2" text-anchor="middle">W ——</text>
+  <path d="M150,164 v-14 h14" fill="none" stroke="#13151A" stroke-width="1.5"></path>
+  <path d="M410,164 v-14 h-14" fill="none" stroke="#13151A" stroke-width="1.5"></path>
+  <path d="M150,376 v14 h14" fill="none" stroke="#13151A" stroke-width="1.5"></path>
+  <path d="M410,376 v14 h-14" fill="none" stroke="#13151A" stroke-width="1.5"></path>
+  <line x1="28" y1="506" x2="785" y2="506" stroke="#13151A" stroke-width="1" opacity="0.25"></line>
+  <text x="28" y="528" fill="#13151A" font-size="10" letter-spacing="1.2" opacity="0.6">CAPTURED FROM CAMERA VIEW · ANNOTATED IMAGE ATTACHED</text>
+  <text x="785" y="528" fill="#13151A" font-size="10" letter-spacing="1.2" text-anchor="end" opacity="0.6">→ WMS / ERP</text>
+</svg>

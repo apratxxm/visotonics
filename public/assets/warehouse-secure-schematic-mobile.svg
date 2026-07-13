@@ -1,0 +1,50 @@
+<svg viewBox="0 0 342 420" xmlns="http://www.w3.org/2000/svg" font-family="&#39;IBM Plex Mono&#39;,monospace">
+<rect width="342" height="420" fill="#101216"></rect>
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+
+<g opacity="0.35">
+<line x1="30" y1="286" x2="312" y2="286"></line>
+<line x1="30" y1="96" x2="30" y2="286"></line>
+<line x1="30" y1="286" x2="30" y2="302"></line>
+<line x1="312" y1="286" x2="312" y2="302"></line>
+</g>
+<g opacity="0.22">
+<line x1="86" y1="286" x2="86" y2="294"></line>
+<line x1="142" y1="286" x2="142" y2="294"></line>
+<line x1="198" y1="286" x2="198" y2="294"></line>
+<line x1="254" y1="286" x2="254" y2="294"></line>
+</g>
+<g opacity="0.3" stroke-dasharray="6 6">
+<line x1="30" y1="188" x2="312" y2="188"></line>
+</g>
+
+<g opacity="0.9">
+<polyline points="30,280 46,278 60,282 72,262 84,280 100,279 116,276 130,281 144,264 156,280 172,278 188,281 200,276 208,268 216,214 224,132 232,178 240,258 248,280 264,278 280,281 296,278 312,280"></polyline>
+</g>
+
+<g opacity="0.45">
+<circle cx="72" cy="262" r="8"></circle>
+<circle cx="144" cy="264" r="8"></circle>
+</g>
+
+<g opacity="0.95" stroke-width="1.5">
+<rect x="200" y="112" width="52" height="80"></rect>
+</g>
+<g opacity="0.4">
+<line x1="226" y1="192" x2="226" y2="240"></line>
+<path d="M221,234 L226,244 L231,234"></path>
+</g>
+
+<g opacity="0.8">
+<rect x="152" y="322" width="148" height="32"></rect>
+</g>
+</g>
+<g fill="#F4F5F7" letter-spacing="1.2">
+<text x="30" y="70" font-size="11" opacity="0.9">ALL FEEDS — CONTINUOUS</text>
+<text x="30" y="176" font-size="9" opacity="0.5">THRESHOLD</text>
+<text x="226" y="100" font-size="11" text-anchor="middle" opacity="0.9">EVENT</text>
+<text x="226" y="343" font-size="11" text-anchor="middle" opacity="0.95">CASE — OPENED</text>
+<text x="30" y="382" font-size="10" opacity="0.5">NUISANCE — TARP · SHADOW · RAIN</text>
+<text x="30" y="400" font-size="10" opacity="0.5">FILTERED · NO GAPS</text>
+</g>
+</svg>

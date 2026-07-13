@@ -1,0 +1,78 @@
+<svg viewBox="0 0 1232 539" xmlns="http://www.w3.org/2000/svg" font-family="&#39;IBM Plex Mono&#39;,monospace">
+<rect width="1232" height="539" fill="#101216"></rect>
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+
+<g id="cam-a" opacity="0.8">
+<rect x="176" y="80" width="36" height="22"></rect><rect x="212" y="85" width="13" height="11"></rect><circle cx="218" cy="90" r="3"></circle>
+<line x1="194" y1="102" x2="194" y2="116" opacity="0.55"></line><rect x="183" y="116" width="22" height="7" opacity="0.65"></rect>
+</g>
+<g id="cam-b" opacity="0.8">
+<rect x="598" y="72" width="36" height="22"></rect><rect x="608" y="94" width="14" height="10"></rect><circle cx="615" cy="99" r="3"></circle>
+</g>
+<g id="cam-c" opacity="0.8">
+<rect x="1020" y="80" width="36" height="22"></rect><rect x="1007" y="85" width="13" height="11"></rect><circle cx="1013" cy="90" r="3"></circle>
+<line x1="1038" y1="102" x2="1038" y2="116" opacity="0.55"></line><rect x="1027" y="116" width="22" height="7" opacity="0.65"></rect>
+</g>
+
+<g opacity="0.2" stroke-dasharray="5 6">
+<line x1="194" y1="123" x2="194" y2="196"></line>
+<line x1="615" y1="104" x2="615" y2="196"></line>
+<line x1="1038" y1="123" x2="1038" y2="196"></line>
+</g>
+
+<g id="fig-a" opacity="0.9">
+<circle cx="194" cy="248" r="20"></circle>
+<line x1="194" y1="268" x2="194" y2="336"></line>
+<line x1="194" y1="286" x2="164" y2="316"></line>
+<line x1="194" y1="286" x2="224" y2="312"></line>
+<line x1="194" y1="336" x2="170" y2="384"></line>
+<line x1="194" y1="336" x2="220" y2="384"></line>
+</g>
+<rect x="150" y="204" width="88" height="88" opacity="0.5"></rect>
+
+<g id="fig-b" opacity="0.9">
+<circle cx="615" cy="248" r="20"></circle>
+<line x1="615" y1="268" x2="615" y2="336"></line>
+<line x1="615" y1="286" x2="583" y2="308"></line>
+<line x1="615" y1="286" x2="649" y2="304"></line>
+<line x1="615" y1="336" x2="596" y2="384"></line>
+<line x1="615" y1="336" x2="640" y2="380"></line>
+<g opacity="0.4"><line x1="605" y1="244" x2="611" y2="244"></line><line x1="621" y1="244" x2="627" y2="244"></line></g>
+</g>
+<rect x="571" y="204" width="88" height="88" opacity="0.5"></rect>
+
+<g id="fig-c" opacity="0.9">
+<circle cx="1038" cy="248" r="20"></circle>
+<line x1="1038" y1="268" x2="1038" y2="336"></line>
+<line x1="1038" y1="286" x2="1072" y2="310"></line>
+<line x1="1038" y1="286" x2="1006" y2="304"></line>
+<line x1="1038" y1="336" x2="1016" y2="382"></line>
+<line x1="1038" y1="336" x2="1062" y2="386"></line>
+</g>
+<rect x="994" y="204" width="88" height="88" opacity="0.5"></rect>
+
+<g opacity="0.35">
+<line x1="194" y1="292" x2="194" y2="420"></line>
+<line x1="615" y1="292" x2="615" y2="420"></line>
+<line x1="1038" y1="292" x2="1038" y2="420"></line>
+<line x1="194" y1="420" x2="1038" y2="420"></line>
+<line x1="616" y1="420" x2="616" y2="444"></line>
+<path d="M611,440 L616,450 L621,440"></path>
+</g>
+
+<rect x="418" y="456" width="396" height="48" opacity="0.75"></rect>
+</g>
+
+<g fill="#F4F5F7" letter-spacing="1.2">
+<text x="105" y="46" font-size="13" opacity="0.9">MULTI-ANGLE — SAME FLOOR</text>
+<text x="1151" y="46" font-size="12" text-anchor="end" opacity="0.6">NO CHECKPOINT · NO QUEUE</text>
+<text x="194" y="192" font-size="11" text-anchor="middle" opacity="0.6">SIDE PROFILE</text>
+<text x="615" y="192" font-size="11" text-anchor="middle" opacity="0.6">FACING AWAY</text>
+<text x="1038" y="192" font-size="11" text-anchor="middle" opacity="0.6">THREE-QUARTER</text>
+<text x="194" y="404" font-size="11" text-anchor="middle" opacity="0.5">ID ————</text>
+<text x="615" y="404" font-size="11" text-anchor="middle" opacity="0.5">ID ————</text>
+<text x="1038" y="404" font-size="11" text-anchor="middle" opacity="0.5">ID ————</text>
+<text x="616" y="486" font-size="15" text-anchor="middle" opacity="0.95" letter-spacing="2">EVERYONE ACCOUNTED FOR</text>
+<text x="105" y="528" font-size="11" opacity="0.45">NOBODY STOPS. NOBODY SIGNS IN. THE REGISTER WRITES ITSELF.</text>
+</g>
+</svg>
