@@ -503,3 +503,41 @@
     gap: 32px;
   }
 }
+
+/* ============================================================
+   MOTION — reveal system (Motion Spec v1)
+   One-shot reveals driven by data-revealed. Initial hidden state is
+   gated behind (prefers-reduced-motion: no-preference) so reduced-motion
+   and no-JS (see <noscript> in layout) always land on the final state.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  /* §3.3 body/claim — opacity + 8px settle */
+  .v-reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity var(--duration-dur-3) var(--ease-enter),
+      transform var(--duration-dur-3) var(--ease-enter);
+  }
+  /* §3.2 mono labels — opacity only, linear (a readout updating) */
+  .v-reveal-mono {
+    opacity: 0;
+    transition: opacity var(--duration-dur-1) linear;
+  }
+  /* §3.1 headline decode — each char is a block from frame 1, then resolves */
+  .v-dec {
+    background: currentColor;
+    color: transparent;
+    border-radius: 1px;
+    transition: background var(--duration-dur-1) linear,
+      color var(--duration-dur-1) linear;
+  }
+}
+.v-reveal[data-revealed="true"],
+.v-reveal-mono[data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+.v-dec[data-on="1"] {
+  background: transparent;
+  color: inherit;
+}

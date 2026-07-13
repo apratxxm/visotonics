@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { CountUp, DecodeHeadline, Reveal } from "@/components/motion";
 
 /* ---------------------------------------------------------------------------
    Visotonics home page — Drafting Table
@@ -128,7 +129,7 @@ function Hero() {
               maxWidth: 1257,
             }}
           >
-            AI vision for yards, warehouses and factories — from the CCTV you already own.
+            <DecodeHeadline text="AI vision for yards, warehouses and factories — from the CCTV you already own." />
           </h1>
         </div>
 
@@ -197,7 +198,7 @@ function Hero() {
         </div>
         <div style={{ position: "relative", zIndex: 1, padding: "40px 20px", borderBottom: `1px solid ${GRID_D}` }}>
           <h1 style={{ margin: 0, fontFamily: sans, fontSize: 44, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>
-            AI vision for yards, warehouses and factories — from the CCTV you already own.
+            <DecodeHeadline text="AI vision for yards, warehouses and factories — from the CCTV you already own." />
           </h1>
         </div>
         <div style={{ position: "relative", zIndex: 1, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 6, borderBottom: `1px solid ${GRID_D}` }}>
@@ -460,7 +461,7 @@ function Metrics() {
                   justifyContent: "space-between",
                 }}
               >
-                <span style={{ fontFamily: sans, fontSize: 102, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}>{m.n}</span>
+                <span style={{ fontFamily: sans, fontSize: 102, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}><CountUp value={m.n} /></span>
                 <span style={{ fontSize: 24, lineHeight: 1.4, color: TXT_L2 }}>{m.label}</span>
                 {i === METRICS.length - 1 ? <Dot style={{ left: 0, bottom: -2 }} /> : null}
               </div>
@@ -492,7 +493,7 @@ function Metrics() {
               gap: 16,
             }}
           >
-            <span style={{ fontFamily: sans, fontSize: 52, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}>{m.n}</span>
+            <span style={{ fontFamily: sans, fontSize: 52, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}><CountUp value={m.n} /></span>
             <span style={{ fontSize: 15, lineHeight: 1.4, color: TXT_L2, textAlign: "right" }}>{m.label}</span>
             {i === METRICS.length - 1 ? <Dot style={{ left: 0, bottom: -2 }} /> : null}
           </div>
@@ -556,7 +557,7 @@ function ProofPartners() {
             </h2>
             <div style={{ marginTop: 48, display: "flex", alignItems: "flex-start", gap: 80 }}>
               <div>
-                <span style={{ display: "block", fontFamily: sans, fontSize: "clamp(120px, 16.1vw, 232px)", lineHeight: 0.82, fontWeight: 500, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}>400,000</span>
+                <span style={{ display: "block", fontFamily: sans, fontSize: "clamp(120px, 16.1vw, 232px)", lineHeight: 0.82, fontWeight: 500, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}><CountUp value="400,000" /></span>
                 <span style={{ display: "block", marginTop: 56, ...eyebrow(TXT_L2), fontSize: 26, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS LIVE SITES</span>
               </div>
               <span style={{ flex: 1, alignSelf: "center", fontFamily: sans, fontSize: 34, lineHeight: 1.35, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1, maxWidth: "16.11ch", paddingBottom: 84, paddingLeft: 65 }}>
@@ -601,7 +602,7 @@ function ProofPartners() {
           <Dot style={{ left: -2, top: -2 }} />
           <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>PROVEN WHERE IT&apos;S HARDEST</span>
           <h2 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 30, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>Trusted at the busiest yards, in the country.</h2>
-          <span style={{ display: "block", marginTop: 28, fontFamily: sans, fontSize: 72, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}>400,000</span>
+          <span style={{ display: "block", marginTop: 28, fontFamily: sans, fontSize: 72, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}><CountUp value="400,000" /></span>
           <span style={{ display: "block", marginTop: 16, ...eyebrow(TXT_L2), fontSize: 13, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS LIVE SITES</span>
           <span style={{ display: "block", marginTop: 24, fontFamily: sans, fontSize: 20, lineHeight: 1.4, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1, maxWidth: "24ch" }}>Reading moving containers in night, rain, fog and dust.</span>
         </div>
@@ -798,12 +799,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Statement />
-      <HowItWorks />
-      <Metrics />
-      <ProofPartners />
-      <Testimonials />
-      <Convert />
+      <Reveal><Statement /></Reveal>
+      <Reveal><HowItWorks /></Reveal>
+      <Reveal><Metrics /></Reveal>
+      <Reveal><ProofPartners /></Reveal>
+      <Reveal><Testimonials /></Reveal>
+      <Reveal><Convert /></Reveal>
     </>
   );
 }

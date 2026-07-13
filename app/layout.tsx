@@ -31,6 +31,9 @@ export default function RootLayout({
       className={`${archivo.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <noscript>
+          <style>{`.v-reveal,.v-reveal-mono{opacity:1!important;transform:none!important}.v-dec{background:transparent!important;color:inherit!important}`}</style>
+        </noscript>
         <SiteNav />
         <main className="flex-1">{children}</main>
         <SiteFooter />

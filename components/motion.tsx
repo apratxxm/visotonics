@@ -1,0 +1,187 @@
+"use client";
+
+/* ---------------------------------------------------------------------------
+   Motion primitives (Motion Spec v1). CSS transitions + IntersectionObserver
+   only — no animation library. Every reveal fires ONCE (data-revealed) and
+   never re-animates. Reduced motion + no-JS land on the final state.
+--------------------------------------------------------------------------- */
+
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
+
+function prefersReducedMotion() {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+/* §5.1 / §3.3 — one-shot reveal. `mono` uses the linear opacity-only variant. */
+export function Reveal({
+  children,
+  className = "",
+  style,
+  mono = false,
+  delay = 0,
+  as = "div",
+}: {
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+  mono?: boolean;
+  delay?: number;
+  as?: "div" | "span" | "p";
+}) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || el.dataset.revealed) return;
+    const reveal = () => {
+      if (delay) el.style.transitionDelay = `${delay}ms`;
+      el.dataset.revealed = "true";
+    };
+    if (prefersReducedMotion()) {
+      reveal();
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            reveal();
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [delay]);
+
+  const Tag = as as "div";
+  return (
+    <Tag ref={ref as React.Ref<HTMLDivElement>} className={`${mono ? "v-reveal-mono" : "v-reveal"} ${className}`} style={style}>
+      {children}
+    </Tag>
+  );
+}
+
+/* §4.5 — metric count-up. Stepped (mechanical), tabular-nums, once, on view.
+   `value` is the exact fact-bank string (e.g. "400,000", "90%", "~100%"). */
+export function CountUp({
+  value,
+  className = "",
+  style,
+}: {
+  value: string;
+  className?: string;
+  style?: CSSProperties;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || el.dataset.counted) return;
+    const m = value.match(/^(\D*)([\d,]+)(.*)$/);
+    if (!m) return; // no numeric part — leave the literal value
+    const prefix = m[1];
+    const numStr = m[2];
+    const suffix = m[3];
+    const hasComma = numStr.includes(",");
+    const target = parseInt(numStr.replace(/,/g, ""), 10);
+    const fmt = (n: number) => (hasComma ? n.toLocaleString("en-US") : String(n));
+    const render = (n: number) => {
+      el.textContent = prefix + fmt(n) + suffix;
+    };
+
+    if (prefersReducedMotion()) return; // SSR already shows the final value
+
+    const run = () => {
+      el.dataset.counted = "true";
+      const steps = 24;
+      const dur = 800;
+      render(0);
+      let i = 0;
+      const tick = () => {
+        i += 1;
+        render(i >= steps ? target : Math.round((target * i) / steps));
+        if (i < steps) window.setTimeout(tick, dur / steps);
+      };
+      tick();
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            run();
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value]);
+
+  return (
+    <span ref={ref} className={className} style={{ fontVariantNumeric: "tabular-nums", ...style }}>
+      {value}
+    </span>
+  );
+}
+
+/* §3.1 — hero headline decode. Every char is a block from frame 1, then
+   resolves left-to-right. Fires once on mount. Total ≤ --dur-3 (480ms). */
+export function DecodeHeadline({
+  text,
+  className = "",
+  style,
+}: {
+  text: string;
+  className?: string;
+  style?: CSSProperties;
+}) {
+  const chars = Array.from(text);
+  const [on, setOn] = useState(false);
+  const stagger = Math.max(2, Math.min(12, Math.floor(480 / Math.max(1, chars.length))));
+
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      setOn(true);
+      return;
+    }
+    const r = requestAnimationFrame(() => setOn(true));
+    return () => cancelAnimationFrame(r);
+  }, []);
+
+  return (
+    <span className={className} style={style} aria-label={text}>
+      {chars.map((c, i) =>
+        c === " " ? (
+          " "
+        ) : (
+          <span
+            key={i}
+            aria-hidden="true"
+            className="v-dec"
+            data-on={on ? "1" : undefined}
+            style={{ transitionDelay: `${on ? i * stagger : 0}ms` }}
+          >
+            {c}
+          </span>
+        ),
+      )}
+    </span>
+  );
+}
