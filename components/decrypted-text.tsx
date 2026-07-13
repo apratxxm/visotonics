@@ -164,44 +164,38 @@ export default function DecryptedText({
 
   useEffect(() => {
     if (!isAnimating) return;
-    let currentIteration = 0;
 
-    const getNextIndex = (revealedSet: Set<number>) => {
-      const textLength = text.length;
-      switch (revealDirection) {
-        case "start":
-          return revealedSet.size;
-        case "end":
-          return textLength - 1 - revealedSet.size;
-        case "center": {
-          const middle = Math.floor(textLength / 2);
-          const offset = Math.floor(revealedSet.size / 2);
-          const nextIndex = revealedSet.size % 2 === 0 ? middle + offset : middle - offset - 1;
-          if (nextIndex >= 0 && nextIndex < textLength && !revealedSet.has(nextIndex)) return nextIndex;
-          for (let i = 0; i < textLength; i++) if (!revealedSet.has(i)) return i;
-          return 0;
-        }
-        default:
-          return revealedSet.size;
-      }
-    };
-
-    intervalRef.current = setInterval(() => {
-      setRevealedIndices((prevRevealed) => {
-        if (sequential) {
-          if (prevRevealed.size < text.length) {
-            const nextIndex = getNextIndex(prevRevealed);
-            const newRevealed = new Set(prevRevealed);
-            newRevealed.add(nextIndex);
-            setDisplayText(shuffleText(text, newRevealed));
-            return newRevealed;
-          }
-          if (intervalRef.current) clearInterval(intervalRef.current);
+    // Sequential — time-based via rAF so the total duration (~len * speed) is
+    // constant on every device. A slow phone reveals more chars per frame to
+    // stay on schedule instead of dragging (the old setInterval was O(n^2)).
+    if (sequential) {
+      const order = computeOrder(text.length);
+      const per = Math.max(1, speed);
+      let raf = 0;
+      let start: number | null = null;
+      const step = (ts: number) => {
+        if (start === null) start = ts;
+        const count = Math.min(text.length, Math.floor((ts - start) / per) + 1);
+        const revealed = new Set(order.slice(0, count));
+        setRevealedIndices(revealed);
+        if (count >= text.length) {
+          setDisplayText(text);
           setIsAnimating(false);
           setIsDecrypted(true);
-          return prevRevealed;
+          return;
         }
-        setDisplayText(shuffleText(text, prevRevealed));
+        setDisplayText(shuffleText(text, revealed));
+        raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+      return () => cancelAnimationFrame(raf);
+    }
+
+    // Non-sequential — fixed number of scramble frames, then snap.
+    let currentIteration = 0;
+    intervalRef.current = setInterval(() => {
+      setRevealedIndices((prev) => {
+        setDisplayText(shuffleText(text, prev));
         currentIteration++;
         if (currentIteration >= maxIterations) {
           if (intervalRef.current) clearInterval(intervalRef.current);
@@ -209,14 +203,14 @@ export default function DecryptedText({
           setDisplayText(text);
           setIsDecrypted(true);
         }
-        return prevRevealed;
+        return prev;
       });
     }, speed);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isAnimating, text, speed, maxIterations, sequential, revealDirection, shuffleText, direction]);
+  }, [isAnimating, text, speed, maxIterations, sequential, revealDirection, shuffleText, computeOrder]);
 
   const handleClick = () => {
     if (animateOn !== "click") return;
