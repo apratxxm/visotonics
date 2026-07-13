@@ -12,7 +12,7 @@ export function Brand({ height = 20, className }: BrandProps) {
       src="/visotonics-high-resolution-logo-transparent.png"
       alt="Visotonics"
       className={className}
-      style={{ height, width: "auto", display: "block", filter: "invert(1)" }}
+      style={{ height, width: "auto", maxWidth: "none", flexShrink: 0, alignSelf: "flex-start", display: "block", filter: "invert(1)" }}
     />
   );
 }

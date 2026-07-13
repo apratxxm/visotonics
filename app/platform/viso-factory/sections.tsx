@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import {
   ANCHOR_OFFSET,
   BORDER_D,
@@ -7,7 +6,6 @@ import {
   Cross,
   Dot,
   GRID_D,
-  SIGNAL,
   TXT_D1,
   TXT_D2,
   eyebrow,
@@ -50,17 +48,6 @@ const REGISTER: [string, string][] = [
   ["TRACE", "unit-level history"],
 ];
 
-const overlay = (color: string): CSSProperties => ({
-  position: "absolute",
-  zIndex: 2,
-  fontFamily: mono,
-  fontSize: 12,
-  fontWeight: 500,
-  letterSpacing: "0.06em",
-  color,
-  whiteSpace: "nowrap",
-});
-
 /* =========================================================================
    01 · PRODUCTION VISION [CNT]  (dark) — "the feed"
    ========================================================================= */
@@ -88,9 +75,6 @@ export function SectionProduction() {
               fit="width"
               style={{ display: "block", width: "100%" }}
             />
-            <span style={{ ...overlay(SIGNAL), left: 24, top: 22 }}>● REC — DETECTION ZONE ACTIVE</span>
-            <span style={{ ...overlay(TXT_D2), right: 24, top: 22 }}>LIVE LINE FEED — DEMO</span>
-            <span style={{ ...overlay(TXT_D1), right: 24, top: "48%" }}>EXIT CONVEYOR ▸</span>
           </div>
 
           {/* capability register */}
@@ -130,8 +114,6 @@ export function SectionProduction() {
             fit="width"
             style={{ display: "block", width: "100%" }}
           />
-          <span style={{ ...overlay(TXT_D1), left: 12, top: "17%", fontSize: 11 }}>◂ LINE 3</span>
-          <span style={{ ...overlay(SIGNAL), left: 12, bottom: 12, fontSize: 11 }}>● REC — DETECTION ZONE ACTIVE</span>
         </div>
 
         <div style={{ marginTop: 24, borderTop: `1px solid ${HAIR_STRONG}`, borderBottom: `1px solid ${HAIR}` }}>

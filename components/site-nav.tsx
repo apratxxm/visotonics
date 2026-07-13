@@ -54,31 +54,33 @@ function productHref(envHref: string, name: string) {
   return envHref + "#" + name.toLowerCase().replace(/\s+/g, "-");
 }
 
+// Only fully-built pages are shown. The rest are shells / "coming soon" and are
+// commented out until built — uncomment to restore.
 const RESOURCES_COL_1: LinkItem[] = [
   { name: "FAQs", href: "/resources/faqs" },
-  { name: "Blog", href: "/resources/blog" },
-  { name: "Case Studies", href: "/resources/case-studies" },
-  { name: "Testimonials", href: "/resources/testimonials" },
-  { name: "ROI Calculator", href: "/resources/roi-calculator" },
+  // { name: "Blog", href: "/resources/blog" },
+  // { name: "Case Studies", href: "/resources/case-studies" },
+  // { name: "Testimonials", href: "/resources/testimonials" },
+  // { name: "ROI Calculator", href: "/resources/roi-calculator" },
 ];
 const RESOURCES_COL_2: LinkItem[] = [
-  { name: "Whitepapers", href: "/resources/whitepapers" },
-  { name: "Webinars", href: "/resources/webinars" },
-  { name: "Documentation", href: "/resources/documentation" },
-  { name: "Glossary", href: "/resources/glossary" },
-  { name: "Press Kit", href: "/resources/press-kit" },
+  // { name: "Whitepapers", href: "/resources/whitepapers" },
+  // { name: "Webinars", href: "/resources/webinars" },
+  // { name: "Documentation", href: "/resources/documentation" },
+  // { name: "Glossary", href: "/resources/glossary" },
+  // { name: "Press Kit", href: "/resources/press-kit" },
 ];
 
 const COMPANY_COL_1: LinkItem[] = [
   { name: "About", href: "/company/about" },
   { name: "Offices", href: "/company/offices" },
-  { name: "Careers", href: "/company/careers" },
-  { name: "Newsroom", href: "/company/newsroom" },
+  // { name: "Careers", href: "/company/careers" },
+  // { name: "Newsroom", href: "/company/newsroom" },
 ];
 const COMPANY_COL_2: LinkItem[] = [
-  { name: "Investor Relations", href: "/company/investor-relations" },
-  { name: "Partners", href: "/company/partners" },
-  { name: "Sustainability", href: "/company/sustainability" },
+  // { name: "Investor Relations", href: "/company/investor-relations" },
+  // { name: "Partners", href: "/company/partners" },
+  // { name: "Sustainability", href: "/company/sustainability" },
 ];
 
 const LANGUAGES = [
