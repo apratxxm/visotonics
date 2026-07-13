@@ -494,3 +494,12 @@
 .dt-signal-fill:hover {
   background: #f4f5f7;
 }
+
+/* Industries document — 3-column reading grid (margin tag · prose · spacer). */
+@media (min-width: 768px) {
+  .doc-grid {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 680px) 1fr;
+    gap: 32px;
+  }
+}

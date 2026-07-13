@@ -1,0 +1,95 @@
+<svg viewBox="0 0 420 760" xmlns="http://www.w3.org/2000/svg" font-family="&#39;IBM Plex Mono&#39;,monospace">
+<rect width="420" height="760" fill="#101216"></rect>
+
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+
+<g id="camera" opacity="0.85">
+<rect x="318" y="88" width="46" height="26"></rect>
+<rect x="300" y="95" width="18" height="13"></rect>
+<circle cx="309" cy="101" r="4"></circle>
+<line x1="341" y1="114" x2="341" y2="130" opacity="0.6"></line>
+<rect x="325" y="130" width="32" height="9" opacity="0.7"></rect>
+</g>
+<g opacity="0.2" stroke-dasharray="5 6">
+<line x1="332" y1="139" x2="196" y2="212"></line>
+<line x1="350" y1="139" x2="300" y2="560"></line>
+</g>
+
+<g id="zone" opacity="0.28">
+<line x1="60" y1="196" x2="272" y2="196"></line>
+<line x1="60" y1="196" x2="60" y2="216"></line>
+<line x1="272" y1="196" x2="272" y2="216"></line>
+<line x1="60" y1="588" x2="272" y2="588"></line>
+<line x1="60" y1="568" x2="60" y2="588"></line>
+<line x1="272" y1="568" x2="272" y2="588"></line>
+</g>
+
+<g id="belt" opacity="0.7">
+<line x1="72" y1="196" x2="72" y2="588"></line>
+<line x1="88" y1="196" x2="88" y2="588" opacity="0.45"></line>
+</g>
+
+<g id="ghost-in" opacity="0.28">
+<rect x="108" y="148" width="70" height="28"></rect>
+</g>
+
+<g id="unit-a" opacity="0.9">
+<rect x="108" y="236" width="84" height="64"></rect>
+<line x1="108" y1="256" x2="192" y2="256" opacity="0.5"></line>
+<line x1="150" y1="236" x2="150" y2="256" opacity="0.35"></line>
+</g>
+
+<g id="unit-b" opacity="0.9">
+<rect x="108" y="360" width="84" height="64"></rect>
+<line x1="108" y1="380" x2="192" y2="380" opacity="0.5"></line>
+<line x1="150" y1="360" x2="150" y2="380" opacity="0.35"></line>
+</g>
+
+<g id="unit-c" opacity="0.9">
+<rect x="108" y="484" width="84" height="64"></rect>
+<line x1="108" y1="504" x2="192" y2="504" opacity="0.5"></line>
+<line x1="150" y1="484" x2="150" y2="504" opacity="0.35"></line>
+<path d="M124,528 L140,512 L156,532" opacity="0.5"></path>
+</g>
+
+<g id="ghost-out" opacity="0.28">
+<rect x="108" y="608" width="70" height="28"></rect>
+</g>
+
+<g id="leaders" opacity="0.28">
+<line x1="200" y1="260" x2="228" y2="260"></line>
+<line x1="200" y1="384" x2="228" y2="384"></line>
+<line x1="200" y1="508" x2="228" y2="508"></line>
+</g>
+</g>
+
+<g stroke="#ED510C" fill="none">
+<rect x="100" y="228" width="100" height="80" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"></rect>
+<rect x="100" y="352" width="100" height="80" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"></rect>
+<rect x="100" y="476" width="100" height="80" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"></rect>
+<rect x="118" y="508" width="44" height="32" stroke-width="1.5"></rect>
+</g>
+
+<g fill="#F4F5F7" font-size="12" letter-spacing="1.3">
+<text x="32" y="44" opacity="0.9">LINE — ELEVATION</text>
+<text x="388" y="44" text-anchor="end" opacity="0.55">ONE PASS</text>
+
+<text x="236" y="256" opacity="0.9">COUNTED</text>
+<text x="236" y="276" opacity="0.45">UNIT ————</text>
+
+<text x="236" y="380" opacity="0.9">SKU — READ</text>
+<text x="236" y="400" opacity="0.45">SKU ————</text>
+
+<text x="236" y="504" opacity="0.9">INSPECTED</text>
+<text x="236" y="524" opacity="0.45">COND ————</text>
+
+<text x="32" y="176" opacity="0.4">IN ▾</text>
+<text x="32" y="636" opacity="0.4">▾ DISPATCH</text>
+
+<text x="32" y="692" opacity="0.5">COUNT · IDENTIFY · INSPECT</text>
+<text x="32" y="714" opacity="0.5">SAME PASS · SAME CAMERA</text>
+<text x="32" y="736" opacity="0.5">NO SEPARATE INSPECTION STATION</text>
+</g>
+
+<text x="236" y="548" fill="#ED510C" font-size="11" letter-spacing="1.3">DEFECT — FLAGGED</text>
+</svg>

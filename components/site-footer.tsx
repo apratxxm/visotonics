@@ -53,7 +53,7 @@ export function SiteFooter() {
           style={{ gridTemplateColumns: "2fr 1fr 1fr 1.4fr", padding: "var(--spacing-s16) 0 var(--spacing-s24)" }}
         >
           <div className="flex flex-col" style={{ paddingRight: "var(--spacing-s12)", gap: "var(--spacing-s6)" }}>
-            <Brand height={22} />
+            <Brand height={28} />
             <span style={{ ...caption, color: "var(--text-dark-secondary)", maxWidth: 320 }}>
               Vision-AI platform for inspection and monitoring across the physical world.
             </span>
@@ -114,7 +114,7 @@ export function SiteFooter() {
         {/* MOBILE STACK */}
         <div className="flex flex-col md:hidden" style={{ padding: "var(--spacing-s8) 0 var(--spacing-s12)", gap: "var(--spacing-s8)" }}>
           <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
-            <Brand height={22} />
+            <Brand height={28} />
             <span style={caption}>Vision-AI platform for inspection and monitoring across the physical world.</span>
           </div>
 
@@ -211,9 +211,10 @@ export function SiteFooter() {
               opacity: 0.09,
               whiteSpace: "nowrap",
               userSelect: "none",
+              textTransform: "lowercase",
             }}
           >
-            Visotonics
+            visotonics
           </span>
         </div>
       </div>
