@@ -109,11 +109,11 @@ const CHAPTERS: Chapter[] = [
     problem:
       "Container damage surveys, gate ID checks and yard tracking are still largely manual — a surveyor with a clipboard, a guard squinting at a plate in the rain, a spreadsheet nobody trusts when a shipping line disputes a dent. Every stopped truck and re-inspection is time the terminal doesn't get back.",
     caps: [
-      { tag: "[DMG]", orange: true, lead: "Container Vision — patented damage detection.", body: "Every dent, rust patch and crack detected, segmented and measured to the mm², automatically, from camera footage. Diff any two checkpoints — gate in, crane on, crane off, gate out — for an auditable record of exactly where and when damage occurred. Reports generate in under a minute; damage above your threshold auto-emails the responsible party. Deployed at 25+ sites including Adani CFS." },
-      { tag: "[OCR]", lead: "Gate Vision — identity at the gate.", body: "Reads container, ISO, trailer and wagon IDs off moving trucks — no stop-and-shoot — in night, rain, fog and dust, at close to 100% accuracy across 400,000 reads a day. Seal status is checked and logged with every read, pushed to your system as structured JSON in real time." },
-      { tag: "[TWN]", lead: "Yard Vision — live location, not a search party.", body: "A one-time survey builds a live digital twin of the yard. From there, every inbound gets a recommended slot and every move is tracked automatically — ask for a container, get its precise location, no radio calls to the yard." },
-      { tag: "[LFT]", lead: "Crane Vision — chain of custody at the lift.", body: "Multi-camera capture of every face on every lift, with vibration compensation and motion-blur correction so crane movement never becomes an inspection error. High-severity damage triggers an immediate surveyor alert. Combined with gate and container checkpoints, this closes the chain of custody from vessel to yard to gate." },
-      { tag: "[DOC]", lead: "Document Vision — paperwork, structured.", body: "Bills of Lading and terminal paperwork go in; structured, system-ready data comes out — shipper, consignee, port of loading, cargo description, line items — pushed directly to your TOS." },
+      { tag: "", orange: true, lead: "Container Vision — patented damage detection.", body: "Every dent, rust patch and crack detected, segmented and measured to the mm², automatically, from camera footage. Diff any two checkpoints — gate in, crane on, crane off, gate out — for an auditable record of exactly where and when damage occurred. Reports generate in under a minute; damage above your threshold auto-emails the responsible party. Deployed by industrial leaders like Adani, DP World, Hind Terminals." },
+      { tag: "", lead: "Gate Vision — identity at the gate.", body: "Reads container, ISO, trailer and wagon IDs off moving trucks — no stop-and-shoot — in night, rain, fog and dust, at close to 100% accuracy across 400,000 reads a day. Seal status is checked and logged with every read, pushed to your system as structured JSON in real time." },
+      { tag: "", lead: "Yard Vision — live location, not a search party.", body: "A one-time survey builds a live digital twin of the yard. From there, every inbound gets a recommended slot and every move is tracked automatically — ask for a container, get its precise location, no radio calls to the yard." },
+      { tag: "", lead: "Crane Vision — chain of custody at the lift.", body: "Multi-camera capture of every face on every lift, with vibration compensation and motion-blur correction so crane movement never becomes an inspection error. High-severity damage triggers an immediate surveyor alert. Combined with gate and container checkpoints, this closes the chain of custody from vessel to yard to gate." },
+      { tag: "", lead: "Document Vision — paperwork, structured.", body: "Bills of Lading and terminal paperwork go in; structured, system-ready data comes out — shipper, consignee, port of loading, cargo description, line items — pushed directly to your TOS." },
     ],
     fig: { figNo: "FIG. 01", file: "visotonics-container-schematic.svg", caption: "Checkpoint diff — gate in to gate out, damage attributed to the interval it occurred in." },
     registerLabel: "REGISTER",
@@ -122,7 +122,7 @@ const CHAPTERS: Chapter[] = [
       ["Reporting time", "99% reduction"],
       ["Gate turnaround", "70% faster"],
       ["ID read accuracy", "~100% · moving trucks, night/rain/fog/dust"],
-      ["Image reads", "400,000/day · 25+ sites"],
+      ["Image reads", "400,000/day · leading sites"],
     ],
     registerFootnote: "Aggregate figures measured across container, gate, yard and cargo deployments.",
     whyLabel: "WHY TERMINALS CHOOSE",
@@ -143,10 +143,10 @@ const CHAPTERS: Chapter[] = [
     problem:
       "Shrinkage that no one can pin down. Manual counts during stuffing and destuffing that don't match the manifest. Dimensioning done by hand, or not at all. In a warehouse running on paper tallies and spot-checks, disputes with carriers and customers become a matter of “he said, she said” — with no video to settle it.",
     caps: [
-      { tag: "[CNT]", lead: "Cargo Vision — counting, with proof.", body: "Every carton, gunny bag, jumbo bag, pallet, drum and barrel detected on video during loading and unloading — counted automatically, with a damage check run in the same pass. The command center gets a real-time alert on exceptions. Because detection runs on-device, it keeps working even when connectivity doesn't — full detection and alerting, offline." },
+      { tag: "", lead: "Cargo Vision — counting, with proof.", body: "Every carton, gunny bag, jumbo bag, pallet, drum and barrel detected on video during loading and unloading — counted automatically, with a damage check run in the same pass. The command center gets a real-time alert on exceptions. Because detection runs on-device, it keeps working even when connectivity doesn't — full detection and alerting, offline." },
       { tag: "", lead: "Audit & dimensioning.", body: "Camera-based dimensioning replaces manual measurement for inbound and outbound cargo, giving you defensible volumetric data for billing, slotting and space planning — captured automatically, not estimated." },
-      { tag: "[DMG]", orange: true, lead: "Container Vision — damage, documented on arrival.", body: "Inbound goods are surveyed for damage — dents, tears, wet damage, crushed cartons — the moment they hit the dock, with the same mm²-level detection used at the port. That means disputes with carriers get settled with a report, not a guess." },
-      { tag: "[DOC]", lead: "Document Vision — manifests, structured automatically.", body: "Delivery notes, packing lists and manifests are read and converted into structured, system-ready data — pushed straight into your WMS instead of re-keyed by hand." },
+      { tag: "", orange: true, lead: "Container Vision — damage, documented on arrival.", body: "Inbound goods are surveyed for damage — dents, tears, wet damage, crushed cartons — the moment they hit the dock, with the same mm²-level detection used at the port. That means disputes with carriers get settled with a report, not a guess." },
+      { tag: "", lead: "Document Vision — manifests, structured automatically.", body: "Delivery notes, packing lists and manifests are read and converted into structured, system-ready data — pushed straight into your WMS instead of re-keyed by hand." },
     ],
     fig: { figNo: "FIG. 02", file: "audit-schematic.svg", caption: "Camera-based audit and dimensioning — inbound cargo measured automatically, not estimated." },
     registerLabel: "REGISTER",
@@ -175,8 +175,8 @@ const CHAPTERS: Chapter[] = [
     caps: [
       { tag: "", lead: "Production monitoring.", body: "Continuous, camera-based visibility into line status, throughput and stoppages — surfaced in real time instead of reconstructed from shift-end reports." },
       { tag: "", lead: "Process monitoring.", body: "The same detection engine that segments container damage to the mm² is built to spot deviations in a repeatable process — flagging what's out of spec as it happens, so the correction happens on the same shift, not the next audit." },
-      { tag: "[DMG/CNT]", orange: true, lead: "Container & Cargo Vision.", body: "Finished-goods packaging and inbound raw materials get the same automated damage detection and counting used at the port and the warehouse dock — one consistent standard from supplier to shipment." },
-      { tag: "[DOC]", lead: "Document Vision.", body: "Inspection sheets, quality certificates and material dockets are read and converted to structured data automatically." },
+      { tag: "", orange: true, lead: "Container & Cargo Vision.", body: "Finished-goods packaging and inbound raw materials get the same automated damage detection and counting used at the port and the warehouse dock — one consistent standard from supplier to shipment." },
+      { tag: "", lead: "Document Vision.", body: "Inspection sheets, quality certificates and material dockets are read and converted to structured data automatically." },
     ],
     fig: { figNo: "FIG. 03", file: "factory-production-schematic-desktop.svg", caption: "Line camera — continuous production and process monitoring, no separate inspection station." },
     whyLabel: "PLATFORM ADVANTAGE",
@@ -184,9 +184,9 @@ const CHAPTERS: Chapter[] = [
       "No new hardware — runs on the cameras already on the line.",
       "One vision layer, whole operation — production, cargo and documents on a single record.",
       "Real-time, not retrospective — deviations flagged as they happen.",
-      "Built on patented detection — the same engine proven at 25+ live sites.",
+      "Built on patented detection — the same engine proven at leading industrial sites.",
     ],
-    whyFootnote: "Manufacturing-specific benchmark figures are being finalized as Viso Factory deployments scale — reach out for current pilot results. [TBD]",
+    whyFootnote: "Manufacturing-specific benchmark figures are being finalized as Viso Factory deployments scale — reach out for current pilot results.",
   },
   {
     theme: DARK,
@@ -198,8 +198,8 @@ const CHAPTERS: Chapter[] = [
     caps: [
       { tag: "", lead: "Checkpoint diff — one record, every handoff.", body: "Gate in, crane on, crane off, gate out, dock in, dock out — any two checkpoints, anywhere on the chain, can be diffed for auditable attribution of exactly where damage or shortage occurred. No more disputes settled by who shouts loudest." },
       { tag: "", lead: "Tamper-evident logbook.", body: "A time-stamped record per container or shipment movement, from vessel to gate to warehouse to line — one continuous chain of custody instead of separate logs at every stakeholder." },
-      { tag: "[OCR/CNT]", lead: "Gate & Cargo Vision — identity and count, verified in motion.", body: "IDs read off moving trucks, containers and trailers at close to 100% accuracy, and every carton, pallet and drum counted with video proof — at every gate along the route, not just the port." },
-      { tag: "[DOC]", lead: "Document Vision — every document, one format." },
+      { tag: "", lead: "Gate & Cargo Vision — identity and count, verified in motion.", body: "IDs read off moving trucks, containers and trailers at close to 100% accuracy, and every carton, pallet and drum counted with video proof — at every gate along the route, not just the port." },
+      { tag: "", lead: "Document Vision — every document, one format." },
       { tag: "", lead: "Viso Data — the engine underneath.", body: "Compression, trace and detection AI built to decode images where generic OCR and off-the-shelf vision models fail — low light, motion blur, partial occlusion, night, rain, fog, dust — the conditions supply chains actually operate in." },
     ],
     fig: { figNo: "FIG. 04", file: "visotonics-crane-schematic.svg", caption: "Chain of custody — vessel to yard to gate, one continuous record." },
@@ -209,14 +209,14 @@ const CHAPTERS: Chapter[] = [
       ["Reporting time", "99% reduction"],
       ["Gate turnaround", "70% faster"],
       ["Inventory shrinkage", "60% less"],
-      ["Image reads", "400,000/day · 25+ sites"],
+      ["Image reads", "400,000/day · leading sites"],
     ],
     whyLabel: "WHY SUPPLY-CHAIN TEAMS CHOOSE",
     why: [
       "No new hardware at any node — the platform runs on the CCTV each facility already has.",
       "One record, not five — a single, tamper-evident log follows cargo across every party in the chain.",
       "API-first — structured data pushed to your system in real time, not a dashboard you have to check.",
-      "Proven where it's hardest — reading moving containers in night, rain, fog and dust across 25+ live sites today.",
+      "Proven where it's hardest — reading moving containers in night, rain, fog and dust across leading industrial sites today.",
     ],
     sidebar: {
       label: "DISPATCH / INVENTORY INTELLIGENCE — SEPARATE CONTEXT, PORTABLE CAMERAS",
@@ -391,7 +391,7 @@ function Closing() {
           <div style={{ position: "absolute", top: 0, height: 8, left: 4, width: 1, background: t.cross }} />
         </div>
         <p style={{ margin: "0 auto", maxWidth: 700, fontFamily: sans, fontSize: 26, lineHeight: 1.5, fontWeight: 600, color: t.ink }} className="md:text-[28px]">
-          Join 25+ sites running 400,000 reads a day. Bring a feed from any node in your chain. We&apos;ll read it live.
+          Join industry leaders running 400,000 reads a day. Bring a CCTV feed from any node in your chain. We&apos;ll read it live.
         </p>
         <div className="mt-10 flex flex-col items-center gap-5 md:flex-row md:justify-center md:gap-10">
           <a href="/contact" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.ink, borderBottom: `1px solid ${t.ink}`, paddingBottom: 4, textDecoration: "none" }}>Talk to us →</a>

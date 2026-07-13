@@ -79,7 +79,7 @@ export function SectionAudit() {
       <div className="hidden md:block" style={{ position: "relative", paddingBottom: 128 }}>
         <EyebrowRule />
         <div style={{ position: "relative", zIndex: 1, padding: "104px 64px 0" }}>
-          <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 11 }}>02 — AUDIT VISION [AUD] · ID-LINKED VIDEO PROOF · NO BARCODE, NO TRIGGER-MAN</span>
+          <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 11 }}>02 — AUDIT VISION · ID-LINKED VIDEO PROOF · NO BARCODE, NO TRIGGER-MAN</span>
           <div style={{ marginTop: 40, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 90 }}>
             <h2 style={{ margin: 0, paddingLeft: 13, width: 572, fontFamily: sans, fontSize: 56, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
               The dispute arrives.<br />The clip already exists.
@@ -122,7 +122,7 @@ export function SectionAudit() {
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
         <EyebrowRule mobile />
-        <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 11 }}>02 — AUDIT VISION [AUD] · ID-LINKED VIDEO PROOF · NO BARCODE, NO TRIGGER-MAN</span>
+        <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 11 }}>02 — AUDIT VISION · ID-LINKED VIDEO PROOF · NO BARCODE, NO TRIGGER-MAN</span>
         <h2 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 36, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
           The dispute arrives.<br />The clip already exists.
         </h2>
@@ -184,7 +184,7 @@ export function SectionDimension() {
 
       {/* DESKTOP */}
       <Reveal as="div" className="hidden md:block" style={{ position: "relative", zIndex: 1, maxWidth: 1232, margin: "0 auto", padding: "128px 64px 96px", boxSizing: "border-box" }}>
-        <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 14 }}>03 — DIMENSION VISION [DIM] · VOLUMETRIC CAPTURE · CAMERA, NOT TAPE MEASURE</span>
+        <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 14 }}>03 — DIMENSION VISION · VOLUMETRIC CAPTURE · CAMERA, NOT TAPE MEASURE</span>
         <div style={{ marginTop: 64, display: "flex", alignItems: "center", gap: 48 }}>
           <div style={{ flex: "0 0 395px" }}>
             <h2 style={{ margin: 0, fontFamily: sans, fontSize: 56, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>The tape measure retires.</h2>
@@ -209,7 +209,7 @@ export function SectionDimension() {
 
       {/* MOBILE */}
       <Reveal as="div" className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "48px 24px 56px" }}>
-        <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>03 — DIMENSION VISION [DIM] · VOLUMETRIC CAPTURE · CAMERA, NOT TAPE MEASURE</span>
+        <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>03 — DIMENSION VISION · VOLUMETRIC CAPTURE · CAMERA, NOT TAPE MEASURE</span>
         <h2 style={{ margin: "28px 0 0", fontFamily: sans, fontSize: 36, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>The tape measure retires.</h2>
         <p style={{ margin: "20px 0 0", fontFamily: sans, fontSize: 15, lineHeight: 1.5, color: TXT_L2 }}>
           Cartons, sacks, drums and pallets — including the irregular shapes a tape measure was never going to agree on — captured as volumetric data with an annotated image attached.
@@ -243,7 +243,7 @@ export function SectionWork({ n = "05" }: { n?: string }) {
       <div className="hidden md:block" style={{ position: "relative", paddingBottom: 96 }}>
         <EyebrowRule />
         <div style={{ position: "relative", zIndex: 1, padding: "104px 64px 0" }}>
-          <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>{n} — WORK VISION [WRK] · ATTENDANCE FROM THE CAMERAS ALREADY WATCHING</span>
+          <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>{n} — WORK VISION · ATTENDANCE FROM THE CAMERAS ALREADY WATCHING</span>
           <h2 style={{ margin: "48px 0 0", paddingLeft: 20, width: 1038, fontFamily: sans, fontSize: 68, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Attendance without the queue.</h2>
           <p style={{ margin: "36px 0 0", paddingLeft: 20, width: 780, fontFamily: sans, fontSize: 26, lineHeight: 1.5, color: TXT_D1 }}>Seen from any angle — not just the one they happened to face.</p>
           <p style={{ margin: "24px 0 0", paddingLeft: 20, width: 1049, fontFamily: sans, fontSize: 28, lineHeight: 1.5, color: TXT_D2 }}>
@@ -261,7 +261,7 @@ export function SectionWork({ n = "05" }: { n?: string }) {
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
         <EyebrowRule mobile />
-        <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 11 }}>{n} — WORK VISION [WRK] · ATTENDANCE FROM THE CAMERAS ALREADY WATCHING</span>
+        <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 11 }}>{n} — WORK VISION · ATTENDANCE FROM THE CAMERAS ALREADY WATCHING</span>
         <h2 style={{ margin: "36px 0 0", fontFamily: sans, fontSize: 40, lineHeight: 1.04, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Attendance without the queue.</h2>
         <p style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 20, lineHeight: 1.4, color: TXT_D1 }}>Seen from any angle — not just the one they happened to face.</p>
         <p style={{ margin: "20px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D2 }}>
@@ -296,7 +296,7 @@ export function SectionSecure({ n = "06" }: { n?: string }) {
       <div className="hidden md:block" style={{ position: "relative", paddingBottom: 96 }}>
         <EyebrowRule />
         <div style={{ position: "relative", zIndex: 1, padding: "104px 64px 0" }}>
-          <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 41 }}>{n} — SECURE VISION [SEC] · ALERTS AND LOGS · DOES NOT DETER</span>
+          <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 41 }}>{n} — SECURE VISION · ALERTS AND LOGS · DOES NOT DETER</span>
           <div style={{ marginTop: 40, display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 64 }}>
             <h2 style={{ margin: 0, paddingLeft: 41, width: 837, fontFamily: sans, fontSize: 56, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>An alarm that cries wolf is worse than no alarm.</h2>
             <p style={{ flex: "0 0 523px", width: 523, margin: 0, fontFamily: sans, fontSize: 20, lineHeight: 1.5, color: TXT_D2 }}>
@@ -324,7 +324,7 @@ export function SectionSecure({ n = "06" }: { n?: string }) {
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
         <EyebrowRule mobile />
-        <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 11 }}>{n} — SECURE VISION [SEC] · ALERTS AND LOGS · DOES NOT DETER</span>
+        <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 11 }}>{n} — SECURE VISION · ALERTS AND LOGS · DOES NOT DETER</span>
         <h2 style={{ margin: "36px 0 0", fontFamily: sans, fontSize: 40, lineHeight: 1.04, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>An alarm that cries wolf is worse than no alarm.</h2>
         <p style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D2 }}>
           A guard cannot watch forty feeds. So most feeds are watched by nobody. The platform watches all of them — and it already knows the difference between a real event and a flapping tarp, because it reads through night, rain, fog, dust and motion blur.

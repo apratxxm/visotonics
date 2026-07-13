@@ -544,3 +544,13 @@
 
 /* DecryptedText — encrypted (unresolved) characters read as dimmed. */
 .v-enc { opacity: 0.55; }
+
+/* Nav mega-menu — crossfade when switching between hovered menus. */
+@keyframes navMegaFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+.nav-mega-fade { animation: navMegaFade 160ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-mega-fade { animation: none; }
+}

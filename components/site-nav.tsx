@@ -175,84 +175,92 @@ export function SiteNav() {
       style={{ background: "var(--canvas-dark)", borderColor: "var(--border-dark)" }}
       onClickCapture={handleHeaderClick}
     >
-      {/* DESKTOP NAV */}
-      <div
-        className="mx-auto hidden h-[72px] max-w-[1360px] grid-cols-[1fr_auto_1fr] items-center px-16 md:grid"
-      >
-        <Link href="/" className="justify-self-start" aria-label="Visotonics home">
-          <Brand height={30} />
-        </Link>
-
-        <nav className="flex items-center justify-self-center" style={{ gap: "var(--spacing-s8)" }}>
-          <button
-            type="button"
-            onClick={() => toggleMenu("platform")}
-            className="flex cursor-pointer items-center bg-transparent p-0"
-            style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "platform" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
-          >
-            Platform
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "var(--text-dark-secondary)",
-                display: "inline-block",
-                transition: "transform var(--duration-dur-2) var(--ease-standard)",
-                transform: openMenu === "platform" ? "rotate(180deg)" : "rotate(0deg)",
-              }}
-            >
-              ▾
-            </span>
-          </button>
-
-          <Link href="/industries" className="hover:opacity-80" style={navLink}>
-            Industries
+      {/* DESKTOP NAV — the trio below (nav row + mega-menu panel) share one
+          hover boundary: entering any trigger opens its panel directly (no
+          click needed), moving between triggers swaps panels without ever
+          passing through "closed" (see the merged panel render below), and
+          leaving the whole area closes whatever's open. */}
+      <div onMouseLeave={() => setOpenMenu((m) => (m === "language" ? m : null))}>
+        <div
+          className="mx-auto hidden h-[72px] max-w-[1360px] grid-cols-[1fr_auto_1fr] items-center px-16 md:grid"
+        >
+          <Link href="/" className="justify-self-start" aria-label="Visotonics home">
+            <Brand height={30} />
           </Link>
 
-          <button
-            type="button"
-            onClick={() => toggleMenu("resources")}
-            className="flex cursor-pointer items-center bg-transparent p-0"
-            style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "resources" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
-          >
-            Resources
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "var(--text-dark-secondary)",
-                display: "inline-block",
-                transition: "transform var(--duration-dur-2) var(--ease-standard)",
-                transform: openMenu === "resources" ? "rotate(180deg)" : "rotate(0deg)",
-              }}
+          <nav className="flex items-center justify-self-center" style={{ gap: "var(--spacing-s8)" }}>
+            <button
+              type="button"
+              onClick={() => toggleMenu("platform")}
+              onMouseEnter={() => setOpenMenu("platform")}
+              className="flex cursor-pointer items-center bg-transparent p-0"
+              style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "platform" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
             >
-              ▾
-            </span>
-          </button>
+              Platform
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  color: "var(--text-dark-secondary)",
+                  display: "inline-block",
+                  transition: "transform var(--duration-dur-2) var(--ease-standard)",
+                  transform: openMenu === "platform" ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              >
+                ▾
+              </span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => toggleMenu("company")}
-            className="flex cursor-pointer items-center bg-transparent p-0"
-            style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "company" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
-          >
-            Company
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "var(--text-dark-secondary)",
-                display: "inline-block",
-                transition: "transform var(--duration-dur-2) var(--ease-standard)",
-                transform: openMenu === "company" ? "rotate(180deg)" : "rotate(0deg)",
-              }}
+            <Link href="/industries" className="hover:opacity-80" style={navLink}>
+              Industries
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => toggleMenu("resources")}
+              onMouseEnter={() => setOpenMenu("resources")}
+              className="flex cursor-pointer items-center bg-transparent p-0"
+              style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "resources" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
             >
-              ▾
-            </span>
-          </button>
-        </nav>
+              Resources
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  color: "var(--text-dark-secondary)",
+                  display: "inline-block",
+                  transition: "transform var(--duration-dur-2) var(--ease-standard)",
+                  transform: openMenu === "resources" ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              >
+                ▾
+              </span>
+            </button>
 
-        <div className="flex items-center justify-self-end" style={{ gap: "var(--spacing-s6)", position: "relative" }}>
+            <button
+              type="button"
+              onClick={() => toggleMenu("company")}
+              onMouseEnter={() => setOpenMenu("company")}
+              className="flex cursor-pointer items-center bg-transparent p-0"
+              style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "company" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
+            >
+              Company
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  color: "var(--text-dark-secondary)",
+                  display: "inline-block",
+                  transition: "transform var(--duration-dur-2) var(--ease-standard)",
+                  transform: openMenu === "company" ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              >
+                ▾
+              </span>
+            </button>
+          </nav>
+
+          <div className="flex items-center justify-self-end" style={{ gap: "var(--spacing-s6)", position: "relative" }}>
           <button
             type="button"
             onClick={() => toggleMenu("language")}
@@ -336,90 +344,93 @@ export function SiteNav() {
             Contact
           </Link>
         </div>
-      </div>
+        </div>
 
-      {/* PLATFORM MEGA MENU */}
-      {openMenu === "platform" && (
-        <div className="hidden border-t md:block" style={{ borderColor: "var(--border-dark)", background: "var(--canvas-dark)" }}>
-          <div
-            className="mx-auto grid max-w-[1360px] px-16"
-            style={{ gridTemplateColumns: "1.1fr 1fr 1fr 1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
-          >
-            <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
-              <span style={monoLabel}>Menu</span>
-              <span style={menuTitle}>Platform</span>
-              <span style={caption}>Four environments, one vision platform.</span>
-            </div>
-            {PLATFORM_ENVIRONMENTS.map((env) => (
-              <div
-                key={env.name}
-                className="flex flex-col border-t"
-                style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s4)" }}
-              >
-                <div className="flex items-baseline justify-between">
-                  <Link href={env.href} className="hover:opacity-80" style={columnHeading}>
-                    {env.name}
-                  </Link>
-                  <span style={monoLabel}>{env.num}</span>
-                </div>
-                <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
-                  {env.products.map((p) => (
-                    <a key={p} href={productHref(env.href, p)} className="hover:opacity-80" style={caption}>
-                      {p}
-                    </a>
+        {/* MEGA MENU — one persistently-mounted panel for platform/resources/
+            company. Staying mounted across those three (only unmounting when
+            openMenu goes to null/"language") means moving the hover from one
+            trigger to another swaps content in place instead of closing and
+            reopening; the fade key={openMenu} still animates each swap. */}
+        {(openMenu === "platform" || openMenu === "resources" || openMenu === "company") && (
+          <div className="hidden border-t md:block" style={{ borderColor: "var(--border-dark)", background: "var(--canvas-dark)" }}>
+            <div key={openMenu} className="nav-mega-fade">
+              {openMenu === "platform" && (
+                <div
+                  className="mx-auto grid max-w-[1360px] px-16"
+                  style={{ gridTemplateColumns: "1.1fr 1fr 1fr 1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
+                >
+                  <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
+                    <span style={monoLabel}>Menu</span>
+                    <span style={menuTitle}>Platform</span>
+                    <span style={caption}>Four environments, one vision platform.</span>
+                  </div>
+                  {PLATFORM_ENVIRONMENTS.map((env) => (
+                    <div
+                      key={env.name}
+                      className="flex flex-col border-t"
+                      style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s4)" }}
+                    >
+                      <div className="flex items-baseline justify-between">
+                        <Link href={env.href} className="hover:opacity-80" style={columnHeading}>
+                          {env.name}
+                        </Link>
+                        <span style={monoLabel}>{env.num}</span>
+                      </div>
+                      <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+                        {env.products.map((p) => (
+                          <a key={p} href={productHref(env.href, p)} className="hover:opacity-80" style={caption}>
+                            {p}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+              )}
 
-      {/* RESOURCES MENU */}
-      {openMenu === "resources" && (
-        <div className="hidden border-t md:block" style={{ borderColor: "var(--border-dark)", background: "var(--canvas-dark)" }}>
-          <div
-            className="mx-auto grid max-w-[1360px] px-16"
-            style={{ gridTemplateColumns: "1.1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
-          >
-            <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
-              <span style={monoLabel}>Menu</span>
-              <span style={menuTitle}>Resources</span>
-              <span style={caption}>Guides, tools and proof for evaluating the platform.</span>
-            </div>
-            <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-              {[...RESOURCES_COL_1, ...RESOURCES_COL_2].map((l) => (
-                <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
-                  {l.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+              {openMenu === "resources" && (
+                <div
+                  className="mx-auto grid max-w-[1360px] px-16"
+                  style={{ gridTemplateColumns: "1.1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
+                >
+                  <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
+                    <span style={monoLabel}>Menu</span>
+                    <span style={menuTitle}>Resources</span>
+                    <span style={caption}>Guides, tools and proof for evaluating the platform.</span>
+                  </div>
+                  <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
+                    {[...RESOURCES_COL_1, ...RESOURCES_COL_2].map((l) => (
+                      <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
+                        {l.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-      {/* COMPANY MENU */}
-      {openMenu === "company" && (
-        <div className="hidden border-t md:block" style={{ borderColor: "var(--border-dark)", background: "var(--canvas-dark)" }}>
-          <div
-            className="mx-auto grid max-w-[1360px] px-16"
-            style={{ gridTemplateColumns: "1.1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
-          >
-            <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
-              <span style={monoLabel}>Menu</span>
-              <span style={menuTitle}>Company</span>
-              <span style={caption}>Who&apos;s building the platform, and where.</span>
-            </div>
-            <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-              {[...COMPANY_COL_1, ...COMPANY_COL_2].map((l) => (
-                <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
-                  {l.name}
-                </Link>
-              ))}
+              {openMenu === "company" && (
+                <div
+                  className="mx-auto grid max-w-[1360px] px-16"
+                  style={{ gridTemplateColumns: "1.1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
+                >
+                  <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
+                    <span style={monoLabel}>Menu</span>
+                    <span style={menuTitle}>Company</span>
+                    <span style={caption}>Who&apos;s building the platform, and where.</span>
+                  </div>
+                  <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
+                    {[...COMPANY_COL_1, ...COMPANY_COL_2].map((l) => (
+                      <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
+                        {l.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* MOBILE NAV BAR */}
       <div

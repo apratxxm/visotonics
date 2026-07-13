@@ -64,7 +64,7 @@ export function SectionContainer() {
         {/* lead: eyebrow + claim + mechanism steps */}
         <div style={{ position: "relative", zIndex: 1, padding: "104px 64px 0" }}>
           <p style={{ ...eyebrow(TXT_D2), margin: 0, paddingLeft: 24 }}>
-            01 — CONTAINER VISION [DMG] · PATENTED DAMAGE DETECTION
+            01 — CONTAINER VISION · PATENTED DAMAGE DETECTION
           </p>
           <h2
             style={{
@@ -144,7 +144,7 @@ export function SectionContainer() {
 
           {/* PROOF HEADLINE — title scale, lower-left */}
           <p style={{ position: "absolute", left: 14, top: 300, margin: 0, width: 716, fontFamily: sans, fontSize: 32, lineHeight: 1.4, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>
-            Patented damage detection*, <br />deployed at 25+ sites including Adani CFS.
+            Patented damage detection technology, <br />chosen by industrial leaders like Adani, DP World, Hind Terminals.
           </p>
 
           {/* OUTCOME */}
@@ -154,7 +154,7 @@ export function SectionContainer() {
 
           {/* FOOTNOTE */}
           <p style={{ position: "absolute", left: 13, top: 494, margin: 0, width: 880, fontSize: 15, lineHeight: 1.6, color: TXT_D2 }}>
-            *Patent number and jurisdiction to follow. Decodes images where generic OCR and leading vision models fail in our benchmarks — including low-light, motion blur, and partial occlusion.
+            Decodes images where generic OCR and leading vision models fail in our benchmarks — including low-light, motion blur, and partial occlusion.
           </p>
         </div>
       </div>
@@ -165,7 +165,7 @@ export function SectionContainer() {
         <Dot style={{ left: 23, top: 63, zIndex: 1 }} />
 
         <div style={{ position: "relative", zIndex: 1, padding: "56px 24px 0 40px" }}>
-          <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11 }}>01 — CONTAINER VISION [DMG] · PATENTED DAMAGE DETECTION</p>
+          <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11 }}>01 — CONTAINER VISION · PATENTED DAMAGE DETECTION</p>
           <h2 style={{ margin: "48px 0 0", fontFamily: sans, fontSize: 41, lineHeight: 1.02, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
             Every dent, rust &amp; crack. Documented automatically.
           </h2>
@@ -205,13 +205,13 @@ export function SectionContainer() {
             </span>
           </div>
           <p style={{ margin: "72px 0 0", fontFamily: sans, fontSize: 22, lineHeight: 1.4, fontWeight: 500, letterSpacing: "-0.01em", color: TXT_D1 }}>
-            Patented damage detection*, deployed at 25+ sites including Adani CFS.
+            Patented damage detection technology, chosen by industrial leaders like Adani, DP World, Hind Terminals.
           </p>
           <p style={{ margin: "28px 0 0", fontSize: 14, lineHeight: 1.5, color: TXT_D2 }}>
             Damage above your threshold emails the concerned authority automatically.
           </p>
           <p style={{ margin: "36px 0 0", fontSize: 8, lineHeight: 1.6, color: TXT_D2 }}>
-            *Patent number and jurisdiction to follow. Decodes images where generic OCR and leading vision models fail in our benchmarks — including low-light, motion blur, and partial occlusion.
+            Decodes images where generic OCR and leading vision models fail in our benchmarks — including low-light, motion blur, and partial occlusion.
           </p>
         </div>
       </div>
@@ -259,7 +259,7 @@ export function SectionTank() {
 
       {/* DESKTOP */}
       <Reveal as="div" className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 1104, padding: "112px 64px 0" }}>
-        <p style={{ ...eyebrow(TXT_L2), margin: 0, paddingLeft: 24 }}>02 — TANK VISION [TNK]</p>
+        <p style={{ ...eyebrow(TXT_L2), margin: 0, paddingLeft: 24 }}>02 — TANK VISION</p>
         <h2 style={{ margin: "42px 0 0", paddingLeft: 6, maxWidth: 1040, fontFamily: sans, fontSize: 56, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Tank health detection, from the cameras you already have.
         </h2>
@@ -273,7 +273,7 @@ export function SectionTank() {
 
       {/* MOBILE */}
       <Reveal as="div" className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "56px 24px 56px 40px" }}>
-        <p style={{ ...eyebrow(TXT_L2), margin: 0, fontSize: 11 }}>02 — TANK VISION [TNK]</p>
+        <p style={{ ...eyebrow(TXT_L2), margin: 0, fontSize: 11 }}>02 — TANK VISION</p>
         <h2 style={{ margin: "32px 0 0", fontFamily: sans, fontSize: 32, lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Tank health detection, from the cameras you already have.
         </h2>
@@ -432,7 +432,7 @@ export function SectionGate() {
         <div style={{ position: "relative", zIndex: 1, padding: "104px 64px 0" }}>
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 48 }}>
             <div style={{ paddingLeft: 8 }}>
-              <p style={{ ...eyebrow(TXT_D2), margin: "0 0 100px" }}>03 — GATE VISION [OCR]</p>
+              <p style={{ ...eyebrow(TXT_D2), margin: "0 0 100px" }}>03 — GATE VISION</p>
               <span style={{ display: "block", fontFamily: sans, fontSize: 208, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", fontVariantNumeric: "tabular-nums", color: TXT_D1 }}>~100%</span>
               <span style={{ display: "block", marginTop: 20, paddingLeft: 8, fontFamily: mono, fontSize: 21, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: TXT_D2 }}>ID READ ACCURACY</span>
             </div>
@@ -474,7 +474,7 @@ export function SectionGate() {
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
         <EyebrowRule mobile />
-        <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11 }}>03 — GATE VISION [OCR]</p>
+        <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11 }}>03 — GATE VISION</p>
         <span style={{ display: "block", marginTop: 34, fontFamily: sans, fontSize: 76, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", fontVariantNumeric: "tabular-nums", color: TXT_D1 }}>~100%</span>
         <span style={{ display: "block", marginTop: 8, fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: TXT_D2 }}>ID READ ACCURACY</span>
         <p style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D2 }}>On moving trucks, in night, rain, fog and dust.</p>
@@ -537,7 +537,7 @@ export function SectionYard() {
         <div style={{ position: "relative", zIndex: 1, padding: "104px 64px 0" }}>
           <p style={{ ...eyebrow(TXT_D2), margin: 0, display: "flex", alignItems: "center", gap: 14, paddingLeft: 6 }}>
             <span aria-hidden="true" style={{ width: 8, height: 8, background: SIGNAL }} />
-            04 — YARD VISION [TWN]
+            04 — YARD VISION
           </p>
           <h2 style={{ margin: "48px 0 0", width: 1080, fontFamily: sans, fontSize: 62, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
             One survey.<br />Then the yard runs on a live twin.
@@ -591,7 +591,7 @@ export function SectionYard() {
       <div className="md:hidden" style={{ position: "relative", padding: "48px 24px 56px" }}>
         <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11, display: "flex", alignItems: "center", gap: 12 }}>
           <span aria-hidden="true" style={{ width: 7, height: 7, background: SIGNAL }} />
-          04 — YARD VISION [TWN]
+          04 — YARD VISION
         </p>
         <h2 style={{ margin: "28px 0 0", fontFamily: sans, fontSize: 32, lineHeight: 1.1, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>One survey. Then the yard runs on a live twin.</h2>
         <div style={{ margin: "44px 0 0", display: "flex", flexDirection: "column", gap: 8 }}>
@@ -641,7 +641,7 @@ export function SectionCrane() {
       <div className="hidden md:block" style={{ position: "relative", paddingBottom: 96 }}>
         <EyebrowRule />
         <div style={{ position: "relative", zIndex: 1, padding: "128px 64px 0" }}>
-          <p style={{ ...eyebrow(TXT_D2), margin: 0, paddingLeft: 13 }}>05 — CRANE VISION [LFT]</p>
+          <p style={{ ...eyebrow(TXT_D2), margin: 0, paddingLeft: 13 }}>05 — CRANE VISION</p>
           <h2 style={{ margin: "38px 0 0", paddingLeft: 13, width: 943, fontFamily: sans, fontSize: 88, lineHeight: 1.02, fontWeight: 600, letterSpacing: "-0.03em", color: TXT_D1 }}>
             Every face, every lift, time-stamped.
           </h2>
@@ -677,7 +677,7 @@ export function SectionCrane() {
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
         <EyebrowRule mobile />
-        <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11 }}>05 — CRANE VISION [LFT]</p>
+        <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11 }}>05 — CRANE VISION</p>
         <h2 style={{ margin: "40px 0 0", fontFamily: sans, fontSize: 40, lineHeight: 1.04, fontWeight: 600, letterSpacing: "-0.03em", color: TXT_D1 }}>Every face, every lift, time-stamped.</h2>
         {/* fixed-height portrait contain slot, per the mobile export */}
         <div style={{ position: "relative", marginTop: 40, height: 752, background: SURFACE_DARK, border: `1px solid ${BORDER_D}`, borderRadius: 12, boxSizing: "border-box", overflow: "hidden" }}>
@@ -721,7 +721,7 @@ export function SectionCargo() {
       <div className="hidden md:block" style={{ position: "relative", paddingBottom: 96 }}>
         <EyebrowRule />
         <div style={{ position: "relative", zIndex: 1, padding: "112px 64px 0 88px" }}>
-          <span style={{ display: "block", ...eyebrow(TXT_D2) }}>06 — CARGO VISION [CNT]</span>
+          <span style={{ display: "block", ...eyebrow(TXT_D2) }}>06 — CARGO VISION</span>
           <h2 style={{ margin: "56px 0 0", fontFamily: sans, fontSize: 102, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.025em", color: TXT_D1 }}>
             Every case counted,<br />with video proof attached.
           </h2>
@@ -769,7 +769,7 @@ export function SectionCargo() {
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
         <EyebrowRule mobile />
-        <span style={{ display: "block", ...eyebrow(TXT_D2), fontSize: 11 }}>06 — CARGO VISION [CNT]</span>
+        <span style={{ display: "block", ...eyebrow(TXT_D2), fontSize: 11 }}>06 — CARGO VISION</span>
         <h2 style={{ margin: "40px 0 0", fontFamily: sans, fontSize: 32, lineHeight: 1.1, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Every case counted, with video proof attached.</h2>
         <div aria-hidden="true" style={{ height: 220 }} />
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -818,7 +818,7 @@ export function SectionDocument() {
         <span style={{ position: "absolute", top: 44, right: 64, fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED }}>07 · TRANSFORMATION, CENTERED</span>
         <p style={{ ...eyebrow(TXT_D2), margin: "0 0 0 88px", display: "flex", alignItems: "center", gap: 14 }}>
           <span aria-hidden="true" style={{ width: 8, height: 8, background: SIGNAL }} />
-          07 — DOCUMENT VISION [DOC]
+          07 — DOCUMENT VISION
         </p>
         <h2 style={{ margin: "56px 0 0", textAlign: "center", fontFamily: sans, fontSize: 64, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
           Bill of Lading in. Structured data out.
@@ -833,7 +833,7 @@ export function SectionDocument() {
       <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "48px 24px 56px" }}>
         <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11, display: "flex", alignItems: "center", gap: 12 }}>
           <span aria-hidden="true" style={{ width: 7, height: 7, background: SIGNAL }} />
-          07 — DOCUMENT VISION [DOC]
+          07 — DOCUMENT VISION
         </p>
         <h2 style={{ margin: "28px 0 0", textAlign: "center", fontFamily: sans, fontSize: 30, lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Bill of Lading in. Structured data out.</h2>
         <div style={{ position: "relative", marginTop: 44, background: SURFACE_DARK, border: `1px solid ${BORDER_D}`, borderRadius: 8, overflow: "hidden" }}>

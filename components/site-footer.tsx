@@ -184,13 +184,13 @@ export function SiteFooter() {
             className="hidden md:inline"
             style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-mono-label)", letterSpacing: "0.02em", color: "var(--text-dark-secondary)" }}
           >
-            Patented damage detection · CII Best Industry AI Application 2025 · Supported by IIT Kharagpur
+            Patented Technology · CII Best Industry AI Application 2025 · Supported by MEITY & DST
           </span>
           <span
             className="md:hidden"
             style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-mono-label)", lineHeight: "var(--text-mono-log--line-height)", color: "var(--text-dark-secondary)" }}
           >
-            Patented damage detection · CII Best Industry AI Application 2025 · Supported by IIT Kharagpur
+            Patented Technology · CII Best Industry AI Application 2025 · Supported by MEITY & DST
           </span>
         </div>
 
