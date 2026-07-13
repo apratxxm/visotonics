@@ -130,7 +130,7 @@ function Hero() {
               maxWidth: 1257,
             }}
           >
-            <DecryptedText text="AI vision for yards, warehouses and factories — from the CCTV you already own." animateOn="view" sequential revealDirection="start" speed={18} encryptedClassName="v-enc" />
+            <DecryptedText text="AI vision for yards, warehouses and factories — from the CCTV you already own." animateOn="view" sequential revealDirection="start" speed={8} encryptedClassName="v-enc" />
           </h1>
         </div>
 
@@ -199,7 +199,7 @@ function Hero() {
         </div>
         <div style={{ position: "relative", zIndex: 1, padding: "40px 20px", borderBottom: `1px solid ${GRID_D}` }}>
           <h1 style={{ margin: 0, fontFamily: sans, fontSize: 44, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>
-            <DecryptedText text="AI vision for yards, warehouses and factories — from the CCTV you already own." animateOn="view" sequential revealDirection="start" speed={18} encryptedClassName="v-enc" />
+            <DecryptedText text="AI vision for yards, warehouses and factories — from the CCTV you already own." animateOn="view" sequential revealDirection="start" speed={8} encryptedClassName="v-enc" />
           </h1>
         </div>
         <div style={{ position: "relative", zIndex: 1, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 6, borderBottom: `1px solid ${GRID_D}` }}>
@@ -273,7 +273,7 @@ function Statement() {
         </div>
         <div style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 64px", boxSizing: "border-box" }}>
           <h2 style={{ margin: 0, fontFamily: sans, fontSize: "clamp(32px, 5vw, 64px)", lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, textAlign: "center", maxWidth: 1000, textWrap: "balance" }}>
-            Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable.
+            <DecryptedText text="Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
           </h2>
         </div>
       </div>
@@ -289,7 +289,7 @@ function Statement() {
         </div>
         <div style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 24px", boxSizing: "border-box" }}>
           <h2 style={{ margin: 0, fontFamily: sans, fontSize: 26, lineHeight: 1.3, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, textAlign: "center", textWrap: "balance" }}>
-            Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable.
+            <DecryptedText text="Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
           </h2>
         </div>
       </div>
