@@ -3,7 +3,6 @@ import { YardRailDesktop, YardRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
   PlatformBand,
-  RegisterClose,
   SectionCargo,
   SectionContainer,
   SectionCrane,
@@ -12,6 +11,7 @@ import {
   SectionTank,
   SectionYard,
 } from "./sections";
+import { SectionSecure, SectionWork } from "../viso-warehouse/sections";
 import {
   BORDER_D_STRONG,
   CANVAS_DARK,
@@ -141,7 +141,8 @@ export default function VisoYardPage() {
               <PlatformBand />
               <SectionCargo />
               <SectionDocument />
-              <RegisterClose />
+              <SectionWork />
+              <SectionSecure />
             </div>
           </div>
         </div>
