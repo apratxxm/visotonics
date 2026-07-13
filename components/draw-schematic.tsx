@@ -127,7 +127,7 @@ export function DrawSchematic({
             }
           }
         },
-        { threshold: 0.25, rootMargin: "0px 0px -10% 0px" },
+        { threshold: 0.35, rootMargin: "0px 0px -10% 0px" },
       );
       io.observe(root);
       return () => io.disconnect();

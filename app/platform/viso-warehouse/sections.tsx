@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Reveal } from "@/components/motion";
 import {
   ANCHOR_OFFSET,
   BORDER_D,
@@ -182,7 +183,7 @@ export function SectionDimension() {
       </div>
 
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ position: "relative", zIndex: 1, maxWidth: 1232, margin: "0 auto", padding: "128px 64px 96px", boxSizing: "border-box" }}>
+      <Reveal as="div" className="hidden md:block" style={{ position: "relative", zIndex: 1, maxWidth: 1232, margin: "0 auto", padding: "128px 64px 96px", boxSizing: "border-box" }}>
         <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 14 }}>03 — DIMENSION VISION [DIM] · VOLUMETRIC CAPTURE · CAMERA, NOT TAPE MEASURE</span>
         <div style={{ marginTop: 64, display: "flex", alignItems: "center", gap: 48 }}>
           <div style={{ flex: "0 0 395px" }}>
@@ -204,10 +205,10 @@ export function SectionDimension() {
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "48px 24px 56px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "48px 24px 56px" }}>
         <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>03 — DIMENSION VISION [DIM] · VOLUMETRIC CAPTURE · CAMERA, NOT TAPE MEASURE</span>
         <h2 style={{ margin: "28px 0 0", fontFamily: sans, fontSize: 36, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>The tape measure retires.</h2>
         <p style={{ margin: "20px 0 0", fontFamily: sans, fontSize: 15, lineHeight: 1.5, color: TXT_L2 }}>
@@ -224,7 +225,7 @@ export function SectionDimension() {
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

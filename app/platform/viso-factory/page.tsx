@@ -1,4 +1,5 @@
 import DecryptedText from "@/components/decrypted-text";
+import { Reveal } from "@/components/motion";
 import { FactoryRailDesktop, FactoryRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
@@ -133,11 +134,12 @@ export default function VisoFactoryPage() {
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <Hero />
-              <SectionProduction />
-              <SectionAudit />
+              <Reveal as="div"><SectionProduction /></Reveal>
+              <Reveal as="div"><SectionAudit /></Reveal>
+              {/* Dimension is a light band — Reveal wraps inside it (viso-warehouse/sections.tsx) so the background paints immediately */}
               <SectionDimension />
-              <SectionWork />
-              <SectionSecure />
+              <Reveal as="div"><SectionWork /></Reveal>
+              <Reveal as="div"><SectionSecure /></Reveal>
             </div>
           </div>
         </div>

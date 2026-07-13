@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Reveal } from "@/components/motion";
 import {
   ANCHOR_OFFSET,
   BORDER_D,
@@ -257,7 +258,7 @@ export function SectionTank() {
       <LightBandChrome />
 
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 1104, padding: "112px 64px 0" }}>
+      <Reveal as="div" className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 1104, padding: "112px 64px 0" }}>
         <p style={{ ...eyebrow(TXT_L2), margin: 0, paddingLeft: 24 }}>02 — TANK VISION [TNK]</p>
         <h2 style={{ margin: "42px 0 0", paddingLeft: 6, maxWidth: 1040, fontFamily: sans, fontSize: 56, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Tank health detection, from the cameras you already have.
@@ -268,16 +269,16 @@ export function SectionTank() {
           label="ISO tank T11 schematic — shell, dished ends and walkway, dimension-annotated"
           style={{ marginTop: 76, marginLeft: 3, width: "calc(100% - 6px)" }}
         />
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "56px 24px 56px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "56px 24px 56px 40px" }}>
         <p style={{ ...eyebrow(TXT_L2), margin: 0, fontSize: 11 }}>02 — TANK VISION [TNK]</p>
         <h2 style={{ margin: "32px 0 0", fontFamily: sans, fontSize: 32, lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Tank health detection, from the cameras you already have.
         </h2>
         <Schematic file="visotonics-tank-schematic.svg" label="ISO tank T11 schematic" style={{ marginTop: 40 }} />
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -319,7 +320,7 @@ export function PlatformBand() {
       <LightBandChrome />
 
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ position: "relative", zIndex: 1, height: 840 }}>
+      <Reveal as="div" className="hidden md:block" style={{ position: "relative", zIndex: 1, height: 840 }}>
         <p style={{ ...eyebrow(TXT_L2), position: "absolute", left: 88, top: 112, margin: 0 }}>THE PLATFORM — ONE RECORD, FOUR CHECKPOINTS</p>
         <h2 style={{ position: "absolute", left: 70, top: 166, margin: 0, width: 1200, fontFamily: sans, fontSize: 56, lineHeight: 1.04, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Every movement, on the record.
@@ -354,10 +355,10 @@ export function PlatformBand() {
             <span key={l} style={{ fontFamily: mono, fontSize: 13, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: TXT_L2 }}>{l}</span>
           ))}
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE — timeline stacks vertically */}
-      <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "56px 24px 56px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "56px 24px 56px 40px" }}>
         <p style={{ ...eyebrow(TXT_L2), margin: 0, fontSize: 11 }}>THE PLATFORM — ONE RECORD, FOUR CHECKPOINTS</p>
         <h2 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 32, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Every movement, on the record.
@@ -383,7 +384,7 @@ export function PlatformBand() {
             <span key={l} style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: TXT_L2, lineHeight: 1.5 }}>{l}</span>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

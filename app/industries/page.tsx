@@ -1,5 +1,10 @@
 import type { CSSProperties, ReactNode } from "react";
+import { Reveal } from "@/components/motion";
 import { Schematic } from "../platform/viso-yard/_media";
+
+/* Reveal wraps only the inner content (never the <section> background) so a
+   light/dark band paints immediately and only the text/media fades+rises —
+   otherwise a dark→light band transition shows a raw-background flash. */
 
 /* ---------------------------------------------------------------------------
    /industries — long-form document. Ported from VisoIndustries-Document.dc.html
@@ -56,13 +61,13 @@ function Cross({ color, side }: { color: string; side: "left" | "right" }) {
   );
 }
 
-function Band({ theme, children, style }: { theme: Theme; children: ReactNode; style?: CSSProperties }) {
+function Band({ theme, children, style, reveal = false }: { theme: Theme; children: ReactNode; style?: CSSProperties; reveal?: boolean }) {
   return (
     <section style={{ background: theme.bg }}>
       <div style={{ position: "relative", maxWidth: 1440, margin: "0 auto", boxSizing: "border-box", ...style }}>
         <Cross color={theme.cross} side="left" />
         <Cross color={theme.cross} side="right" />
-        {children}
+        {reveal ? <Reveal as="div">{children}</Reveal> : children}
       </div>
     </section>
   );
@@ -234,7 +239,7 @@ function MarginTag({ text, color }: { text: string; color: string }) {
 function ChapterBlock({ c }: { c: Chapter }) {
   const t = c.theme;
   return (
-    <Band theme={t} style={{ padding: "56px 24px" }}>
+    <Band theme={t} style={{ padding: "56px 24px" }} reveal>
       <div className="md:px-[72px] md:py-[64px]">
         {/* header */}
         <div className={GRID}>
@@ -375,7 +380,7 @@ function Intro() {
 function Closing() {
   const t = DARK;
   return (
-    <Band theme={t} style={{ padding: "96px 24px 120px" }}>
+    <Band theme={t} style={{ padding: "96px 24px 120px" }} reveal>
       <div className="text-center md:px-[72px] md:py-[64px]">
         <div aria-hidden="true" className="hidden md:block" style={{ position: "absolute", left: 96, bottom: 96, width: 9, height: 9 }}>
           <div style={{ position: "absolute", left: 0, width: 8, top: 4, height: 1, background: t.cross }} />

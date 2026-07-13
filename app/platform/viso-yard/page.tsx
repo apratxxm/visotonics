@@ -1,4 +1,5 @@
 import DecryptedText from "@/components/decrypted-text";
+import { Reveal } from "@/components/motion";
 import { YardRailDesktop, YardRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
@@ -133,16 +134,18 @@ export default function VisoYardPage() {
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <Hero />
-              <SectionContainer />
+              <Reveal as="div"><SectionContainer /></Reveal>
+              {/* Tank is a light band — Reveal wraps inside it (sections.tsx) so the light background paints immediately */}
               <SectionTank />
-              <SectionGate />
-              <SectionYard />
-              <SectionCrane />
+              <Reveal as="div"><SectionGate /></Reveal>
+              <Reveal as="div"><SectionYard /></Reveal>
+              <Reveal as="div"><SectionCrane /></Reveal>
+              {/* PlatformBand is a light band — same reason as Tank */}
               <PlatformBand />
-              <SectionCargo />
-              <SectionDocument />
-              <SectionWork n="08" />
-              <SectionSecure n="09" />
+              <Reveal as="div"><SectionCargo /></Reveal>
+              <Reveal as="div"><SectionDocument /></Reveal>
+              <Reveal as="div"><SectionWork n="08" /></Reveal>
+              <Reveal as="div"><SectionSecure n="09" /></Reveal>
             </div>
           </div>
         </div>

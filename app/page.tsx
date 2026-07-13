@@ -252,7 +252,7 @@ function Statement() {
   return (
     <section className="on-light" style={{ background: LIGHT }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, height: 900 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, height: 900 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_L} />
           {/* L-corner registration brackets, four section corners only */}
@@ -276,10 +276,10 @@ function Statement() {
             <DecryptedText text="Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
           </h2>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", height: 480 }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", height: 480 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", left: 12, top: 12, width: 12, height: 12, borderLeft: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
           <div style={{ position: "absolute", right: 12, top: 12, width: 12, height: 12, borderRight: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
@@ -292,7 +292,7 @@ function Statement() {
             <DecryptedText text="Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
           </h2>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -313,7 +313,7 @@ function HowItWorks() {
   return (
     <section style={{ background: DARK }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_D} />
           <HRule top={72} color={GRID_D} cross={CROSS_D} />
@@ -376,10 +376,10 @@ function HowItWorks() {
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, background: GRID_D }} />
           <div style={{ position: "absolute", left: "50%", top: 36, width: 3, height: 3, background: SIGNAL }} />
@@ -414,7 +414,7 @@ function HowItWorks() {
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -434,7 +434,7 @@ function Metrics() {
   return (
     <section className="on-light" style={{ background: LIGHT }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", left: 16, top: 16, width: 16, height: 16, borderLeft: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
           <div style={{ position: "absolute", right: 16, top: 16, width: 16, height: 16, borderRight: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
@@ -472,10 +472,10 @@ function Metrics() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
         <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>MEASURED ACROSS LIVE SITES</span>
         <h2 style={{ margin: "16px 0 32px", fontFamily: sans, fontSize: 30, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Same cameras. Different economics.
@@ -502,7 +502,7 @@ function Metrics() {
         <div style={{ marginTop: 16, fontFamily: mono, fontSize: 12, lineHeight: 1.5, letterSpacing: "0.02em", color: TXT_L2 }}>
           Aggregate across container, gate, yard &amp; cargo deployments.
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -546,7 +546,7 @@ function ProofPartners() {
   return (
     <section className="on-light" style={{ background: LIGHT }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET }}>
         <div style={{ position: "relative", zIndex: 1, padding: "96px 64px", display: "flex", flexDirection: "column" }}>
           {/* header band */}
           <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "48px 0" }}>
@@ -595,10 +595,10 @@ function ProofPartners() {
             <span style={{ display: "block", marginTop: 8, fontSize: 16, lineHeight: 1.6, color: TXT_L2 }}>*Patent number and jurisdiction to follow.</span>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 32px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 32px" }}>
         <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "24px 0 32px" }}>
           <Dot style={{ left: -2, top: -2 }} />
           <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>PROVEN WHERE IT&apos;S HARDEST</span>
@@ -624,7 +624,7 @@ function ProofPartners() {
           <span style={{ display: "block", fontSize: 13, lineHeight: 1.6, color: TXT_L2 }}>CII Best Industry AI Application 2025&nbsp;·&nbsp;Patented damage detection 2026*</span>
           <span style={{ display: "block", marginTop: 6, fontSize: 13, lineHeight: 1.6, color: TXT_L2 }}>*Patent number and jurisdiction to follow.</span>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -662,7 +662,7 @@ function Testimonials() {
   return (
     <section style={{ background: DARK }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 740 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 740 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_D} />
           <HRule top={72} color={GRID_D} cross={CROSS_D} />
@@ -704,10 +704,10 @@ function Testimonials() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
         <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 12 }}>CUSTOMER PROOF</span>
         <h2 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 28, lineHeight: 1.2, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
           See how ports and terminals run inspection <span style={{ color: TXT_D2 }}>— without stopping a single container.</span>
@@ -724,7 +724,7 @@ function Testimonials() {
             <a href="#share-experience" className="dt-underline" style={{ alignSelf: "center", fontSize: 15, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 4 }}>Share your experience with Visotonics</a>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -737,7 +737,7 @@ function Convert() {
   return (
     <section style={{ background: DARK }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, height: 720 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, height: 720 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_D} />
           <div style={{ position: "absolute", left: 0, right: 0, top: 64, height: 1, background: GRID_D }} />
@@ -767,10 +767,10 @@ function Convert() {
             <a href="/platform/viso-yard" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 76, padding: "0 32px", background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 999, fontFamily: sans, fontSize: 24, fontWeight: 500, textDecoration: "none" }}>Explore the platform</a>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", height: 520 }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", height: 520 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, background: GRID_D }} />
           <div style={{ position: "absolute", left: 0, right: 0, top: 130, height: 1, background: GRID_D }} />
@@ -789,7 +789,7 @@ function Convert() {
             <a href="/platform/viso-yard" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 52, background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 999, fontFamily: sans, fontSize: 17, fontWeight: 500, textDecoration: "none" }}>Explore the platform</a>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -800,12 +800,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Reveal><Statement /></Reveal>
-      <Reveal><HowItWorks /></Reveal>
-      <Reveal><Metrics /></Reveal>
-      <Reveal><ProofPartners /></Reveal>
-      <Reveal><Testimonials /></Reveal>
-      <Reveal><Convert /></Reveal>
+      <Statement />
+      <HowItWorks />
+      <Metrics />
+      <ProofPartners />
+      <Testimonials />
+      <Convert />
     </>
   );
 }
