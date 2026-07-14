@@ -1,0 +1,94 @@
+<svg viewBox="0 0 420 980" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono',monospace">
+<rect width="420" height="980" fill="#101216"></rect>
+
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+
+<g id="camera" opacity="0.9" stroke-width="1.5">
+<rect x="344" y="64" width="48" height="28"></rect>
+<rect x="324" y="71" width="20" height="14"></rect>
+<circle cx="334" cy="78" r="5"></circle>
+</g>
+
+<g opacity="0.22" stroke-dasharray="6 7" stroke-width="1.5">
+<line x1="330" y1="88" x2="28" y2="440"></line>
+<line x1="348" y1="94" x2="392" y2="440"></line>
+</g>
+
+<line x1="24" y1="440" x2="396" y2="440" opacity="0.6" stroke-width="1.5"></line>
+
+<g id="a" opacity="0.9" stroke-width="2">
+<path d="M84,192 Q112,164 140,192" stroke-width="2.5"></path>
+<line x1="80" y1="194" x2="144" y2="194" stroke-width="2.5"></line>
+<circle cx="112" cy="212" r="20"></circle>
+<line x1="112" y1="232" x2="112" y2="310"></line>
+<line x1="112" y1="250" x2="84" y2="282"></line>
+<line x1="112" y1="250" x2="140" y2="282"></line>
+<line x1="112" y1="310" x2="94" y2="438"></line>
+<line x1="112" y1="310" x2="130" y2="438"></line>
+</g>
+
+<g id="b" opacity="0.9" stroke-width="2">
+<circle cx="288" cy="212" r="20"></circle>
+<path d="M288,204 Q308,210 305,226 Q296,234 288,230" opacity="0.55" stroke-width="1.5"></path>
+<line x1="288" y1="232" x2="288" y2="310"></line>
+<line x1="288" y1="250" x2="260" y2="278"></line>
+<line x1="288" y1="250" x2="318" y2="270"></line>
+<line x1="288" y1="310" x2="270" y2="438"></line>
+<line x1="288" y1="310" x2="308" y2="436"></line>
+</g>
+
+<g id="c" opacity="0.9" stroke-width="2">
+<circle cx="200" cy="592" r="20"></circle>
+<g opacity="0.4" stroke-dasharray="4 5" stroke-width="1.5">
+<line x1="182" y1="578" x2="218" y2="578"></line>
+<line x1="182" y1="592" x2="218" y2="592"></line>
+<line x1="182" y1="606" x2="218" y2="606"></line>
+</g>
+<line x1="200" y1="612" x2="200" y2="684"></line>
+<line x1="200" y1="630" x2="230" y2="656"></line>
+<line x1="200" y1="630" x2="170" y2="652"></line>
+<line x1="200" y1="684" x2="182" y2="736"></line>
+<line x1="200" y1="684" x2="220" y2="734"></line>
+</g>
+
+<g opacity="0.35" stroke-width="1.5">
+<line x1="200" y1="800" x2="200" y2="832"></line>
+<path d="M193,824 L200,840 L207,824" stroke-width="2"></path>
+</g>
+</g>
+
+<g stroke="#ED510C" fill="none" stroke-width="2">
+<rect x="66" y="152" width="92" height="298" fill="#ED510C" fill-opacity="0.14"></rect>
+<rect x="246" y="174" width="88" height="276" fill="#ED510C" fill-opacity="0.14"></rect>
+<rect x="156" y="556" width="88" height="200" fill="#ED510C" fill-opacity="0.14"></rect>
+<rect x="24" y="856" width="372" height="72"></rect>
+</g>
+
+<g fill="#F4F5F7" font-size="15" letter-spacing="1.3" text-anchor="middle" opacity="0.95">
+<text x="112" y="134">BACK-FACING</text>
+<text x="288" y="134">SIDE · MASKED</text>
+<text x="200" y="540">OCCLUDED</text>
+</g>
+<g fill="#F4F5F7" font-size="15" letter-spacing="1.3" text-anchor="middle" opacity="0.9">
+<text x="112" y="480">WORKER 042</text>
+<text x="288" y="480">WORKER 109</text>
+<text x="200" y="786">WORKER 217</text>
+</g>
+
+<text x="36" y="842" fill="#ED510C" font-size="14" letter-spacing="1.6">PRESENCE — VERIFIED</text>
+
+<g fill="#F4F5F7" font-size="15" letter-spacing="1.2" opacity="0.95">
+<text x="40" y="888">WORKER 042 ▸ ZONE 04</text>
+<text x="40" y="914">18:26:55 – 18:42:10</text>
+</g>
+
+<g fill="#F4F5F7" font-size="12" letter-spacing="1.1" opacity="0.55">
+<text x="24" y="956">BUILD · GAIT · POSTURE — FACE NOT REQUIRED</text>
+<text x="24" y="974">ENTRY AND EXIT, TO THE SECOND</text>
+</g>
+
+<g fill="#F4F5F7" font-size="13" letter-spacing="1.2" opacity="0.75">
+<text x="24" y="42">EXISTING CCTV</text>
+<text x="396" y="42" text-anchor="end">NO CHECKPOINT</text>
+</g>
+</svg>

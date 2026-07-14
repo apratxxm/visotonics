@@ -514,7 +514,7 @@ function Closing() {
         </div>
         <div className="mt-10 flex flex-col items-center gap-5 md:flex-row md:justify-center md:gap-10">
           <UnderlineDraw href="/contact" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.ink, paddingBottom: 4 }}>Talk to us →</UnderlineDraw>
-          <UnderlineDraw href="/platform" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.sub, paddingBottom: 4 }}>Explore the platform →</UnderlineDraw>
+          <UnderlineDraw href="/platform/viso-yard" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.sub, paddingBottom: 4 }}>Explore the platform →</UnderlineDraw>
         </div>
         <p style={{ margin: "24px 0 0", fontFamily: mono, fontSize: 12, letterSpacing: "0.04em", color: t.sub }}>{CONTACT}</p>
       </div>

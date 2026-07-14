@@ -233,6 +233,9 @@ export function SectionDimension() {
 /* =========================================================================
    05 · WORK VISION [WRK]  (dark) — attendance without the queue
    ========================================================================= */
+/* Ported from Claude Design canvas VisoWarehouse-Section05-WorkVision-
+   Explorations.dc.html, option 1d "Centered Monument" — fully symmetrical,
+   breaks from the sheet's usual left-margin convention on purpose. */
 export function SectionWork({ n = "05" }: { n?: string }) {
   return (
     <section id="work-vision" className={ANCHOR_OFFSET} style={{ position: "relative", borderTop: `1px solid ${BORDER_D}` }}>
@@ -240,37 +243,125 @@ export function SectionWork({ n = "05" }: { n?: string }) {
       <Cross color={CROSS_D} style={{ left: "calc(100% - 5px)", top: -4, zIndex: 3 }} />
 
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ position: "relative", paddingBottom: 96 }}>
-        <EyebrowRule />
-        <div style={{ position: "relative", zIndex: 1, padding: "104px 64px 0" }}>
-          <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>{n} — WORK VISION · ATTENDANCE FROM THE CAMERAS ALREADY WATCHING</span>
-          <h2 style={{ margin: "48px 0 0", paddingLeft: 20, width: 1038, fontFamily: sans, fontSize: 68, lineHeight: 1.06, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Attendance without the queue.</h2>
-          <p style={{ margin: "36px 0 0", paddingLeft: 20, width: 780, fontFamily: sans, fontSize: 26, lineHeight: 1.5, color: TXT_D1 }}>Seen from any angle — not just the one they happened to face.</p>
-          <p style={{ margin: "24px 0 0", paddingLeft: 20, width: 1049, fontFamily: sans, fontSize: 28, lineHeight: 1.5, color: TXT_D2 }}>
-            Everyone on site, counted from the cameras already watching them. No turnstile. No kiosk. No line at the start of a shift — because nobody has to stop and prove they arrived.
-          </p>
+      <div className="hidden md:block" style={{ position: "relative", padding: "88px 64px 96px", textAlign: "center" }}>
+        <span style={eyebrow(TXT_D2)}>{n} — WORK VISION · ZERO-INTERRUPTION PRESENCE</span>
+        <h2 style={{ margin: "60px auto 0", maxWidth: 800, fontFamily: sans, fontSize: 60, lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
+          Nobody stops.<br />Nobody even notices.
+        </h2>
+        <p style={{ margin: "40px auto 0", maxWidth: 600, fontFamily: sans, fontSize: 18, lineHeight: 1.6, color: TXT_D2 }}>
+          No cards to tap, no scanners to use, no habit to change. Standard CCTV captures the work as it already happens — and turns it into an exact record.
+        </p>
 
-          <MediaFrame file="warehouse-work-schematic-desktop.svg" label="Multi-angle attendance resolution — one person seen from several cameras resolving to one identity, above a live shift register" style={{ margin: "56px auto 0", width: 1059, borderRadius: 0 }} />
-
-          <p style={{ margin: "64px 0 0", textAlign: "center", fontFamily: sans, fontSize: 33, lineHeight: 1.5, color: TXT_D2 }}>
-            A scanner is a checkpoint, and a checkpoint is a queue.<br />The cameras don’t need anyone to stop.
-          </p>
+        <div style={{ margin: "72px auto 0", maxWidth: 800, display: "flex" }}>
+          <div style={{ flex: 1, padding: "0 24px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.08em", color: TXT_D1 }}>DETECT</div>
+            <p style={{ margin: "10px 0 0", fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: TXT_D2 }}>Presence read from existing camera streams, no new hardware.</p>
+          </div>
+          <div style={{ flex: 1, padding: "0 24px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.08em", color: TXT_D1 }}>RESOLVE</div>
+            <p style={{ margin: "10px 0 0", fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: TXT_D2 }}>Worker, zone and duration confirmed in the same pass.</p>
+          </div>
+          <div style={{ flex: 1, padding: "0 24px" }}>
+            <div style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.08em", color: TXT_D1 }}>LOG</div>
+            <p style={{ margin: "10px 0 0", fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: TXT_D2 }}>Entry and exit written to the second, without a checkpoint.</p>
+          </div>
         </div>
+
+        <p style={{ margin: "56px 0 0", fontFamily: mono, fontSize: 12, letterSpacing: "0.05em", color: MUTED }}>ZERO TRAINING REQUIRED — NOBODY CHANGES A SINGLE HABIT</p>
+
+        <div aria-hidden="true" style={{ margin: "40px 0 0", height: 1, background: BORDER_D }} />
+
+        <span style={{ display: "block", marginTop: 40, fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED }}>LIVE DEMO — SHIFT REGISTER</span>
+        <MediaFrame file="work-vision-schematic-desktop.svg" label="Multi-angle attendance resolution — one person seen from several cameras resolving to one identity, above a live shift register" style={{ margin: "36px auto 0", width: 676, borderRadius: 0 }} />
+
+        <span style={{ display: "block", marginTop: 72, fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: TXT_D2 }}>WORK VISION · LIVE IN DAYS, NOT MONTHS</span>
+
+        <div style={{ marginTop: 48, display: "flex", justifyContent: "center", alignItems: "baseline", gap: 18 }}>
+          <span style={{ fontFamily: mono, fontSize: 64, fontWeight: 500, color: TXT_D1, lineHeight: 1 }}>4</span>
+          <span style={{ fontFamily: sans, fontSize: 26, fontWeight: 600, color: TXT_D1 }}>days from install to verified presence.</span>
+        </div>
+
+        <p style={{ margin: "36px auto 0", maxWidth: 500, fontFamily: sans, fontSize: 15, lineHeight: 1.6, color: TXT_D2 }}>
+          Rapid software integration with the cameras already on your floor. Zero operations downtime, zero new hardware, zero hardware procurement cycle.
+        </p>
+
+        <div style={{ margin: "48px auto 0", maxWidth: 600, display: "flex" }}>
+          <div style={{ flex: 1, padding: "0 16px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>CONNECT</div>
+          </div>
+          <div style={{ flex: 1, padding: "0 16px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>CALIBRATE</div>
+          </div>
+          <div style={{ flex: 1, padding: "0 16px" }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>VERIFY</div>
+          </div>
+        </div>
+
+        <div aria-hidden="true" style={{ margin: "76px 0 0", height: 1, background: BORDER_D }} />
+        <p style={{ margin: "40px auto 0", maxWidth: 800, fontFamily: sans, fontSize: 20, lineHeight: 1.5, color: TXT_D2 }}>
+          A scanner is a checkpoint, and a checkpoint is a queue. The cameras don’t need anyone to stop.
+        </p>
       </div>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
-        <EyebrowRule mobile />
-        <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 11 }}>{n} — WORK VISION · ATTENDANCE FROM THE CAMERAS ALREADY WATCHING</span>
-        <h2 style={{ margin: "36px 0 0", fontFamily: sans, fontSize: 40, lineHeight: 1.04, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Attendance without the queue.</h2>
-        <p style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 20, lineHeight: 1.4, color: TXT_D1 }}>Seen from any angle — not just the one they happened to face.</p>
-        <p style={{ margin: "20px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D2 }}>
-          Everyone on site, counted from the cameras already watching them. No turnstile. No kiosk. No line at the start of a shift — because nobody has to stop and prove they arrived.
+      <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px", textAlign: "center" }}>
+        <span style={{ ...eyebrow(TXT_D2), fontSize: 11 }}>{n} — WORK VISION · ZERO-INTERRUPTION PRESENCE</span>
+        <h2 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 38, lineHeight: 1.14, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>
+          Nobody stops.<br />Nobody even notices.
+        </h2>
+        <p style={{ margin: "20px 0 0", fontFamily: sans, fontSize: 16, lineHeight: 1.6, color: TXT_D2 }}>
+          No cards to tap, no scanners to use, no habit to change. Standard CCTV captures the work as it already happens — and turns it into an exact record.
         </p>
-        <MediaFrame file="warehouse-work-schematic-mobile.svg" label="Multi-angle attendance resolution — one person resolving to one identity, above a live shift register" style={{ marginTop: 40, borderRadius: 0 }} />
-        <p style={{ margin: "40px 0 0", fontFamily: sans, fontSize: 16, lineHeight: 1.5, color: TXT_D2 }}>
+
+        <div style={{ marginTop: 36, display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", borderTop: `1px solid ${BORDER_D}`, borderBottom: `1px solid ${BORDER_D}` }}>
+          <div style={{ padding: "18px 10px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>DETECT</div>
+            <p style={{ margin: "8px 0 0", fontFamily: sans, fontSize: 12, lineHeight: 1.5, color: TXT_D2 }}>Presence read from existing streams, no new hardware.</p>
+          </div>
+          <div style={{ padding: "18px 10px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>RESOLVE</div>
+            <p style={{ margin: "8px 0 0", fontFamily: sans, fontSize: 12, lineHeight: 1.5, color: TXT_D2 }}>Worker, zone and duration confirmed.</p>
+          </div>
+          <div style={{ padding: "18px 10px" }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>LOG</div>
+            <p style={{ margin: "8px 0 0", fontFamily: sans, fontSize: 12, lineHeight: 1.5, color: TXT_D2 }}>Entry and exit to the second, no checkpoint.</p>
+          </div>
+        </div>
+
+        <p style={{ margin: "28px 0 0", fontFamily: mono, fontSize: 11, letterSpacing: "0.05em", color: MUTED }}>ZERO TRAINING REQUIRED — NOBODY CHANGES A SINGLE HABIT</p>
+
+        <div aria-hidden="true" style={{ marginTop: 32, height: 1, background: BORDER_D }} />
+
+        <span style={{ display: "block", marginTop: 32, fontFamily: mono, fontSize: 11, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED }}>LIVE DEMO — SHIFT REGISTER</span>
+        <MediaFrame file="work-vision-schematic-mobile.svg" label="Multi-angle attendance resolution — one person seen from several cameras resolving to one identity, above a live shift register" style={{ marginTop: 16, borderRadius: 0 }} />
+
+        <span style={{ display: "block", marginTop: 40, fontFamily: mono, fontSize: 11, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: TXT_D2 }}>WORK VISION · LIVE IN DAYS, NOT MONTHS</span>
+
+        <div style={{ marginTop: 20, display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 12 }}>
+          <span style={{ fontFamily: mono, fontSize: 53, fontWeight: 500, color: TXT_D1, lineHeight: 1 }}>4</span>
+          <span style={{ fontFamily: sans, fontSize: 23, fontWeight: 600, color: TXT_D1, textAlign: "left" }}>days from install to verified presence.</span>
+        </div>
+
+        <p style={{ margin: "18px 0 0", fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: TXT_D2 }}>
+          Rapid software integration with the cameras already on your floor. Zero operations downtime, zero new hardware, zero hardware procurement cycle.
+        </p>
+
+        <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", borderTop: `1px solid ${BORDER_D}`, borderBottom: `1px solid ${BORDER_D}` }}>
+          <div style={{ padding: "14px 8px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>CONNECT</div>
+          </div>
+          <div style={{ padding: "14px 8px", borderRight: `1px solid ${BORDER_D}` }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>CALIBRATE</div>
+          </div>
+          <div style={{ padding: "14px 8px" }}>
+            <div style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: TXT_D1 }}>VERIFY</div>
+          </div>
+        </div>
+
+        <p style={{ margin: "28px 0 0", fontFamily: sans, fontSize: 17, lineHeight: 1.5, color: TXT_D2 }}>
           A scanner is a checkpoint, and a checkpoint is a queue. The cameras don’t need anyone to stop.
         </p>
+        <div aria-hidden="true" style={{ marginTop: 28, height: 1, background: BORDER_D }} />
       </div>
     </section>
   );

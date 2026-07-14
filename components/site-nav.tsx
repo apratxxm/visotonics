@@ -391,7 +391,7 @@ export function SiteNav() {
                     <span style={caption}>AI vision tuned to four industries.</span>
                   </div>
                   <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-                    <Link href="/industries" className="hover:opacity-80" style={{ ...caption, textDecoration: "underline", textUnderlineOffset: 3 }}>
+                    <Link href="/industries" className="hover:opacity-80" style={caption}>
                       Home
                     </Link>
                     {INDUSTRIES_LINKS.map((l) => (
@@ -591,7 +591,7 @@ export function SiteNav() {
               </button>
               {mobileIndustriesOpen && (
                 <div className="flex flex-col" style={{ padding: "0 var(--spacing-s4) var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-                  <Link href="/industries" style={{ fontSize: "var(--text-caption)", color: "var(--text-dark-primary)", textDecoration: "underline", textUnderlineOffset: 3 }}>
+                  <Link href="/industries" style={caption}>
                     Home
                   </Link>
                   {INDUSTRIES_LINKS.map((l) => (
