@@ -58,7 +58,7 @@ function productHref(envHref: string, name: string) {
 // commented out until built — uncomment to restore.
 const RESOURCES_COL_1: LinkItem[] = [
   { name: "FAQs", href: "/resources/faqs" },
-  { name: "Blog", href: "/resources/blog" },
+  { name: "Blogs", href: "/resources/blog" },
   // { name: "Case Studies", href: "/resources/case-studies" },
   // { name: "Testimonials", href: "/resources/testimonials" },
   // { name: "ROI Calculator", href: "/resources/roi-calculator" },
