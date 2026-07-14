@@ -83,6 +83,13 @@ const COMPANY_COL_2: LinkItem[] = [
   // { name: "Sustainability", href: "/company/sustainability" },
 ];
 
+const INDUSTRIES_LINKS: LinkItem[] = [
+  { name: "Ports & Terminals", href: "/industries#ports-terminals" },
+  { name: "Warehousing & Distribution", href: "/industries#warehousing-distribution" },
+  { name: "Manufacturing", href: "/industries#manufacturing" },
+  { name: "Logistics & Supply Chain", href: "/industries#logistics-supply-chain" },
+];
+
 const LANGUAGES = [
   { code: "EN", name: "English" },
   { code: "HI", name: "हिन्दी" },
@@ -131,16 +138,17 @@ const navLink: CSSProperties = {
 };
 
 export function SiteNav() {
-  const [openMenu, setOpenMenu] = useState<"platform" | "resources" | "company" | "language" | null>(null);
+  const [openMenu, setOpenMenu] = useState<"platform" | "industries" | "resources" | "company" | "language" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [accordions, setAccordions] = useState<Record<number, boolean>>({});
+  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [mobileLanguageOpen, setMobileLanguageOpen] = useState(false);
   const [language, setLanguage] = useState<(typeof LANGUAGES)[number]>(LANGUAGES[0]);
   const headerRef = useRef<HTMLElement>(null);
 
-  function toggleMenu(name: "platform" | "resources" | "company" | "language") {
+  function toggleMenu(name: "platform" | "industries" | "resources" | "company" | "language") {
     setOpenMenu((current) => (current === name ? null : name));
   }
 
@@ -161,6 +169,7 @@ export function SiteNav() {
     if ((event.target as HTMLElement).closest("a")) {
       setOpenMenu(null);
       setMobileOpen(false);
+      setMobileIndustriesOpen(false);
       setMobileResourcesOpen(false);
       setMobileCompanyOpen(false);
       setMobileLanguageOpen(false);
@@ -211,9 +220,27 @@ export function SiteNav() {
               </span>
             </button>
 
-            <Link href="/industries" className="hover:opacity-80" style={navLink}>
+            <button
+              type="button"
+              onClick={() => toggleMenu("industries")}
+              onMouseEnter={() => setOpenMenu("industries")}
+              className="flex cursor-pointer items-center bg-transparent p-0"
+              style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "industries" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
+            >
               Industries
-            </Link>
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  color: "var(--text-dark-secondary)",
+                  display: "inline-block",
+                  transition: "transform var(--duration-dur-2) var(--ease-standard)",
+                  transform: openMenu === "industries" ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              >
+                ▾
+              </span>
+            </button>
 
             <button
               type="button"
@@ -351,9 +378,28 @@ export function SiteNav() {
             openMenu goes to null/"language") means moving the hover from one
             trigger to another swaps content in place instead of closing and
             reopening; the fade key={openMenu} still animates each swap. */}
-        {(openMenu === "platform" || openMenu === "resources" || openMenu === "company") && (
+        {(openMenu === "platform" || openMenu === "industries" || openMenu === "resources" || openMenu === "company") && (
           <div className="hidden border-t md:block" style={{ borderColor: "var(--border-dark)", background: "var(--canvas-dark)" }}>
             <div key={openMenu} className="nav-mega-fade">
+              {openMenu === "industries" && (
+                <div
+                  className="mx-auto grid max-w-[1360px] px-16"
+                  style={{ gridTemplateColumns: "1.1fr 1fr", gap: "var(--spacing-s6)", padding: "var(--spacing-s8) var(--spacing-s16) var(--spacing-s12)" }}
+                >
+                  <div className="flex flex-col" style={{ paddingTop: "var(--spacing-s4)", paddingRight: "var(--spacing-s6)", gap: "var(--spacing-s3)" }}>
+                    <span style={monoLabel}>Menu</span>
+                    <span style={menuTitle}>Industries</span>
+                    <span style={caption}>AI vision tuned to four industries.</span>
+                  </div>
+                  <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
+                    {INDUSTRIES_LINKS.map((l) => (
+                      <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
+                        {l.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
               {openMenu === "platform" && (
                 <div
                   className="mx-auto grid max-w-[1360px] px-16"
@@ -521,13 +567,35 @@ export function SiteNav() {
             ))}
 
             <div className="border-t" style={{ borderColor: "var(--border-dark)" }}>
-              <Link
-                href="/industries"
-                className="flex items-center"
-                style={{ minHeight: 56, padding: "var(--spacing-s3) var(--spacing-s4)", ...columnHeading }}
+              <button
+                type="button"
+                onClick={() => setMobileIndustriesOpen((v) => !v)}
+                className="flex w-full cursor-pointer items-center justify-between bg-transparent text-left"
+                style={{ minHeight: 56, padding: "var(--spacing-s3) var(--spacing-s4)" }}
               >
-                Industries
-              </Link>
+                <span style={columnHeading}>Industries</span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 12,
+                    color: "var(--text-dark-secondary)",
+                    display: "inline-block",
+                    transition: "transform var(--duration-dur-2) var(--ease-standard)",
+                    transform: mobileIndustriesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
+                >
+                  ▾
+                </span>
+              </button>
+              {mobileIndustriesOpen && (
+                <div className="flex flex-col" style={{ padding: "0 var(--spacing-s4) var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
+                  {INDUSTRIES_LINKS.map((l) => (
+                    <Link key={l.name} href={l.href} style={caption}>
+                      {l.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="border-t" style={{ borderColor: "var(--border-dark)" }}>

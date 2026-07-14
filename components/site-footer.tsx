@@ -11,6 +11,13 @@ const PLATFORM_LINKS: LinkItem[] = [
   { name: "Viso Data", href: "/platform/viso-data" },
 ];
 
+const INDUSTRIES_LINKS: LinkItem[] = [
+  { name: "Ports & Terminals", href: "/industries#ports-terminals" },
+  { name: "Warehousing & Distribution", href: "/industries#warehousing-distribution" },
+  { name: "Manufacturing", href: "/industries#manufacturing" },
+  { name: "Logistics & Supply Chain", href: "/industries#logistics-supply-chain" },
+];
+
 const monoLabel: CSSProperties = {
   fontFamily: "var(--font-mono)",
   fontSize: "var(--text-mono-label)",
@@ -79,9 +86,11 @@ export function SiteFooter() {
           >
             <span style={monoLabel}>Industries</span>
             <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
-              <Link href="/industries" className="hover:opacity-80" style={footerLink}>
-                Industries
-              </Link>
+              {INDUSTRIES_LINKS.map((l) => (
+                <Link key={l.name} href={l.href} className="hover:opacity-80" style={footerLink}>
+                  {l.name}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -137,9 +146,13 @@ export function SiteFooter() {
             style={{ borderColor: "var(--gridline-dark)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s4)" }}
           >
             <span style={monoLabel}>Industries</span>
-            <Link href="/industries" style={footerLink}>
-              Industries
-            </Link>
+            <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
+              {INDUSTRIES_LINKS.map((l) => (
+                <Link key={l.name} href={l.href} style={footerLink}>
+                  {l.name}
+                </Link>
+              ))}
+            </div>
           </div>
 
           <div
