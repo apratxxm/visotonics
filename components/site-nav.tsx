@@ -220,11 +220,10 @@ export function SiteNav() {
               </span>
             </button>
 
-            <button
-              type="button"
-              onClick={() => toggleMenu("industries")}
+            <Link
+              href="/industries"
               onMouseEnter={() => setOpenMenu("industries")}
-              className="flex cursor-pointer items-center bg-transparent p-0"
+              className="flex items-center hover:opacity-80"
               style={{ gap: "var(--spacing-s2)", ...navLink, color: openMenu === "industries" ? "var(--text-dark-secondary)" : "var(--text-dark-primary)" }}
             >
               Industries
@@ -240,7 +239,7 @@ export function SiteNav() {
               >
                 ▾
               </span>
-            </button>
+            </Link>
 
             <button
               type="button"
@@ -392,6 +391,9 @@ export function SiteNav() {
                     <span style={caption}>AI vision tuned to four industries.</span>
                   </div>
                   <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
+                    <Link href="/industries" className="hover:opacity-80" style={{ ...caption, textDecoration: "underline", textUnderlineOffset: 3 }}>
+                      Home
+                    </Link>
                     {INDUSTRIES_LINKS.map((l) => (
                       <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
                         {l.name}
@@ -589,6 +591,9 @@ export function SiteNav() {
               </button>
               {mobileIndustriesOpen && (
                 <div className="flex flex-col" style={{ padding: "0 var(--spacing-s4) var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
+                  <Link href="/industries" style={{ fontSize: "var(--text-caption)", color: "var(--text-dark-primary)", textDecoration: "underline", textUnderlineOffset: 3 }}>
+                    Home
+                  </Link>
                   {INDUSTRIES_LINKS.map((l) => (
                     <Link key={l.name} href={l.href} style={caption}>
                       {l.name}

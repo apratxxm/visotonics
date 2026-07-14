@@ -129,7 +129,7 @@ const CHAPTERS: Chapter[] = [
     theme: LIGHT,
     num: "01",
     id: "ports-terminals",
-    kicker: "INDUSTRIES — PORTS & TERMINALS",
+    kicker: "PORTS & TERMINALS",
     heroHeadline: "AI-Powered Terminal Intelligence",
     heroSub: "Every container, every checkpoint, verified — the moment it crosses the gate.",
     heroBody: "Visotonics turns your terminal into a fully visible, fully verified operation. Deploy AI cameras across gates, yards and cranes to automatically track container identity, condition and location — in real time, with zero manual inspection.",
@@ -170,7 +170,7 @@ const CHAPTERS: Chapter[] = [
     theme: DARK,
     num: "02",
     id: "warehousing-distribution",
-    kicker: "INDUSTRIES — WAREHOUSING & DISTRIBUTION",
+    kicker: "WAREHOUSING & DISTRIBUTION",
     heroHeadline: "AI-Powered Warehouse Intelligence",
     heroSub: "Every case counted, every pallet measured — from inbound to outbound.",
     heroBody: "Visotonics turns your warehouse floor into a fully visible, fully verified operation. Deploy AI cameras across docks and aisles to automatically track case count, dimensions, and damage — in real time, with zero manual tally sheets.",
@@ -211,7 +211,7 @@ const CHAPTERS: Chapter[] = [
     theme: LIGHT,
     num: "03",
     id: "manufacturing",
-    kicker: "INDUSTRIES — MANUFACTURING",
+    kicker: "MANUFACTURING",
     heroHeadline: "AI-Powered Production Intelligence",
     heroSub: "Every item counted, classified and inspected — the moment it leaves the line.",
     heroBody: "Visotonics turns your production floor into a fully visible, fully verified operation. Deploy AI cameras across your line to automatically track production count, throughput, SKU-wise output, and external damage — in real time, with zero manual tally.",
@@ -252,7 +252,7 @@ const CHAPTERS: Chapter[] = [
     theme: DARK,
     num: "04",
     id: "logistics-supply-chain",
-    kicker: "INDUSTRIES — LOGISTICS & SUPPLY CHAIN",
+    kicker: "LOGISTICS & SUPPLY CHAIN",
     heroHeadline: "AI-Powered Supply Chain Intelligence",
     heroSub: "One record, every handoff — from vessel to gate to dock to line.",
     heroBody: "Visotonics doesn't stop at one facility. Deploy AI cameras across every node your cargo passes through to automatically track identity, condition and custody — in real time, with zero disputed handoffs.",
@@ -455,7 +455,7 @@ function ChapterBlock({ c }: { c: Chapter }) {
 
 /* ---- page-level intro / closing -------------------------------------------- */
 
-const VERTICALS = CHAPTERS.map((c) => ({ id: c.id, label: c.kicker.replace("INDUSTRIES — ", "") }));
+const VERTICALS = CHAPTERS.map((c) => ({ id: c.id, label: c.kicker }));
 
 function Intro() {
   const t = DARK;
