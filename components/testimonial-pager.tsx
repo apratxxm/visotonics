@@ -34,14 +34,14 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     quote: "Damage disputes used to take days to settle. ",
     highlight: "Now we just search the container ID and the clip is right there — no more back-and-forth with the shipping line.",
-    role: "Terminal Operations Manager",
-    company: "DP World",
+    role: "Depot Manager",
+    company: "ECD Navi Mumbai",
   },
   {
     quote: "We stopped arguing about counts. ",
     highlight: "Every carton is on camera now, so when a customer disputes a shortage, we just show them the footage.",
     role: "Warehouse Manager",
-    company: "Hind Terminals",
+    company: "CFS Navi Mumbai",
   },
 ];
 

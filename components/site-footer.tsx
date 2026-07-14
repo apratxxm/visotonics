@@ -117,6 +117,14 @@ export function SiteFooter() {
               <span style={monoLabel}>USA</span>
               <span style={caption}>1317, 191ST SE Bothell, Washington, USA 98012</span>
             </div>
+            <div className="flex flex-col" style={{ marginTop: "var(--spacing-s4)", paddingTop: "var(--spacing-s4)", borderTop: "1px solid var(--gridline-dark)", gap: "var(--spacing-s3)" }}>
+              <Link href="/legal/privacy-policy" className="hover:opacity-80" style={footerLink}>
+                Privacy Policy
+              </Link>
+              <Link href="/legal/terms-and-conditions" className="hover:opacity-80" style={footerLink}>
+                Terms & Conditions
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -177,6 +185,14 @@ export function SiteFooter() {
             <div className="flex flex-col" style={{ gap: "var(--spacing-s2)" }}>
               <span style={monoLabel}>USA</span>
               <span style={caption}>1317, 191ST SE Bothell, Washington, USA 98012</span>
+            </div>
+            <div className="flex flex-col border-t" style={{ marginTop: "var(--spacing-s2)", paddingTop: "var(--spacing-s4)", borderColor: "var(--gridline-dark)", gap: "var(--spacing-s3)" }}>
+              <Link href="/legal/privacy-policy" style={footerLink}>
+                Privacy Policy
+              </Link>
+              <Link href="/legal/terms-and-conditions" style={footerLink}>
+                Terms & Conditions
+              </Link>
             </div>
           </div>
         </div>
