@@ -95,6 +95,12 @@ export function Reveal({
       reveal();
       return;
     }
+    // threshold is a fraction of the TARGET's own area, not the viewport — a
+    // wrapped block taller than the viewport (e.g. an entire Industries
+    // chapter, ~4000px on mobile) can never satisfy a 0.2 ratio, since even a
+    // full-viewport scroll position covers less than 20% of it. Use a
+    // near-zero threshold so reveal fires as soon as the block starts
+    // entering view, regardless of how tall the wrapped content is.
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -105,7 +111,7 @@ export function Reveal({
           }
         }
       },
-      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.01, rootMargin: "0px 0px -10% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
