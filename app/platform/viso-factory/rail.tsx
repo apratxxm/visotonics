@@ -82,6 +82,27 @@ function useActiveSection(): string | null {
 /* ---- desktop: sticky full-height legend ---------------------------------- */
 export function FactoryRailDesktop() {
   const active = useActiveSection();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [dotTop, setDotTop] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!active) {
+      setDotTop(null);
+      return;
+    }
+    const update = () => {
+      const container = containerRef.current;
+      const item = itemRefs.current[active];
+      if (!container || !item) return;
+      const cRect = container.getBoundingClientRect();
+      const iRect = item.getBoundingClientRect();
+      setDotTop(iRect.top - cRect.top + iRect.height / 2 - 1.5);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [active]);
 
   return (
     <div
@@ -94,12 +115,29 @@ export function FactoryRailDesktop() {
         style={{ position: "sticky", top: 72, height: "calc(100vh - 72px)", boxSizing: "border-box" }}
       >
         <div aria-hidden="true" style={{ position: "absolute", left: 56, top: 90, bottom: 90, width: 1, background: DATUM }} />
-        <div style={{ position: "absolute", left: 40, top: 0, bottom: 0, right: 0, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "84px 0" }}>
+        <div ref={containerRef} style={{ position: "absolute", left: 40, top: 0, bottom: 0, right: 0, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "84px 0" }}>
+          <span
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              left: 0,
+              top: dotTop ?? 0,
+              width: 3,
+              height: 3,
+              background: SIGNAL,
+              opacity: dotTop === null ? 0 : 1,
+              transition: "top var(--duration-dur-2) var(--ease-standard), opacity var(--duration-dur-1) linear",
+              pointerEvents: "none",
+            }}
+          />
           {RAIL_SECTIONS.map((s) => {
             const isActive = active === s.id;
             return (
               <a
                 key={s.id}
+                ref={(el) => {
+                  itemRefs.current[s.id] = el;
+                }}
                 href={`#${s.id}`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -107,7 +145,7 @@ export function FactoryRailDesktop() {
                 }}
                 style={{ display: "flex", alignItems: "center", gap: 14, height: 14, textDecoration: "none" }}
               >
-                <span style={{ width: 3, height: 3, flex: "0 0 3px", background: SIGNAL, opacity: isActive ? 1 : 0 }} />
+                <span style={{ width: 3, height: 3, flex: "0 0 3px" }} />
                 <span style={{ width: 6, height: 1, background: MARK }} />
                 <span
                   style={{

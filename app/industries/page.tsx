@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { Reveal } from "@/components/motion";
+import { Reveal, UnderlineDraw } from "@/components/motion";
 import { Schematic } from "../platform/viso-yard/_media";
 
 /* Reveal wraps only the inner content (never the <section> background) so a
@@ -394,8 +394,8 @@ function Closing() {
           Join industry leaders running 400,000 reads a day. Bring a CCTV feed from any node in your chain. We&apos;ll read it live.
         </p>
         <div className="mt-10 flex flex-col items-center gap-5 md:flex-row md:justify-center md:gap-10">
-          <a href="/contact" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.ink, borderBottom: `1px solid ${t.ink}`, paddingBottom: 4, textDecoration: "none" }}>Talk to us →</a>
-          <a href="/platform" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.sub, borderBottom: `1px solid rgba(244,245,247,0.3)`, paddingBottom: 4, textDecoration: "none" }}>Explore the platform →</a>
+          <UnderlineDraw href="/contact" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.ink, paddingBottom: 4 }}>Talk to us →</UnderlineDraw>
+          <UnderlineDraw href="/platform" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.sub, paddingBottom: 4 }}>Explore the platform →</UnderlineDraw>
         </div>
       </div>
     </Band>

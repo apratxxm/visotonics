@@ -110,6 +110,31 @@ function useActiveSection(): string | null {
 /* ---- desktop: sticky full-height legend ---------------------------------- */
 export function YardRailDesktop() {
   const active = useActiveSection();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [dotTop, setDotTop] = useState<number | null>(null);
+
+  // §5.2 — the tick marker slides (top offset transition) between ticks
+  // instead of fading; position is measured off the actual tick DOM rather
+  // than assumed from flex math, since justify-content:space-between spacing
+  // depends on viewport height.
+  useEffect(() => {
+    if (!active) {
+      setDotTop(null);
+      return;
+    }
+    const update = () => {
+      const container = containerRef.current;
+      const item = itemRefs.current[active];
+      if (!container || !item) return;
+      const cRect = container.getBoundingClientRect();
+      const iRect = item.getBoundingClientRect();
+      setDotTop(iRect.top - cRect.top + iRect.height / 2 - 1.5);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [active]);
 
   return (
     <div
@@ -143,6 +168,7 @@ export function YardRailDesktop() {
           }}
         />
         <div
+          ref={containerRef}
           style={{
             position: "absolute",
             left: 40,
@@ -155,11 +181,29 @@ export function YardRailDesktop() {
             padding: "84px 0",
           }}
         >
+          {/* the one sliding signal square — travels to the active tick */}
+          <span
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              left: 0,
+              top: dotTop ?? 0,
+              width: 3,
+              height: 3,
+              background: SIGNAL,
+              opacity: dotTop === null ? 0 : 1,
+              transition: "top var(--duration-dur-2) var(--ease-standard), opacity var(--duration-dur-1) linear",
+              pointerEvents: "none",
+            }}
+          />
           {RAIL_SECTIONS.map((s) => {
             const isActive = active === s.id;
             return (
               <a
                 key={s.id}
+                ref={(el) => {
+                  itemRefs.current[s.id] = el;
+                }}
                 href={`#${s.id}`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -173,16 +217,8 @@ export function YardRailDesktop() {
                   textDecoration: "none",
                 }}
               >
-                {/* 3×3 signal square at the tick — current section only */}
-                <span
-                  style={{
-                    width: 3,
-                    height: 3,
-                    flex: "0 0 3px",
-                    background: SIGNAL,
-                    opacity: isActive ? 1 : 0,
-                  }}
-                />
+                {/* spacer — the actual marker is the single sliding dot above */}
+                <span style={{ width: 3, height: 3, flex: "0 0 3px" }} />
                 <span style={{ width: 6, height: 1, background: MARK }} />
                 <span
                   style={{

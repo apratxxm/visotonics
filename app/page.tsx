@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { CountUp, Reveal } from "@/components/motion";
+import { CountUp, Reveal, UnderlineDraw } from "@/components/motion";
 import DecryptedText from "@/components/decrypted-text";
 
 /* ---------------------------------------------------------------------------
@@ -701,9 +701,9 @@ function Testimonials() {
                   Next <span style={{ fontFamily: mono, fontSize: 20 }}>→</span>
                 </span>
               </div>
-              <a href="/contact" className="dt-underline" style={{ padding: "20px 26px", fontSize: 16, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 4 }}>
+              <UnderlineDraw href="/contact" style={{ padding: "20px 26px", fontSize: 16, fontWeight: 500, color: TXT_D1 }}>
                 Share your experience with Visotonics
-              </a>
+              </UnderlineDraw>
             </div>
           </div>
         </div>
@@ -724,7 +724,7 @@ function Testimonials() {
           </div>
           <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 16 }}>
             <a href="/resources/case-studies" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 48, background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>See case studies</a>
-            <a href="/contact" className="dt-underline" style={{ alignSelf: "center", fontSize: 15, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 4 }}>Share your experience with Visotonics</a>
+            <UnderlineDraw href="/contact" style={{ alignSelf: "center", fontSize: 15, fontWeight: 500, color: TXT_D1 }}>Share your experience with Visotonics</UnderlineDraw>
           </div>
         </div>
       </Reveal>
