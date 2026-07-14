@@ -1,4 +1,5 @@
 import DecryptedText from "@/components/decrypted-text";
+import { Reveal } from "@/components/motion";
 import { FactoryRailDesktop, FactoryRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
@@ -41,12 +42,22 @@ import {
 --------------------------------------------------------------------------- */
 
 const MANIFEST = [
-  { n: "01", name: "Production Vision", tag: "[CNT]", garnish: "CNT :: COUNT + SKU + DAMAGE · PER LINE, PER SHIFT", id: "production-vision" },
-  { n: "02", name: "Audit Vision", tag: "[AUD]", garnish: "AUD :: EVENT-LINKED PROOF · TRIGGER=DETECT · RETRIEVE=ID", id: "audit-vision" },
-  { n: "03", name: "Dimension Vision", tag: "[DIM]", garnish: "DIM :: L×W×H IN MOTION · EVIDENCE=ANNOTATED FRAME", id: "dimension-vision" },
-  { n: "04", name: "Work Vision", tag: "[WRK]", garnish: "WRK :: ACTIVITY IN FRAME · SAME PLATFORM", id: "work-vision" },
-  { n: "05", name: "Secure Vision", tag: "[SEC]", garnish: "SEC :: ALL FEEDS HELD · ALERT+CLIP ON EVENT", id: "secure-vision" },
+  { n: "01", name: "PRODUCTION VISION", desc: "count, SKU and damage per shift", id: "production-vision" },
+  { n: "02", name: "AUDIT VISION", desc: "event-linked proof", id: "audit-vision" },
+  { n: "03", name: "DIMENSION VISION", desc: "volumetric capture", id: "dimension-vision" },
+  { n: "04", name: "WORK VISION", desc: "attendance from the cameras", id: "work-vision" },
+  { n: "05", name: "SECURE VISION", desc: "alerts and logs", id: "secure-vision" },
 ];
+
+function ManifestLine({ item }: { item: (typeof MANIFEST)[number] }) {
+  return (
+    <a href={`#${item.id}`} className="flex items-baseline" style={{ height: 40, textDecoration: "none", color: TXT_D2 }}>
+      <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", width: 34, flex: "0 0 34px" }}>{item.n}</span>
+      <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", textTransform: "uppercase", color: TXT_D1 }}>{item.name}</span>
+      {item.desc ? <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", marginLeft: 14 }}>— {item.desc}</span> : null}
+    </a>
+  );
+}
 
 function Hero() {
   return (
@@ -65,19 +76,9 @@ function Hero() {
           Production and process, watched continuously — from the cameras already on your line.
         </p>
 
-        <div style={{ marginTop: 56, paddingLeft: 6, borderTop: `1px solid ${BORDER_D_STRONG}`, borderBottom: `1px solid ${BORDER_D_STRONG}` }}>
-          {MANIFEST.map((m, i) => (
-            <a
-              key={m.id}
-              href={`#${m.id}`}
-              style={{ display: "flex", alignItems: "baseline", gap: 24, height: 58, padding: "0 4px", boxSizing: "border-box", textDecoration: "none", borderBottom: i < MANIFEST.length - 1 ? `1px solid rgba(244,245,247,0.10)` : undefined }}
-            >
-              <span style={{ ...eyebrow(TXT_D2), width: 26, flex: "0 0 26px" }}>{m.n}</span>
-              <span style={{ fontFamily: sans, fontSize: 30, lineHeight: 1.2, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1, width: 300, flex: "0 0 300px" }}>{m.name}</span>
-              <span style={{ ...eyebrow(TXT_D2), width: 64, flex: "0 0 64px" }}>{m.tag}</span>
-              <span style={{ fontFamily: mono, fontSize: 14, lineHeight: 1.6, color: TXT_D2 }}>{m.garnish}</span>
-            </a>
-          ))}
+        <div style={{ marginTop: 64, paddingLeft: 6, display: "flex", gap: 96 }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>{MANIFEST.slice(0, 3).map((m) => <ManifestLine key={m.id} item={m} />)}</div>
+          <div style={{ display: "flex", flexDirection: "column" }}>{MANIFEST.slice(3).map((m) => <ManifestLine key={m.id} item={m} />)}</div>
         </div>
       </div>
 
@@ -90,19 +91,11 @@ function Hero() {
         <p style={{ margin: "32px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D1 }}>
           Production and process, watched continuously — from the cameras already on your line.
         </p>
-        <div style={{ margin: "40px 0 0", borderTop: `1px solid ${BORDER_D_STRONG}`, borderBottom: `1px solid ${BORDER_D_STRONG}` }}>
-          {MANIFEST.map((m, i) => (
-            <a
-              key={m.id}
-              href={`#${m.id}`}
-              style={{ display: "flex", flexDirection: "column", gap: 4, padding: "16px 0", textDecoration: "none", borderBottom: i < MANIFEST.length - 1 ? `1px solid rgba(244,245,247,0.10)` : undefined }}
-            >
-              <span style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-                <span style={{ ...eyebrow(TXT_D2) }}>{m.n}</span>
-                <span style={{ fontFamily: sans, fontSize: 24, lineHeight: 1.2, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>{m.name}</span>
-                <span style={{ ...eyebrow(TXT_D2) }}>{m.tag}</span>
-              </span>
-              <span style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.6, color: TXT_D2 }}>{m.garnish}</span>
+        <div style={{ margin: "40px 0 0", display: "flex", flexDirection: "column" }}>
+          {MANIFEST.map((m) => (
+            <a key={m.id} href={`#${m.id}`} style={{ display: "flex", alignItems: "baseline", height: 34, textDecoration: "none", color: TXT_D2 }}>
+              <span style={{ fontFamily: mono, fontSize: 13, width: 28, flex: "0 0 28px" }}>{m.n}</span>
+              <span style={{ fontFamily: mono, fontSize: 13, textTransform: "uppercase", color: TXT_D1 }}>{m.name}</span>
             </a>
           ))}
         </div>
@@ -133,11 +126,12 @@ export default function VisoFactoryPage() {
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <Hero />
-              <SectionProduction />
-              <SectionAudit />
+              <Reveal as="div"><SectionProduction /></Reveal>
+              <Reveal as="div"><SectionAudit /></Reveal>
+              {/* Dimension is a light band — Reveal wraps inside it (viso-warehouse/sections.tsx) so the background paints immediately */}
               <SectionDimension />
-              <SectionWork />
-              <SectionSecure />
+              <Reveal as="div"><SectionWork /></Reveal>
+              <Reveal as="div"><SectionSecure /></Reveal>
             </div>
           </div>
         </div>

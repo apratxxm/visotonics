@@ -21,6 +21,51 @@ function prefersReducedMotion() {
   );
 }
 
+/* §6 — link underline-draw. Hover always draws it (pure CSS, see .dt-underline-draw
+   in globals.css); this wrapper adds the "or on view" half of the spec — the
+   underline draws itself once, unprompted, the first time the link scrolls
+   into view, via the same one-shot IntersectionObserver pattern as Reveal. */
+export function UnderlineDraw({
+  href,
+  children,
+  className = "",
+  style,
+  onClick,
+}: {
+  href: string;
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+  onClick?: () => void;
+}) {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            el.dataset.drawn = "true";
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <a ref={ref} href={href} onClick={onClick} className={`dt-underline-draw ${className}`} style={style}>
+      {children}
+    </a>
+  );
+}
+
 /* §5.1 / §3.3 — one-shot reveal. `mono` uses the linear opacity-only variant. */
 export function Reveal({
   children,

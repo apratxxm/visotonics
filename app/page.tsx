@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { CountUp, Reveal } from "@/components/motion";
+import { CountUp, Reveal, UnderlineDraw } from "@/components/motion";
 import DecryptedText from "@/components/decrypted-text";
 
 /* ---------------------------------------------------------------------------
@@ -117,7 +117,7 @@ function Hero() {
         </div>
 
         {/* top band — slab headline */}
-        <div style={{ position: "relative", zIndex: 1, padding: "72px 64px 0", height: 336, boxSizing: "border-box" }}>
+        <div style={{ position: "relative", zIndex: 1, padding: "72px 64px 0", height: 336, boxSizing: "border-box", display: "flex", justifyContent: "center" }}>
           <h1
             style={{
               margin: 0,
@@ -128,9 +128,12 @@ function Hero() {
               letterSpacing: "0.01em",
               color: TXT_D1,
               maxWidth: 1257,
+              textAlign: "center",
             }}
           >
-            <DecryptedText text="AI vision for yards, warehouses and factories — from the CCTV you already own." animateOn="view" sequential revealDirection="start" speed={8} encryptedClassName="v-enc" />
+            <DecryptedText text="AI Vision Platform" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
+            <br />
+            <DecryptedText text="for Industrial Operations" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
           </h1>
         </div>
 
@@ -197,9 +200,11 @@ function Hero() {
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, background: GRID_D }} />
         </div>
-        <div style={{ position: "relative", zIndex: 1, padding: "40px 20px", borderBottom: `1px solid ${GRID_D}` }}>
+        <div style={{ position: "relative", zIndex: 1, padding: "40px 20px", borderBottom: `1px solid ${GRID_D}`, textAlign: "center" }}>
           <h1 style={{ margin: 0, fontFamily: sans, fontSize: 44, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>
-            <DecryptedText text="AI vision for yards, warehouses and factories — from the CCTV you already own." animateOn="view" sequential revealDirection="start" speed={8} encryptedClassName="v-enc" />
+            <DecryptedText text="AI Vision Platform" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
+            <br />
+            <DecryptedText text="for Industrial Operations" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
           </h1>
         </div>
         <div style={{ position: "relative", zIndex: 1, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 6, borderBottom: `1px solid ${GRID_D}` }}>
@@ -252,7 +257,7 @@ function Statement() {
   return (
     <section className="on-light" style={{ background: LIGHT }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, height: 900 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, height: 900 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_L} />
           {/* L-corner registration brackets, four section corners only */}
@@ -273,13 +278,13 @@ function Statement() {
         </div>
         <div style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 64px", boxSizing: "border-box" }}>
           <h2 style={{ margin: 0, fontFamily: sans, fontSize: "clamp(32px, 5vw, 64px)", lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, textAlign: "center", maxWidth: 1000, textWrap: "balance" }}>
-            <DecryptedText text="Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
+            <DecryptedText text="Proprietary AI models delivering high accuracy in complex, chaotic, and edge-case environments." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
           </h2>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", height: 480 }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", height: 480 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", left: 12, top: 12, width: 12, height: 12, borderLeft: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
           <div style={{ position: "absolute", right: 12, top: 12, width: 12, height: 12, borderRight: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
@@ -289,10 +294,10 @@ function Statement() {
         </div>
         <div style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 24px", boxSizing: "border-box" }}>
           <h2 style={{ margin: 0, fontFamily: sans, fontSize: 26, lineHeight: 1.3, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, textAlign: "center", textWrap: "balance" }}>
-            <DecryptedText text="Proprietary AI models built to excel in complex, chaotic, and edge-case scenarios—delivering high accuracy and reliability for industries where precision is non-negotiable." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
+            <DecryptedText text="Proprietary AI models delivering high accuracy in complex, chaotic, and edge-case environments." animateOn="view" sequential revealDirection="center" speed={4} encryptedClassName="v-enc" />
           </h2>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -313,7 +318,7 @@ function HowItWorks() {
   return (
     <section style={{ background: DARK }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_D} />
           <HRule top={72} color={GRID_D} cross={CROSS_D} />
@@ -376,10 +381,10 @@ function HowItWorks() {
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, background: GRID_D }} />
           <div style={{ position: "absolute", left: "50%", top: 36, width: 3, height: 3, background: SIGNAL }} />
@@ -414,7 +419,7 @@ function HowItWorks() {
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -434,7 +439,7 @@ function Metrics() {
   return (
     <section className="on-light" style={{ background: LIGHT }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 1040 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", left: 16, top: 16, width: 16, height: 16, borderLeft: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
           <div style={{ position: "absolute", right: 16, top: 16, width: 16, height: 16, borderRight: `1px solid ${CROSS_L}`, borderTop: `1px solid ${CROSS_L}` }} />
@@ -472,10 +477,10 @@ function Metrics() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
         <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>MEASURED ACROSS LIVE SITES</span>
         <h2 style={{ margin: "16px 0 32px", fontFamily: sans, fontSize: 30, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>
           Same cameras. Different economics.
@@ -502,7 +507,7 @@ function Metrics() {
         <div style={{ marginTop: 16, fontFamily: mono, fontSize: 12, lineHeight: 1.5, letterSpacing: "0.02em", color: TXT_L2 }}>
           Aggregate across container, gate, yard &amp; cargo deployments.
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -546,7 +551,7 @@ function ProofPartners() {
   return (
     <section className="on-light" style={{ background: LIGHT }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET }}>
         <div style={{ position: "relative", zIndex: 1, padding: "96px 64px", display: "flex", flexDirection: "column" }}>
           {/* header band */}
           <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "48px 0" }}>
@@ -554,7 +559,7 @@ function ProofPartners() {
             <Cross color={CROSS_L} style={{ right: -4, top: -5 }} />
             <span style={{ ...eyebrow(TXT_L2), fontSize: 16, display: "block" }}>PROVEN WHERE IT&apos;S HARDEST</span>
             <h2 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 54, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1, maxWidth: "22ch" }}>
-              Trusted at the busiest yards, in the country.
+              Trusted by Industry Leaders
             </h2>
             <div style={{ marginTop: 48, display: "flex", alignItems: "flex-start", gap: 80 }}>
               <div>
@@ -562,7 +567,7 @@ function ProofPartners() {
                 <span style={{ display: "block", marginTop: 56, ...eyebrow(TXT_L2), fontSize: 26, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS LIVE SITES</span>
               </div>
               <span style={{ flex: 1, alignSelf: "center", fontFamily: sans, fontSize: 34, lineHeight: 1.35, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1, maxWidth: "16.11ch", paddingBottom: 84, paddingLeft: 65 }}>
-                Reading moving containers in night, rain, fog and dust.
+                Inspection and monitoring of assets in night, rain, fog and dust.
               </span>
             </div>
           </div>
@@ -591,21 +596,20 @@ function ProofPartners() {
           <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "28px 0 0" }}>
             <Cross color={CROSS_L} style={{ left: -4, top: -5 }} />
             <Dot style={{ right: -2, top: -2 }} />
-            <span style={{ display: "block", fontSize: 16, lineHeight: 1.6, color: TXT_L2 }}>CII Best Industry AI Application 2025&nbsp;·&nbsp;Patented damage detection 2026*</span>
-            <span style={{ display: "block", marginTop: 8, fontSize: 16, lineHeight: 1.6, color: TXT_L2 }}>*Patent number and jurisdiction to follow.</span>
+            <span style={{ display: "block", fontSize: 16, lineHeight: 1.6, color: TXT_L2 }}>CII Best Industry AI Application 2025&nbsp;·&nbsp;Patented Technology</span>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 32px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 32px" }}>
         <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "24px 0 32px" }}>
           <Dot style={{ left: -2, top: -2 }} />
           <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>PROVEN WHERE IT&apos;S HARDEST</span>
-          <h2 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 30, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>Trusted at the busiest yards, in the country.</h2>
+          <h2 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 30, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>Trusted by Industry Leaders</h2>
           <span style={{ display: "block", marginTop: 28, fontFamily: sans, fontSize: 72, lineHeight: 0.9, fontWeight: 500, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", color: TXT_L1 }}><CountUp value="400,000" /></span>
           <span style={{ display: "block", marginTop: 16, ...eyebrow(TXT_L2), fontSize: 13, fontStyle: "italic" }}>IMAGE READS A DAY&nbsp;·&nbsp;ACROSS LIVE SITES</span>
-          <span style={{ display: "block", marginTop: 24, fontFamily: sans, fontSize: 20, lineHeight: 1.4, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1, maxWidth: "24ch" }}>Reading moving containers in night, rain, fog and dust.</span>
+          <span style={{ display: "block", marginTop: 24, fontFamily: sans, fontSize: 20, lineHeight: 1.4, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1, maxWidth: "24ch" }}>Inspection and monitoring of assets in night, rain, fog and dust.</span>
         </div>
         <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "24px 0 32px" }}>
           <span style={{ ...eyebrow(TXT_L2), display: "block", fontSize: 12 }}>DEPLOYED AT</span>
@@ -621,10 +625,9 @@ function ProofPartners() {
         </div>
         <div style={{ position: "relative", borderTop: `1px solid ${RULE_L}`, padding: "20px 0 0" }}>
           <Dot style={{ right: -2, top: -2 }} />
-          <span style={{ display: "block", fontSize: 13, lineHeight: 1.6, color: TXT_L2 }}>CII Best Industry AI Application 2025&nbsp;·&nbsp;Patented damage detection 2026*</span>
-          <span style={{ display: "block", marginTop: 6, fontSize: 13, lineHeight: 1.6, color: TXT_L2 }}>*Patent number and jurisdiction to follow.</span>
+          <span style={{ display: "block", fontSize: 13, lineHeight: 1.6, color: TXT_L2 }}>CII Best Industry AI Application 2025&nbsp;·&nbsp;Patented Technology</span>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -652,7 +655,7 @@ function TestimonialPlaceholderCard() {
       </div>
       <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 4 }}>
         <span style={{ fontFamily: sans, fontSize: 17, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>Yard Supervisor</span>
-        <span style={{ fontFamily: sans, fontSize: 15, color: TXT_L2 }}>Port Logistics</span>
+        <span style={{ fontFamily: sans, fontSize: 15, color: TXT_L2 }}>CFS Mundra</span>
       </div>
     </div>
   );
@@ -662,7 +665,7 @@ function Testimonials() {
   return (
     <section style={{ background: DARK }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 740 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 740 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_D} />
           <HRule top={72} color={GRID_D} cross={CROSS_D} />
@@ -678,10 +681,10 @@ function Testimonials() {
             <div style={{ maxWidth: 940 }}>
               <span style={{ ...eyebrow(TXT_D2), display: "block" }}>CUSTOMER PROOF</span>
               <h2 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 56, lineHeight: 1.1, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1, maxWidth: "24ch" }}>
-                See how ports and terminals run inspection <span style={{ color: TXT_D2 }}>— without stopping a single container.</span>
+                See how industrial sites run inspection <span style={{ color: TXT_D2 }}>— without stopping the operations.</span>
               </h2>
             </div>
-            <a href="#case-studies" className="dt-outline" style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", height: 47, padding: "0 24px", background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 18, fontWeight: 500, textDecoration: "none" }}>
+            <a href="/resources/case-studies" className="dt-outline" style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", height: 47, padding: "0 24px", background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 18, fontWeight: 500, textDecoration: "none" }}>
               See case studies
             </a>
           </div>
@@ -698,19 +701,19 @@ function Testimonials() {
                   Next <span style={{ fontFamily: mono, fontSize: 20 }}>→</span>
                 </span>
               </div>
-              <a href="#share-experience" className="dt-underline" style={{ padding: "20px 26px", fontSize: 16, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 4 }}>
+              <UnderlineDraw href="/contact" style={{ padding: "20px 26px", fontSize: 16, fontWeight: 500, color: TXT_D1 }}>
                 Share your experience with Visotonics
-              </a>
+              </UnderlineDraw>
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 20px 40px" }}>
         <span style={{ ...eyebrow(TXT_D2), display: "block", fontSize: 12 }}>CUSTOMER PROOF</span>
         <h2 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 28, lineHeight: 1.2, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
-          See how ports and terminals run inspection <span style={{ color: TXT_D2 }}>— without stopping a single container.</span>
+          See how industrial sites run inspection <span style={{ color: TXT_D2 }}>— without stopping the operations.</span>
         </h2>
         <div style={{ margin: "24px 0 0", borderTop: `1px solid ${BORDER_D}`, paddingTop: 24 }}>
           <TestimonialPlaceholderCard />
@@ -720,11 +723,11 @@ function Testimonials() {
             <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 15, fontWeight: 500, color: TXT_D1 }}>Next <span style={{ fontFamily: mono }}>→</span></span>
           </div>
           <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 16 }}>
-            <a href="#case-studies" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 48, background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>See case studies</a>
-            <a href="#share-experience" className="dt-underline" style={{ alignSelf: "center", fontSize: 15, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 4 }}>Share your experience with Visotonics</a>
+            <a href="/resources/case-studies" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 48, background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>See case studies</a>
+            <UnderlineDraw href="/contact" style={{ alignSelf: "center", fontSize: 15, fontWeight: 500, color: TXT_D1 }}>Share your experience with Visotonics</UnderlineDraw>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -737,7 +740,7 @@ function Convert() {
   return (
     <section style={{ background: DARK }}>
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, height: 720 }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, height: 720 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <Verticals color={GRID_D} />
           <div style={{ position: "absolute", left: 0, right: 0, top: 64, height: 1, background: GRID_D }} />
@@ -761,16 +764,16 @@ function Convert() {
           <h2 style={{ margin: 0, fontFamily: sans, fontSize: 84, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1, maxWidth: "20ch" }}>
             Join industry leaders running AI-enabled sites with 400,000+ daily reads.
           </h2>
-          <span style={{ display: "block", marginTop: 24, fontSize: 29, lineHeight: 1.5, color: TXT_D2 }}>Bring a gate feed. We&apos;ll read it live.</span>
+          <span style={{ display: "block", marginTop: 24, fontSize: 29, lineHeight: 1.5, color: TXT_D2 }}>Bring CCTV feed, We&apos;ll read it live.</span>
           <div style={{ marginTop: 48, display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
             <a href="/contact" className="dt-fill" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 77, padding: "0 32px", background: TXT_D1, color: TXT_L1, borderRadius: 999, fontFamily: sans, fontSize: 24, fontWeight: 500, textDecoration: "none" }}>Talk to us</a>
             <a href="/platform/viso-yard" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 76, padding: "0 32px", background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 999, fontFamily: sans, fontSize: 24, fontWeight: 500, textDecoration: "none" }}>Explore the platform</a>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", height: 520 }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", height: 520 }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
           <div style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, background: GRID_D }} />
           <div style={{ position: "absolute", left: 0, right: 0, top: 130, height: 1, background: GRID_D }} />
@@ -783,13 +786,13 @@ function Convert() {
         </div>
         <div style={{ position: "absolute", inset: 0, zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 24px", boxSizing: "border-box" }}>
           <h2 style={{ margin: 0, fontFamily: sans, fontSize: 34, lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1, textWrap: "balance" }}>Join industry leaders running AI-enabled sites with 400,000+ daily reads.</h2>
-          <span style={{ display: "block", marginTop: 16, fontSize: 17, lineHeight: 1.5, color: TXT_D2 }}>Bring a gate feed. We&apos;ll read it live.</span>
+          <span style={{ display: "block", marginTop: 16, fontSize: 17, lineHeight: 1.5, color: TXT_D2 }}>Bring CCTV feed, We&apos;ll read it live.</span>
           <div style={{ marginTop: 32, display: "flex", flexDirection: "column", alignItems: "stretch", gap: 12, width: "100%", maxWidth: 280 }}>
             <a href="/contact" className="dt-fill" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 52, background: TXT_D1, color: TXT_L1, borderRadius: 999, fontFamily: sans, fontSize: 17, fontWeight: 500, textDecoration: "none" }}>Talk to us</a>
             <a href="/platform/viso-yard" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 52, background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 999, fontFamily: sans, fontSize: 17, fontWeight: 500, textDecoration: "none" }}>Explore the platform</a>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -800,12 +803,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Reveal><Statement /></Reveal>
-      <Reveal><HowItWorks /></Reveal>
-      <Reveal><Metrics /></Reveal>
-      <Reveal><ProofPartners /></Reveal>
-      <Reveal><Testimonials /></Reveal>
-      <Reveal><Convert /></Reveal>
+      <Statement />
+      <HowItWorks />
+      <Metrics />
+      <ProofPartners />
+      <Testimonials />
+      <Convert />
     </>
   );
 }

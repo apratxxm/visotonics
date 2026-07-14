@@ -1,4 +1,5 @@
 import DecryptedText from "@/components/decrypted-text";
+import { Reveal } from "@/components/motion";
 import { YardRailDesktop, YardRulerMobile } from "./rail";
 import { Convert } from "./convert";
 import {
@@ -38,15 +39,15 @@ import {
 
 /* ---- hero manifest -------------------------------------------------------- */
 const MANIFEST = [
-  { n: "01", name: "CONTAINER VISION", tag: "[DMG]", desc: "damage survey", id: "container-vision" },
-  { n: "02", name: "TANK VISION", tag: "[TNK]", desc: "tank health", id: "tank-vision" },
-  { n: "03", name: "GATE VISION", tag: "[OCR]", desc: "identity at the gate", id: "gate-vision" },
-  { n: "04", name: "YARD VISION", tag: "[TWN]", desc: "live location", id: "yard-vision" },
-  { n: "05", name: "CRANE VISION", tag: "[LFT]", desc: "chain of custody", id: "crane-vision" },
-  { n: "06", name: "CARGO VISION", tag: "[CNT]", desc: "count with proof", id: "cargo-vision" },
-  { n: "07", name: "DOCUMENT VISION", tag: "[DOC]", desc: "key-value extraction", id: "document-vision" },
-  { n: "08", name: "WORK VISION", tag: "[WRK]", desc: "", id: "work-vision" },
-  { n: "09", name: "SECURE VISION", tag: "[SEC]", desc: "", id: "secure-vision" },
+  { n: "01", name: "CONTAINER VISION", desc: "damage survey", id: "container-vision" },
+  { n: "02", name: "TANK VISION", desc: "tank health", id: "tank-vision" },
+  { n: "03", name: "GATE VISION", desc: "identity at the gate", id: "gate-vision" },
+  { n: "04", name: "YARD VISION", desc: "live location", id: "yard-vision" },
+  { n: "05", name: "CRANE VISION", desc: "chain of custody", id: "crane-vision" },
+  { n: "06", name: "CARGO VISION", desc: "count with proof", id: "cargo-vision" },
+  { n: "07", name: "DOCUMENT VISION", desc: "key-value extraction", id: "document-vision" },
+  { n: "08", name: "WORK VISION", desc: "attendance from the cameras", id: "work-vision" },
+  { n: "09", name: "SECURE VISION", desc: "alerts and logs", id: "secure-vision" },
 ];
 
 function ManifestLine({ item }: { item: (typeof MANIFEST)[number] }) {
@@ -54,7 +55,6 @@ function ManifestLine({ item }: { item: (typeof MANIFEST)[number] }) {
     <a href={`#${item.id}`} className="flex items-baseline" style={{ height: 40, textDecoration: "none", color: TXT_D2 }}>
       <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", width: 34, flex: "0 0 34px" }}>{item.n}</span>
       <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", textTransform: "uppercase", color: TXT_D1 }}>{item.name}</span>
-      <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", marginLeft: 10 }}>{item.tag}</span>
       {item.desc ? <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", marginLeft: 14 }}>— {item.desc}</span> : null}
     </a>
   );
@@ -73,6 +73,9 @@ function Hero() {
         <h1 style={{ margin: "72px 0 0", paddingLeft: 6, fontFamily: sans, fontSize: 136, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
           <DecryptedText text="Viso Yard" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
+        <p style={{ margin: "40px 0 0", paddingLeft: 24, maxWidth: 592, fontFamily: sans, fontSize: 20, lineHeight: 1.5, color: TXT_D1 }}>
+          Every container, every checkpoint, on the record — from the CCTV you already own.
+        </p>
 
         <div style={{ marginTop: 64, paddingLeft: 6, display: "flex", gap: 96 }}>
           <div style={{ display: "flex", flexDirection: "column" }}>{MANIFEST.slice(0, 5).map((m) => <ManifestLine key={m.id} item={m} />)}</div>
@@ -92,12 +95,14 @@ function Hero() {
         <h1 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 64, lineHeight: 0.98, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
           <DecryptedText text="Viso Yard" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
         </h1>
+        <p style={{ margin: "32px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.5, color: TXT_D1 }}>
+          Every container, every checkpoint, on the record — from the CCTV you already own.
+        </p>
         <div style={{ margin: "40px 0 0", display: "flex", flexDirection: "column" }}>
           {MANIFEST.map((m) => (
             <a key={m.id} href={`#${m.id}`} style={{ display: "flex", alignItems: "baseline", height: 34, textDecoration: "none", color: TXT_D2 }}>
               <span style={{ fontFamily: mono, fontSize: 13, width: 28, flex: "0 0 28px" }}>{m.n}</span>
               <span style={{ fontFamily: mono, fontSize: 13, textTransform: "uppercase", color: TXT_D1 }}>{m.name}</span>
-              <span style={{ fontFamily: mono, fontSize: 13, marginLeft: 8 }}>{m.tag}</span>
             </a>
           ))}
         </div>
@@ -133,16 +138,18 @@ export default function VisoYardPage() {
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <Hero />
-              <SectionContainer />
+              <Reveal as="div"><SectionContainer /></Reveal>
+              {/* Tank is a light band — Reveal wraps inside it (sections.tsx) so the light background paints immediately */}
               <SectionTank />
-              <SectionGate />
-              <SectionYard />
-              <SectionCrane />
+              <Reveal as="div"><SectionGate /></Reveal>
+              <Reveal as="div"><SectionYard /></Reveal>
+              <Reveal as="div"><SectionCrane /></Reveal>
+              {/* PlatformBand is a light band — same reason as Tank */}
               <PlatformBand />
-              <SectionCargo />
-              <SectionDocument />
-              <SectionWork />
-              <SectionSecure />
+              <Reveal as="div"><SectionCargo /></Reveal>
+              <Reveal as="div"><SectionDocument /></Reveal>
+              <Reveal as="div"><SectionWork n="08" /></Reveal>
+              <Reveal as="div"><SectionSecure n="09" /></Reveal>
             </div>
           </div>
         </div>

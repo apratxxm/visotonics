@@ -1,21 +1,29 @@
 import type { CSSProperties, ReactNode } from "react";
+import { Reveal, UnderlineDraw } from "@/components/motion";
 import { Schematic } from "../platform/viso-yard/_media";
 
-/* ---------------------------------------------------------------------------
-   /industries — long-form document. Ported from VisoIndustries-Document.dc.html
-   (desktop 1440 + mobile 390): a prose-heavy editorial dossier — intro thesis +
-   four chapters (one per vertical) + closing. Copy verbatim from
-   basic_content-industries.docx; figures reuse existing schematics.
+/* Reveal wraps only the inner content (never the <section> background) so a
+   light/dark band paints immediately and only the text/media fades+rises —
+   otherwise a dark→light band transition shows a raw-background flash. */
 
-   Layout: a 3-column reading grid on desktop (margin tag · 680px prose · spacer)
-   that stacks to a single column on mobile. Copy is held in JS strings and
-   rendered via expressions so apostrophes/quotes need no HTML escaping.
-   Note: mobile carries the full desktop prose (not the design's condensed cut).
+/* ---------------------------------------------------------------------------
+   /industries — long-form document, one section per vertical: Ports & Terminals,
+   Warehousing & Distribution, Manufacturing, Logistics & Supply Chain.
+
+   Copy restructured from the "AI-Powered Production Intelligence" template
+   (Manufacturing was authored directly; Ports/Warehousing/Logistics were
+   written to the same structure, drawing on facts from
+   basic_content-industries.docx but in generic capability language — no
+   branded product names ("Viso Yard" etc.) inside the vertical copy itself.
+
+   Layout unchanged from the previous version: 3-column reading grid on
+   desktop (margin tag · 680px prose · spacer), single column on mobile,
+   drafting-sheet chrome (Cross registration marks, Rule dividers, mono
+   MarginTag labels), Schematic figures reused from the platform pages.
 --------------------------------------------------------------------------- */
 
 const mono = "var(--font-plex-mono)";
 const sans = "var(--font-archivo)";
-const SIGNAL = "#ED510C";
 
 type Theme = {
   bg: string;
@@ -56,13 +64,13 @@ function Cross({ color, side }: { color: string; side: "left" | "right" }) {
   );
 }
 
-function Band({ theme, children, style }: { theme: Theme; children: ReactNode; style?: CSSProperties }) {
+function Band({ theme, id, children, style, reveal = false }: { theme: Theme; id?: string; children: ReactNode; style?: CSSProperties; reveal?: boolean }) {
   return (
-    <section style={{ background: theme.bg }}>
+    <section id={id} style={{ background: theme.bg }}>
       <div style={{ position: "relative", maxWidth: 1440, margin: "0 auto", boxSizing: "border-box", ...style }}>
         <Cross color={theme.cross} side="left" />
         <Cross color={theme.cross} side="right" />
-        {children}
+        {reveal ? <Reveal as="div">{children}</Reveal> : children}
       </div>
     </section>
   );
@@ -72,157 +80,6 @@ function Rule({ color, mt = 0, mb = 0 }: { color: string; mt?: number; mb?: numb
   return <div aria-hidden="true" style={{ height: 1, background: color, marginTop: mt, marginBottom: mb }} />;
 }
 
-/* ---- data ---------------------------------------------------------------- */
-
-type Cap = { tag: string; orange?: boolean; lead: string; body?: string };
-type Chapter = {
-  theme: Theme;
-  num: string;
-  poweredBy: string;
-  h2: string;
-  sub: string;
-  problem: string;
-  caps: Cap[];
-  fig: { file: string; caption: string; figNo: string };
-  registerLabel?: string;
-  register?: [string, string][];
-  registerFootnote?: string;
-  whyLabel: string;
-  why: string[];
-  whyFootnote?: string;
-  quote?: { text: string; cite: string };
-  sidebar?: { label: string; text: string; stats: string[] };
-};
-
-const CHAPTERS: Chapter[] = [
-  {
-    theme: LIGHT,
-    num: "01",
-    poweredBy: "POWERED BY VISO YARD",
-    h2: "Every container, every checkpoint, on the record — from the CCTV you already own.",
-    sub: "Gate, crane, yard and cargo, watched by one vision layer. No new hardware, no stopped operations, no disputed damage.",
-    problem:
-      "Container damage surveys, gate ID checks and yard tracking are still largely manual — a surveyor with a clipboard, a guard squinting at a plate in the rain, a spreadsheet nobody trusts when a shipping line disputes a dent. Every stopped truck and re-inspection is time the terminal doesn't get back.",
-    caps: [
-      { tag: "[DMG]", orange: true, lead: "Container Vision — patented damage detection.", body: "Every dent, rust patch and crack detected, segmented and measured to the mm², automatically, from camera footage. Diff any two checkpoints — gate in, crane on, crane off, gate out — for an auditable record of exactly where and when damage occurred. Reports generate in under a minute; damage above your threshold auto-emails the responsible party. Deployed at 25+ sites including Adani CFS." },
-      { tag: "[OCR]", lead: "Gate Vision — identity at the gate.", body: "Reads container, ISO, trailer and wagon IDs off moving trucks — no stop-and-shoot — in night, rain, fog and dust, at close to 100% accuracy across 400,000 reads a day. Seal status is checked and logged with every read, pushed to your system as structured JSON in real time." },
-      { tag: "[TWN]", lead: "Yard Vision — live location, not a search party.", body: "A one-time survey builds a live digital twin of the yard. From there, every inbound gets a recommended slot and every move is tracked automatically — ask for a container, get its precise location, no radio calls to the yard." },
-      { tag: "[LFT]", lead: "Crane Vision — chain of custody at the lift.", body: "Multi-camera capture of every face on every lift, with vibration compensation and motion-blur correction so crane movement never becomes an inspection error. High-severity damage triggers an immediate surveyor alert. Combined with gate and container checkpoints, this closes the chain of custody from vessel to yard to gate." },
-      { tag: "[DOC]", lead: "Document Vision — paperwork, structured.", body: "Bills of Lading and terminal paperwork go in; structured, system-ready data comes out — shipper, consignee, port of loading, cargo description, line items — pushed directly to your TOS." },
-    ],
-    fig: { figNo: "FIG. 01", file: "visotonics-container-schematic.svg", caption: "Checkpoint diff — gate in to gate out, damage attributed to the interval it occurred in." },
-    registerLabel: "REGISTER",
-    register: [
-      ["Inspection cost", "90% lower"],
-      ["Reporting time", "99% reduction"],
-      ["Gate turnaround", "70% faster"],
-      ["ID read accuracy", "~100% · moving trucks, night/rain/fog/dust"],
-      ["Image reads", "400,000/day · 25+ sites"],
-    ],
-    registerFootnote: "Aggregate figures measured across container, gate, yard and cargo deployments.",
-    whyLabel: "WHY TERMINALS CHOOSE",
-    why: [
-      "Runs on your existing CCTV — no new cameras, no change to crane or gate workflow.",
-      "Tamper-evident logbook — a time-stamped record per container movement that both terminal and shipping line can trust.",
-      "Built for the hardest conditions — reads moving containers through night, rain, fog and dust where generic OCR and off-the-shelf vision models fail in Visotonics' benchmarks.",
-      "Proven at scale — running live at Adani, DP World, Hind Terminals, JNPA and Cochin Shipyard.",
-    ],
-    quote: { text: "“Rollout was faster than we expected — no changes to our existing crane workflow. The dashboard gives our team visibility we never had before.”", cite: "— Yard Supervisor, Port Logistics" },
-  },
-  {
-    theme: DARK,
-    num: "02",
-    poweredBy: "POWERED BY VISO WAREHOUSE",
-    h2: "Every case counted, every pallet dimensioned — with video proof attached.",
-    sub: "Inbound to outbound, on the same cameras already covering your floor. No new hardware, no manual tally sheets.",
-    problem:
-      "Shrinkage that no one can pin down. Manual counts during stuffing and destuffing that don't match the manifest. Dimensioning done by hand, or not at all. In a warehouse running on paper tallies and spot-checks, disputes with carriers and customers become a matter of “he said, she said” — with no video to settle it.",
-    caps: [
-      { tag: "[CNT]", lead: "Cargo Vision — counting, with proof.", body: "Every carton, gunny bag, jumbo bag, pallet, drum and barrel detected on video during loading and unloading — counted automatically, with a damage check run in the same pass. The command center gets a real-time alert on exceptions. Because detection runs on-device, it keeps working even when connectivity doesn't — full detection and alerting, offline." },
-      { tag: "", lead: "Audit & dimensioning.", body: "Camera-based dimensioning replaces manual measurement for inbound and outbound cargo, giving you defensible volumetric data for billing, slotting and space planning — captured automatically, not estimated." },
-      { tag: "[DMG]", orange: true, lead: "Container Vision — damage, documented on arrival.", body: "Inbound goods are surveyed for damage — dents, tears, wet damage, crushed cartons — the moment they hit the dock, with the same mm²-level detection used at the port. That means disputes with carriers get settled with a report, not a guess." },
-      { tag: "[DOC]", lead: "Document Vision — manifests, structured automatically.", body: "Delivery notes, packing lists and manifests are read and converted into structured, system-ready data — pushed straight into your WMS instead of re-keyed by hand." },
-    ],
-    fig: { figNo: "FIG. 02", file: "audit-schematic.svg", caption: "Camera-based audit and dimensioning — inbound cargo measured automatically, not estimated." },
-    registerLabel: "REGISTER",
-    register: [
-      ["Inventory shrinkage", "60% reduction"],
-      ["Inspection cost", "90% lower"],
-      ["Reporting time", "99% reduction"],
-    ],
-    registerFootnote: "Aggregate figures measured across cargo and container deployments on the Visotonics platform.",
-    whyLabel: "WHY WAREHOUSES CHOOSE",
-    why: [
-      "Runs on your existing CCTV — no new cameras to install or maintain.",
-      "Video proof, not a tally sheet — every count and every dimension is backed by footage.",
-      "Works offline — detection and alerting keep running even when connectivity doesn't.",
-      "One platform, whole network — the same record follows cargo to its next node.",
-    ],
-  },
-  {
-    theme: LIGHT,
-    num: "03",
-    poweredBy: "POWERED BY VISO FACTORY",
-    h2: "Production and process, watched continuously — from the cameras already on your line.",
-    sub: "Catch a defect, a stoppage or a process deviation as it happens, not on the next audit.",
-    problem:
-      "Quality checks that only sample a fraction of output. Line stoppages that get logged after the fact, if at all. Process deviations that surface as a customer complaint weeks later instead of an alert in the moment. Manual floor walks can't watch every station, every shift — cameras already can.",
-    caps: [
-      { tag: "", lead: "Production monitoring.", body: "Continuous, camera-based visibility into line status, throughput and stoppages — surfaced in real time instead of reconstructed from shift-end reports." },
-      { tag: "", lead: "Process monitoring.", body: "The same detection engine that segments container damage to the mm² is built to spot deviations in a repeatable process — flagging what's out of spec as it happens, so the correction happens on the same shift, not the next audit." },
-      { tag: "[DMG/CNT]", orange: true, lead: "Container & Cargo Vision.", body: "Finished-goods packaging and inbound raw materials get the same automated damage detection and counting used at the port and the warehouse dock — one consistent standard from supplier to shipment." },
-      { tag: "[DOC]", lead: "Document Vision.", body: "Inspection sheets, quality certificates and material dockets are read and converted to structured data automatically." },
-    ],
-    fig: { figNo: "FIG. 03", file: "factory-production-schematic-desktop.svg", caption: "Line camera — continuous production and process monitoring, no separate inspection station." },
-    whyLabel: "PLATFORM ADVANTAGE",
-    why: [
-      "No new hardware — runs on the cameras already on the line.",
-      "One vision layer, whole operation — production, cargo and documents on a single record.",
-      "Real-time, not retrospective — deviations flagged as they happen.",
-      "Built on patented detection — the same engine proven at 25+ live sites.",
-    ],
-    whyFootnote: "Manufacturing-specific benchmark figures are being finalized as Viso Factory deployments scale — reach out for current pilot results. [TBD]",
-  },
-  {
-    theme: DARK,
-    num: "04",
-    poweredBy: "POWERED BY THE FULL VISOTONICS PLATFORM",
-    h2: "One vision layer, vessel to gate to dock to line.",
-    sub: "Visotonics doesn't stop at one facility. The same checkpoint record follows cargo across every node it moves through — port, warehouse, factory — on the cameras already in place at each one.",
-    problem: "",
-    caps: [
-      { tag: "", lead: "Checkpoint diff — one record, every handoff.", body: "Gate in, crane on, crane off, gate out, dock in, dock out — any two checkpoints, anywhere on the chain, can be diffed for auditable attribution of exactly where damage or shortage occurred. No more disputes settled by who shouts loudest." },
-      { tag: "", lead: "Tamper-evident logbook.", body: "A time-stamped record per container or shipment movement, from vessel to gate to warehouse to line — one continuous chain of custody instead of separate logs at every stakeholder." },
-      { tag: "[OCR/CNT]", lead: "Gate & Cargo Vision — identity and count, verified in motion.", body: "IDs read off moving trucks, containers and trailers at close to 100% accuracy, and every carton, pallet and drum counted with video proof — at every gate along the route, not just the port." },
-      { tag: "[DOC]", lead: "Document Vision — every document, one format." },
-      { tag: "", lead: "Viso Data — the engine underneath.", body: "Compression, trace and detection AI built to decode images where generic OCR and off-the-shelf vision models fail — low light, motion blur, partial occlusion, night, rain, fog, dust — the conditions supply chains actually operate in." },
-    ],
-    fig: { figNo: "FIG. 04", file: "visotonics-crane-schematic.svg", caption: "Chain of custody — vessel to yard to gate, one continuous record." },
-    registerLabel: "REGISTER — AGGREGATE",
-    register: [
-      ["Inspection cost", "90% lower"],
-      ["Reporting time", "99% reduction"],
-      ["Gate turnaround", "70% faster"],
-      ["Inventory shrinkage", "60% less"],
-      ["Image reads", "400,000/day · 25+ sites"],
-    ],
-    whyLabel: "WHY SUPPLY-CHAIN TEAMS CHOOSE",
-    why: [
-      "No new hardware at any node — the platform runs on the CCTV each facility already has.",
-      "One record, not five — a single, tamper-evident log follows cargo across every party in the chain.",
-      "API-first — structured data pushed to your system in real time, not a dashboard you have to check.",
-      "Proven where it's hardest — reading moving containers in night, rain, fog and dust across 25+ live sites today.",
-    ],
-    sidebar: {
-      label: "DISPATCH / INVENTORY INTELLIGENCE — SEPARATE CONTEXT, PORTABLE CAMERAS",
-      text: "Total Coverage. Zero Blind Spots. Chaos In. Precision Out. Portable trolley-mounted cameras that follow vehicles into any blind spot, for vehicles that park outside fixed CCTV coverage.",
-      stats: ["100% Item Visibility", "<2 min Session Set-up", "24×7 AI Monitoring"],
-    },
-  },
-];
-
-/* ---- render helpers ------------------------------------------------------ */
-
 function MarginTag({ text, color }: { text: string; color: string }) {
   return (
     <span className="block mt-6 md:mt-0" style={{ fontFamily: mono, fontSize: 13, fontWeight: 600, letterSpacing: "0.08em", color }}>
@@ -231,37 +88,322 @@ function MarginTag({ text, color }: { text: string; color: string }) {
   );
 }
 
+/* ---- data ---------------------------------------------------------------- */
+
+type Signal = { label: string; body: string };
+type Column = { label: string; items: string[] };
+
+type Chapter = {
+  theme: Theme;
+  num: string;
+  id: string;
+  kicker: string;
+  heroHeadline: string;
+  heroSub: string;
+  heroBody: string;
+  tags: string[];
+  problemTitle: string;
+  problemIntro: string;
+  challenges: string[];
+  problemResult: string;
+  solveTitle: string;
+  solveBody: string;
+  solveTagline: string;
+  signalsTitle: string;
+  signals: Signal[];
+  fig: { file: string; caption: string; figNo: string };
+  worksEyebrow: string;
+  worksHeadline: string;
+  worksItems: string[];
+  worksNote: string;
+  capColumns: Column[];
+  closingHeadline: string;
+  closingBody: string;
+};
+
+const CONTACT = "Pranav Asthana · +91 9651891556 · pranav@excl.ai";
+const CLOSING_STATS: [string, string][] = [["100%", "Item Visibility"], ["<2 min", "Session Set-up Time"], ["24×7", "AI Monitoring"]];
+
+const CHAPTERS: Chapter[] = [
+  {
+    theme: LIGHT,
+    num: "01",
+    id: "ports-terminals",
+    kicker: "PORTS & TERMINALS",
+    heroHeadline: "AI-Powered Terminal Intelligence",
+    heroSub: "Every container, every checkpoint, verified — the moment it crosses the gate.",
+    heroBody: "Visotonics turns your terminal into a fully visible, fully verified operation. Deploy AI cameras across gates, yards and cranes to automatically track container identity, condition and location — in real time, with zero manual inspection.",
+    tags: ["Gate & Yard", "Crane & Lift", "Damage Survey"],
+    problemTitle: "Terminal Operations Are Running on Paper and Guesswork",
+    problemIntro: "Container damage surveys, gate ID checks and yard tracking are still manual, slow and inconsistent across shifts.",
+    challenges: [
+      "Manual damage surveys rely on a surveyor with a clipboard and a camera phone",
+      "Gate ID checks slow trucks to a stop-and-shoot crawl in every condition",
+      "Yard location is tracked by radio call, not by record",
+      "Crane lifts have no visual chain of custody when a dispute arises",
+    ],
+    problemResult: "Disputed damage claims, stopped trucks, and hours lost every time a container can't be found or a dent can't be proven.",
+    solveTitle: "Every Container Checked. Every Checkpoint Recorded.",
+    solveBody: "Cameras deployed at the gate, over the yard, and on the crane capture every container as it moves — no stop, no scan, no surveyor required.",
+    solveTagline: "Every Gate. Every Lift. Every Container.",
+    signalsTitle: "Four Signals, Captured on Every Single Container",
+    signals: [
+      { label: "Damage Detection", body: "Every dent, rust patch and crack detected and measured to the mm², automatically, from camera footage." },
+      { label: "Identity & Seal Verification", body: "Container, ISO, trailer and wagon IDs read off moving trucks, with seal status checked on every pass." },
+      { label: "Live Location", body: "A digital twin of the yard tracks every container's position automatically — no radio calls required." },
+      { label: "Chain of Custody", body: "Every lift captured from multiple angles, building an auditable record from vessel to gate." },
+    ],
+    fig: { figNo: "FIG. 01", file: "visotonics-container-schematic.svg", caption: "Checkpoint diff — gate in to gate out, damage attributed to the interval it occurred in." },
+    worksEyebrow: "WORKS FOR EVERYTHING YOU MOVE",
+    worksHeadline: "Any Cargo. Any Terminal. Any Shift.",
+    worksItems: ["Container Freight", "Bulk & Break-bulk", "Tank Containers", "Reefer Cargo", "Ro-Ro", "Project Cargo"],
+    worksNote: "Configurable per checkpoint, per terminal — works across gates, yards, cranes and CFS docks alike.",
+    capColumns: [
+      { label: "Terminal Insights", items: ["Real-time container count vs. manifest", "Checkpoint-wise damage attribution", "Shift-wise and gate-wise turnaround trends", "Delay and re-inspection flagging"] },
+      { label: "Quality & Loss Prevention", items: ["Damage detection with mm²-level measurement", "Seal-mismatch and identity alerts", "Visual proof for damage disputes", "Survey and claims tracking"] },
+      { label: "Deep Analysis", items: ["Turnaround benchmarking across shifts", "Root-cause view for gate bottlenecks", "Historical trend and anomaly reports", "Exportable, audit-ready logs"] },
+    ],
+    closingHeadline: "Real terminal data — captured automatically, every container, every shift.",
+    closingBody: "We extract precise, verifiable identity, condition and location data from your terminal — so every container is accounted for, every time.",
+  },
+  {
+    theme: DARK,
+    num: "02",
+    id: "warehousing-distribution",
+    kicker: "WAREHOUSING & DISTRIBUTION",
+    heroHeadline: "AI-Powered Warehouse Intelligence",
+    heroSub: "Every case counted, every pallet measured — from inbound to outbound.",
+    heroBody: "Visotonics turns your warehouse floor into a fully visible, fully verified operation. Deploy AI cameras across docks and aisles to automatically track case count, dimensions, and damage — in real time, with zero manual tally sheets.",
+    tags: ["Inbound & Outbound", "Dimensioning", "Damage & Audit"],
+    problemTitle: "Warehouse Floors Are Operating on Tally Sheets",
+    problemIntro: "Case counts, dimensioning and damage checks are still manual, slow and inconsistent across shifts.",
+    challenges: [
+      "Manual counts during stuffing and destuffing don't match the manifest",
+      "Dimensioning is done by hand, or not at all",
+      "Damage on arrival is often caught only after it becomes a customer dispute",
+      "No video record exists when a carrier or customer disputes a shortage",
+    ],
+    problemResult: "Inventory shrinkage nobody can pin down, and disputes settled by whoever tells the better story — not the better record.",
+    solveTitle: "Every Case Counted. Every Dimension Captured.",
+    solveBody: "Cameras deployed at the dock and along the aisle capture every carton, pallet and drum as it moves — no manual tally required.",
+    solveTagline: "Every Dock. Every Aisle. Every Case.",
+    signalsTitle: "Four Signals, Captured on Every Single Movement",
+    signals: [
+      { label: "Case Count", body: "Every carton, bag, pallet and drum tallied automatically during loading and unloading." },
+      { label: "Volumetric Dimensioning", body: "Length, width and height captured from camera view — defensible data for billing and slotting." },
+      { label: "Damage on Arrival", body: "Dents, tears and wet damage flagged the moment goods hit the dock." },
+      { label: "Manifest Matching", body: "Delivery notes and packing lists converted to structured data and checked against what the cameras see." },
+    ],
+    fig: { figNo: "FIG. 02", file: "audit-schematic.svg", caption: "Camera-based audit and dimensioning — inbound cargo measured automatically, not estimated." },
+    worksEyebrow: "WORKS FOR EVERYTHING YOU STORE",
+    worksHeadline: "Any Cargo. Any Warehouse. Any Shift.",
+    worksItems: ["FMCG & Packaged Goods", "3PL & Distribution", "Cold Storage", "E-commerce Fulfilment", "Retail & Wholesale", "Bulk Storage"],
+    worksNote: "Configurable per dock, per aisle — works on forklifts, conveyors and manual staging areas alike.",
+    capColumns: [
+      { label: "Warehouse Insights", items: ["Real-time case count vs. manifest", "Dock-wise and aisle-wise throughput trends", "Inbound vs. outbound reconciliation", "Delay and bottleneck flagging"] },
+      { label: "Quality & Loss Prevention", items: ["Damage detection on arrival and dispatch", "Shortage and miscount alerts", "Visual proof for carrier disputes", "Claims and rework tracking"] },
+      { label: "Deep Analysis", items: ["Productivity benchmarking across shifts", "Root-cause view for shrinkage", "Historical trend and anomaly reports", "Exportable, audit-ready logs"] },
+    ],
+    closingHeadline: "Real warehouse data — captured automatically, every case, every shift.",
+    closingBody: "We extract precise, verifiable count, dimension and condition data from your floor — so every case is accounted for, every time.",
+  },
+  {
+    theme: LIGHT,
+    num: "03",
+    id: "manufacturing",
+    kicker: "MANUFACTURING",
+    heroHeadline: "AI-Powered Production Intelligence",
+    heroSub: "Every item counted, classified and inspected — the moment it leaves the line.",
+    heroBody: "Visotonics turns your production floor into a fully visible, fully verified operation. Deploy AI cameras across your line to automatically track production count, throughput, SKU-wise output, and external damage — in real time, with zero manual tally.",
+    tags: ["Production Line", "Quality Control", "Packaging & Dispatch"],
+    problemTitle: "Production Floors Are Operating Blind",
+    problemIntro: "Output counting, SKU checks and quality inspection are still manual, slow and inconsistent across shifts.",
+    challenges: [
+      "Manual production counts rely on end-of-line tally sheets and register entries",
+      "No real-time visibility into throughput or line performance",
+      "SKU mix-ups and mislabeled units go undetected",
+      "External damage and packaging defects are often caught only at dispatch — or by the customer",
+    ],
+    problemResult: "Inaccurate production counts, hidden productivity loss, and quality issues that surface only after the product has left the line.",
+    solveTitle: "Every Unit Counted. Every Defect Caught.",
+    solveBody: "Cameras deployed above the line, at the packing station, and at the exit conveyor capture every unit as it's produced — no manual tally required.",
+    solveTagline: "Every Line. Every Shift. Every Unit.",
+    signalsTitle: "Four Signals, Captured on Every Single Unit",
+    signals: [
+      { label: "Production Count", body: "Every unit tallied automatically as it passes the camera, per line and per shift." },
+      { label: "SKU-wise Identification", body: "Each item classified by SKU/variant to keep production mix accurate in real time." },
+      { label: "External Damage Detection", body: "Dents, tears, cracks and packaging defects flagged the instant they occur." },
+      { label: "Throughput & Productivity", body: "Units-per-minute and line efficiency computed continuously, not at shift-end." },
+    ],
+    fig: { figNo: "FIG. 03", file: "factory-production-schematic-desktop.svg", caption: "Line camera — continuous production and process monitoring, no separate inspection station." },
+    worksEyebrow: "WORKS FOR EVERYTHING YOU PRODUCE",
+    worksHeadline: "Any Product. Any Line. Any Shift.",
+    worksItems: ["FMCG & Packaged Goods", "Electronics & Components", "Pharma & Healthcare", "Textiles & Apparel", "Automotive Parts", "Food & Beverage"],
+    worksNote: "Configurable per SKU, per line — works on conveyors, tables, and manual packing stations alike.",
+    capColumns: [
+      { label: "Production Insights", items: ["Real-time production count vs. target", "SKU-wise output breakdown", "Shift-wise and line-wise throughput trends", "Downtime and slow-cycle flagging"] },
+      { label: "Quality & Loss Prevention", items: ["External damage / defect detection", "Mis-packed or wrong-SKU alerts", "Visual proof for quality disputes", "Rework and rejection tracking"] },
+      { label: "Deep Analysis", items: ["Productivity benchmarking across shifts", "Root-cause view for bottlenecks", "Historical trend and anomaly reports", "Exportable, audit-ready logs"] },
+    ],
+    closingHeadline: "Real production data — captured automatically, every unit, every shift.",
+    closingBody: "We extract precise, verifiable count, SKU and quality data from the line — so every unit produced is accounted for, every time.",
+  },
+  {
+    theme: DARK,
+    num: "04",
+    id: "logistics-supply-chain",
+    kicker: "LOGISTICS & SUPPLY CHAIN",
+    heroHeadline: "AI-Powered Supply Chain Intelligence",
+    heroSub: "One record, every handoff — from vessel to gate to dock to line.",
+    heroBody: "Visotonics doesn't stop at one facility. Deploy AI cameras across every node your cargo passes through to automatically track identity, condition and custody — in real time, with zero disputed handoffs.",
+    tags: ["Multi-node Visibility", "Chain of Custody", "Document Intelligence"],
+    problemTitle: "Supply Chains Lose the Story at Every Handoff",
+    problemIntro: "Damage attribution, shortage claims and document handling are still fragmented across every party in the chain.",
+    challenges: [
+      "Every handoff is a place where accountability gets fuzzy — was it damaged at gate-in, or on the crane?",
+      "Each party runs its own systems, paperwork and version of events",
+      "No single record follows cargo from vessel to final delivery",
+      "Disputes get resolved by whoever has the better story, not the better record",
+    ],
+    problemResult: "Disputed claims, duplicated paperwork, and no way to prove exactly where or when something went wrong.",
+    solveTitle: "Every Handoff Recorded. One Record, Start to Finish.",
+    solveBody: "Cameras already in place at every node — port, warehouse, factory — capture identity, condition and custody automatically, no new hardware required.",
+    solveTagline: "Every Node. Every Handoff. One Record.",
+    signalsTitle: "Four Signals, Captured at Every Node",
+    signals: [
+      { label: "Checkpoint Diff", body: "Any two checkpoints, anywhere on the chain, compared for auditable attribution of exactly where damage or shortage occurred." },
+      { label: "Tamper-Evident Logbook", body: "A time-stamped record per movement, from vessel to gate to warehouse to line." },
+      { label: "Identity & Count in Motion", body: "IDs and item counts verified at every gate along the route, not just the first one." },
+      { label: "Document Normalization", body: "Bills of lading, manifests and certificates from every party read and converted into one structured format." },
+    ],
+    fig: { figNo: "FIG. 04", file: "visotonics-crane-schematic.svg", caption: "Chain of custody — vessel to yard to gate, one continuous record." },
+    worksEyebrow: "WORKS ACROSS EVERY NODE",
+    worksHeadline: "Any Node. Any Party. Any Handoff.",
+    worksItems: ["Ports & Terminals", "Warehousing & Distribution", "Manufacturing", "3PL & Freight Forwarding", "Cold Chain", "Last-Mile Delivery"],
+    worksNote: "Configurable across every node in the chain — works wherever a camera already watches the handoff.",
+    capColumns: [
+      { label: "Network Insights", items: ["Real-time visibility across every node", "Checkpoint-wise attribution of damage or shortage", "Node-wise and party-wise turnaround trends", "Delay and dispute flagging"] },
+      { label: "Quality & Loss Prevention", items: ["Cross-node damage and shortage attribution", "Identity and seal-mismatch alerts", "Visual proof for multi-party disputes", "Claims tracking across the full chain"] },
+      { label: "Deep Analysis", items: ["Network-wide performance benchmarking", "Root-cause view for recurring bottlenecks", "Historical trend and anomaly reports", "Exportable, audit-ready logs, API-first"] },
+    ],
+    closingHeadline: "Real supply-chain data — captured automatically, every handoff, every node.",
+    closingBody: "We extract precise, verifiable identity, custody and condition data across your entire network — so every handoff is accounted for, every time.",
+  },
+];
+
+/* ---- render helpers ------------------------------------------------------ */
+
+function TagRow({ items, theme }: { items: string[]; theme: Theme }) {
+  return (
+    <div className="flex flex-wrap" style={{ gap: 12, marginTop: 20 }}>
+      {items.map((tag) => (
+        <span
+          key={tag}
+          style={{
+            fontFamily: mono,
+            fontSize: 12,
+            fontWeight: 500,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: theme.sub,
+            border: `1px solid ${theme.rule}`,
+            borderRadius: 999,
+            padding: "6px 14px",
+          }}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ColumnGroup({ columns, theme }: { columns: Column[]; theme: Theme }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 32 }}>
+      {columns.map((col) => (
+        <div key={col.label}>
+          <span style={{ display: "block", fontFamily: sans, fontSize: 16, fontWeight: 600, letterSpacing: "-0.01em", color: theme.ink }}>{col.label}</span>
+          <Rule color={theme.ruleStrong} mt={12} mb={12} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {col.items.map((item) => (
+              <p key={item} style={{ margin: 0, fontFamily: sans, fontSize: 14, lineHeight: 1.55, color: theme.sub }}>
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function ChapterBlock({ c }: { c: Chapter }) {
   const t = c.theme;
   return (
-    <Band theme={t} style={{ padding: "56px 24px" }}>
+    <Band theme={t} id={c.id} style={{ padding: "56px 24px" }} reveal>
       <div className="md:px-[72px] md:py-[64px]">
-        {/* header */}
+        {/* header / hero */}
         <div className={GRID}>
           <div>
             <span style={{ fontFamily: mono, fontSize: 48, fontWeight: 600, lineHeight: 1, color: t.num }}>{c.num}</span>
-            <span className="block mt-1" style={{ fontFamily: mono, fontSize: 13, fontWeight: 500, letterSpacing: "0.06em", color: t.sub }}>{c.poweredBy}</span>
+            <span className="block mt-1" style={{ fontFamily: mono, fontSize: 13, fontWeight: 500, letterSpacing: "0.06em", color: t.sub }}>{c.kicker}</span>
           </div>
           <div>
-            <h2 style={{ margin: 0, fontFamily: sans, fontSize: 34, lineHeight: 1.2, fontWeight: 600, letterSpacing: "-0.015em", color: t.ink }}>{c.h2}</h2>
-            <p style={{ margin: "20px 0 0", fontFamily: sans, fontSize: 18, lineHeight: 1.6, fontWeight: 500, color: t.ink }}>{c.sub}</p>
-            {c.problem ? <p style={{ margin: "28px 0 0", fontFamily: sans, fontSize: 17, lineHeight: 1.7, color: t.sub }}>{c.problem}</p> : null}
+            <h2 style={{ margin: 0, fontFamily: sans, fontSize: 34, lineHeight: 1.2, fontWeight: 600, letterSpacing: "-0.015em", color: t.ink }}>{c.heroHeadline}</h2>
+            <p style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 20, lineHeight: 1.5, fontWeight: 500, color: t.ink }}>{c.heroSub}</p>
+            <p style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 17, lineHeight: 1.7, color: t.sub }}>{c.heroBody}</p>
+            <TagRow items={c.tags} theme={t} />
             <Rule color={t.ruleStrong} mt={40} />
           </div>
         </div>
 
-        {/* capabilities */}
-        {c.caps.map((cap, i) => (
-          <div key={cap.lead} className={GRID} style={{ marginTop: i === 0 ? 32 : 0 }}>
-            {cap.tag.trim() ? <MarginTag text={cap.tag} color={cap.orange ? SIGNAL : t.sub} /> : <span aria-hidden="true" className="hidden md:block" />}
-            <div>
-              <p style={{ margin: 0, fontFamily: sans, fontSize: 17, lineHeight: 1.7, color: t.ink }}>
-                <b style={{ fontWeight: 600 }}>{cap.lead}</b>{cap.body ? " " + cap.body : ""}
-              </p>
-              <Rule color={i === c.caps.length - 1 ? t.ruleStrong : t.rule} mt={20} />
+        {/* the problem */}
+        <div className={GRID} style={{ marginTop: 40 }}>
+          <MarginTag text="THE PROBLEM" color={t.sub} />
+          <div>
+            <h3 style={{ margin: 0, fontFamily: sans, fontSize: 24, fontWeight: 600, letterSpacing: "-0.01em", color: t.ink }}>{c.problemTitle}</h3>
+            <p style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 17, lineHeight: 1.7, color: t.sub }}>{c.problemIntro}</p>
+            <div style={{ marginTop: 24, borderTop: `1px solid ${t.rule}` }}>
+              {c.challenges.map((ch, i) => (
+                <div key={ch} style={{ padding: "16px 0", borderBottom: i === c.challenges.length - 1 ? `1px solid ${t.ruleStrong}` : `1px solid ${t.rule}` }}>
+                  <p style={{ margin: 0, fontFamily: sans, fontSize: 15, lineHeight: 1.6, color: t.ink }}>{ch}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ margin: "20px 0 0", fontFamily: sans, fontSize: 16, lineHeight: 1.6, fontWeight: 500, color: t.ink }}>
+              <b style={{ fontWeight: 600 }}>Result: </b>{c.problemResult}
+            </p>
+          </div>
+        </div>
+
+        {/* how we solve it */}
+        <div className={GRID} style={{ marginTop: 48 }}>
+          <MarginTag text="HOW WE SOLVE THIS" color={t.sub} />
+          <div>
+            <h3 style={{ margin: 0, fontFamily: sans, fontSize: 24, fontWeight: 600, letterSpacing: "-0.01em", color: t.ink }}>{c.solveTitle}</h3>
+            <p style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 17, lineHeight: 1.7, color: t.sub }}>{c.solveBody}</p>
+            <p style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 18, fontWeight: 600, letterSpacing: "-0.01em", color: t.ink }}>{c.solveTagline}</p>
+            <Rule color={t.ruleStrong} mt={28} />
+          </div>
+        </div>
+
+        {/* four signals */}
+        <div className={GRID} style={{ marginTop: 40 }}>
+          <MarginTag text="WHAT THE SYSTEM SEES" color={t.sub} />
+          <div>
+            <h3 style={{ margin: 0, fontFamily: sans, fontSize: 22, fontWeight: 600, letterSpacing: "-0.01em", color: t.ink }}>{c.signalsTitle}</h3>
+            <div style={{ marginTop: 20 }}>
+              {c.signals.map((s, i) => (
+                <div key={s.label} style={{ padding: "18px 0", borderTop: i === 0 ? `1px solid ${t.ruleStrong}` : `1px solid ${t.rule}`, borderBottom: i === c.signals.length - 1 ? `1px solid ${t.ruleStrong}` : undefined }}>
+                  <p style={{ margin: 0, fontFamily: sans, fontSize: 17, lineHeight: 1.7, color: t.ink }}>
+                    <b style={{ fontWeight: 600 }}>{s.label}.</b> {s.body}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+        </div>
 
         {/* figure */}
         <div className={GRID} style={{ marginTop: 40 }}>
@@ -274,73 +416,46 @@ function ChapterBlock({ c }: { c: Chapter }) {
           </div>
         </div>
 
-        {/* register */}
-        {c.register ? (
-          <div className={GRID} style={{ marginTop: 48 }}>
-            <MarginTag text={c.registerLabel ?? "REGISTER"} color={t.sub} />
-            <div>
-              <Rule color={t.ruleStrong} />
-              {c.register.map(([k, v], i) => (
-                <div key={k}>
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: 16, padding: "14px 0", fontFamily: mono, fontSize: 14, color: t.ink }}>
-                    <span>{k}</span>
-                    <span style={{ textAlign: "right" }}>{v}</span>
-                  </div>
-                  <Rule color={i === c.register!.length - 1 ? t.ruleStrong : t.rule} />
-                </div>
-              ))}
-              {c.registerFootnote ? <p style={{ margin: "12px 0 0", fontFamily: mono, fontSize: 12, fontStyle: "italic", color: t.sub }}>{c.registerFootnote}</p> : null}
-            </div>
-          </div>
-        ) : null}
-
-        {/* why / platform advantage */}
+        {/* works for everything */}
         <div className={GRID} style={{ marginTop: 48 }}>
-          <MarginTag text={c.whyLabel} color={t.sub} />
+          <MarginTag text={c.worksEyebrow} color={t.sub} />
           <div>
-            <Rule color={t.ruleStrong} />
-            {c.why.map((w, i) => (
-              <div key={w}>
-                <p style={{ margin: "14px 0", fontFamily: sans, fontSize: 15, lineHeight: 1.6, color: t.ink }}>{w}</p>
-                <Rule color={i === c.why.length - 1 ? t.ruleStrong : t.rule} />
-              </div>
-            ))}
-            {c.whyFootnote ? <p style={{ margin: "16px 0 0", fontFamily: mono, fontSize: 13, fontStyle: "italic", color: t.sub }}>{c.whyFootnote}</p> : null}
+            <h3 style={{ margin: 0, fontFamily: sans, fontSize: 22, fontWeight: 600, letterSpacing: "-0.01em", color: t.ink }}>{c.worksHeadline}</h3>
+            <TagRow items={c.worksItems} theme={t} />
+            <p style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 15, lineHeight: 1.6, color: t.sub }}>{c.worksNote}</p>
+            <Rule color={t.ruleStrong} mt={28} />
           </div>
         </div>
 
-        {/* quote */}
-        {c.quote ? (
-          <div className={GRID} style={{ marginTop: 48 }}>
-            <span aria-hidden="true" className="hidden md:block" />
-            <blockquote style={{ margin: 0, paddingLeft: 24, borderLeft: `2px solid ${t.ink}`, fontFamily: sans, fontSize: 20, lineHeight: 1.5, fontStyle: "italic", fontWeight: 500, color: t.ink }}>
-              {c.quote.text}
-              <footer style={{ marginTop: 12, fontFamily: mono, fontSize: 13, fontStyle: "normal", fontWeight: 400, color: t.sub }}>{c.quote.cite}</footer>
-            </blockquote>
-          </div>
-        ) : null}
+        {/* operational intelligence — 3 columns */}
+        <div className={GRID} style={{ marginTop: 48 }}>
+          <MarginTag text="OPERATIONAL INTELLIGENCE" color={t.sub} />
+          <ColumnGroup columns={c.capColumns} theme={t} />
+        </div>
 
-        {/* sidebar */}
-        {c.sidebar ? (
-          <div className={GRID} style={{ marginTop: 48 }}>
-            <MarginTag text="SIDEBAR" color={t.sub} />
-            <div style={{ border: `1px solid rgba(244,245,247,0.24)`, padding: 24, boxSizing: "border-box" }}>
-              <span className="block" style={{ fontFamily: mono, fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", color: t.sub }}>{c.sidebar.label}</span>
-              <p style={{ margin: "12px 0 0", fontFamily: sans, fontSize: 15, lineHeight: 1.6, color: t.ink }}>{c.sidebar.text}</p>
-              <div className="mt-4 flex flex-col gap-2 md:flex-row md:gap-8" style={{ fontFamily: mono, fontSize: 13, color: t.sub }}>
-                {c.sidebar.stats.map((s) => <span key={s}>{s}</span>)}
-              </div>
+        {/* closing / bottom-of-section CTA — kept short since the stats +
+            contact line are identical for every vertical; those live once in
+            the page-level Closing instead of repeating per chapter. */}
+        <div className={GRID} style={{ marginTop: 56 }}>
+          <span aria-hidden="true" className="hidden md:block" />
+          <div style={{ border: `1px solid ${t.rule}`, padding: 32, boxSizing: "border-box" }}>
+            <p style={{ margin: 0, fontFamily: sans, fontSize: 22, lineHeight: 1.4, fontWeight: 600, letterSpacing: "-0.01em", color: t.ink }}>{c.closingHeadline}</p>
+            <p style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 15, lineHeight: 1.6, color: t.sub }}>{c.closingBody}</p>
+            <div style={{ marginTop: 24 }}>
+              <UnderlineDraw href="/contact" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.ink, paddingBottom: 4 }}>
+                Book a Live Demo →
+              </UnderlineDraw>
             </div>
           </div>
-        ) : null}
+        </div>
       </div>
     </Band>
   );
 }
 
-const NODES = ["VESSEL", "GATE", "YARD", "DOCK", "LINE"];
-const INTRO_PARA =
-  "Every handoff in a supply chain is a place where accountability gets fuzzy: was the damage there at gate-in, or did it happen on the crane? Was the shortage at stuffing, or at the warehouse dock? Each party runs its own systems, its own paperwork, its own version of events — and disputes get resolved by whoever has the better story, not the better record.";
+/* ---- page-level intro / closing -------------------------------------------- */
+
+const VERTICALS = CHAPTERS.map((c) => ({ id: c.id, label: c.kicker }));
 
 function Intro() {
   const t = DARK;
@@ -349,24 +464,25 @@ function Intro() {
       <div className="md:px-[72px] md:py-[96px]">
         <span className="block" style={{ fontFamily: mono, fontSize: 13, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: t.sub }}>INDUSTRIES</span>
         <h1 style={{ margin: "18px 0 0", maxWidth: 900, fontFamily: sans, fontSize: 44, lineHeight: 1.16, fontWeight: 600, letterSpacing: "-0.02em", color: t.ink }} className="md:text-[56px]">
-          One vision layer, vessel to gate to dock to line.
+          Built for how your operation actually runs.
         </h1>
         <p style={{ margin: "24px 0 0", maxWidth: 680, fontFamily: sans, fontSize: 19, lineHeight: 1.6, fontWeight: 500, color: t.ink }}>
-          The same checkpoint record follows cargo across every node it moves through — port, warehouse, factory — on the cameras already in place at each one.
+          From the gate to the line to the last mile — AI vision tuned to four industries, not a generic camera add-on.
         </p>
 
-        {/* node-chain spine */}
+        {/* quick nav — deep-links to each vertical below */}
         <div aria-hidden="true" style={{ marginTop: 56, height: 1, background: "rgba(244,245,247,0.28)", maxWidth: 1248 }} />
-        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-4 md:mt-2 md:flex-nowrap md:justify-between" style={{ maxWidth: 1248 }}>
-          {NODES.map((n, i) => (
-            <span key={n} className="flex items-center gap-2 md:flex-col md:items-start md:gap-2">
-              <span aria-hidden="true" className="hidden md:block" style={{ width: 8, height: 8, borderRadius: 999, background: t.sub }} />
-              <span style={{ fontFamily: mono, fontSize: 14, fontWeight: 600, letterSpacing: "0.06em", color: t.ink }}>{i === 0 ? n : `→ ${n}`}</span>
-            </span>
+        <div className="mt-4 flex flex-wrap gap-x-8 gap-y-4 md:mt-2 md:flex-nowrap md:justify-between" style={{ maxWidth: 1248 }}>
+          {VERTICALS.map((v) => (
+            <UnderlineDraw
+              key={v.id}
+              href={`#${v.id}`}
+              style={{ fontFamily: mono, fontSize: 14, fontWeight: 600, letterSpacing: "0.06em", color: t.ink }}
+            >
+              {v.label}
+            </UnderlineDraw>
           ))}
         </div>
-
-        <p style={{ margin: "48px 0 0", maxWidth: 935, fontFamily: sans, fontSize: 17, lineHeight: 1.7, color: t.sub }}>{INTRO_PARA}</p>
       </div>
     </Band>
   );
@@ -375,7 +491,7 @@ function Intro() {
 function Closing() {
   const t = DARK;
   return (
-    <Band theme={t} style={{ padding: "96px 24px 120px" }}>
+    <Band theme={t} style={{ padding: "96px 24px 120px" }} reveal>
       <div className="text-center md:px-[72px] md:py-[64px]">
         <div aria-hidden="true" className="hidden md:block" style={{ position: "absolute", left: 96, bottom: 96, width: 9, height: 9 }}>
           <div style={{ position: "absolute", left: 0, width: 8, top: 4, height: 1, background: t.cross }} />
@@ -386,12 +502,21 @@ function Closing() {
           <div style={{ position: "absolute", top: 0, height: 8, left: 4, width: 1, background: t.cross }} />
         </div>
         <p style={{ margin: "0 auto", maxWidth: 700, fontFamily: sans, fontSize: 26, lineHeight: 1.5, fontWeight: 600, color: t.ink }} className="md:text-[28px]">
-          Join 25+ sites running 400,000 reads a day. Bring a feed from any node in your chain. We&apos;ll read it live.
+          Join industry leaders running 400,000 reads a day. Bring a CCTV feed from any node in your chain. We&apos;ll read it live.
         </p>
-        <div className="mt-10 flex flex-col items-center gap-5 md:flex-row md:justify-center md:gap-10">
-          <a href="/contact" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.ink, borderBottom: `1px solid ${t.ink}`, paddingBottom: 4, textDecoration: "none" }}>Talk to us →</a>
-          <a href="/platform" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.sub, borderBottom: `1px solid rgba(244,245,247,0.3)`, paddingBottom: 4, textDecoration: "none" }}>Explore the platform →</a>
+        <div className="mt-10 flex flex-wrap items-center justify-center" style={{ gap: 32 }}>
+          {CLOSING_STATS.map(([n, label]) => (
+            <div key={label}>
+              <span style={{ display: "block", fontFamily: sans, fontSize: 28, fontWeight: 600, letterSpacing: "-0.01em", color: t.ink }}>{n}</span>
+              <span style={{ display: "block", marginTop: 2, fontFamily: mono, fontSize: 12, letterSpacing: "0.04em", textTransform: "uppercase", color: t.sub }}>{label}</span>
+            </div>
+          ))}
         </div>
+        <div className="mt-10 flex flex-col items-center gap-5 md:flex-row md:justify-center md:gap-10">
+          <UnderlineDraw href="/contact" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.ink, paddingBottom: 4 }}>Talk to us →</UnderlineDraw>
+          <UnderlineDraw href="/platform" style={{ fontFamily: mono, fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: t.sub, paddingBottom: 4 }}>Explore the platform →</UnderlineDraw>
+        </div>
+        <p style={{ margin: "24px 0 0", fontFamily: mono, fontSize: 12, letterSpacing: "0.04em", color: t.sub }}>{CONTACT}</p>
       </div>
     </Band>
   );

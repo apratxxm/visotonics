@@ -1,4 +1,10 @@
 import type { CSSProperties } from "react";
+import { Reveal } from "@/components/motion";
+
+/* Every section here sets its own inline background (no shared ambient canvas
+   behind them), so Reveal wraps the inner desktop/mobile content div rather
+   than the <section> — otherwise the section's own background would fade
+   in with everything else and briefly show the page background through it. */
 
 /* ---------------------------------------------------------------------------
    /platform/viso-data — three product sections, stacked.
@@ -76,7 +82,7 @@ function CompressionAI() {
       style={{ position: "relative", background: CANVAS_LIGHT, boxSizing: "border-box", overflow: "hidden" }}
     >
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 900, padding: "60px 64px 64px" }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 900, padding: "60px 64px 64px" }}>
         <LightCorners />
         {/* header lockup, centred */}
         <div style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
@@ -110,10 +116,10 @@ function CompressionAI() {
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 24px 56px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 24px 56px" }}>
         <span style={{ display: "block", textAlign: "center", fontFamily: mono, fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: TXT_L2 }}>
           COMPRESSION AI
         </span>
@@ -131,7 +137,7 @@ function CompressionAI() {
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -154,7 +160,7 @@ function TraceAI() {
       style={{ position: "relative", background: CANVAS_LIGHT, boxSizing: "border-box", overflow: "hidden", borderTop: `1px solid ${RULE_L}` }}
     >
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 900, padding: "88px 64px 80px" }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 900, padding: "88px 64px 80px" }}>
         <LightCorners />
         <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 40 }}>
           <div style={{ maxWidth: 700 }}>
@@ -202,10 +208,10 @@ function TraceAI() {
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 24px 56px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 24px 56px" }}>
         <span style={{ display: "block", textAlign: "center", fontFamily: mono, fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: TXT_L2 }}>TRACE AI</span>
         <h2 style={{ margin: "16px 0 0", textAlign: "center", fontFamily: sans, fontSize: 28, lineHeight: 1.18, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_L1 }}>
           Ask a question. Get the timeline that answers it.
@@ -226,7 +232,7 @@ function TraceAI() {
             <div aria-hidden="true" style={{ margin: "16px 0 0", width: "100%", height: 1, background: i === TRACE_QUERIES.length - 1 ? INK_L : RULE_L }} />
           </div>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -254,7 +260,7 @@ function DetectAI() {
       style={{ position: "relative", background: CANVAS_DARK, boxSizing: "border-box", overflow: "hidden" }}
     >
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ ...SHEET, minHeight: 900, padding: "64px 64px 72px" }}>
+      <Reveal as="div" className="hidden md:block" style={{ ...SHEET, minHeight: 900, padding: "64px 64px 72px" }}>
         <LightCorners />
         {/* copy lockup */}
         <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 40 }}>
@@ -307,10 +313,10 @@ function DetectAI() {
             It alerts and logs. It does not deter — it fires your alarm, your lights, your PA. We don&apos;t sell you a strobe.
           </p>
         </div>
-      </div>
+      </Reveal>
 
       {/* MOBILE */}
-      <div className="md:hidden" style={{ position: "relative", padding: "48px 24px 56px" }}>
+      <Reveal as="div" className="md:hidden" style={{ position: "relative", padding: "48px 24px 56px" }}>
         <span style={{ display: "block", textAlign: "center", fontFamily: mono, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: TXT_D2, paddingBottom: 18 }}>DETECT AI</span>
         <h2 style={{ margin: 0, fontFamily: sans, fontSize: 26, lineHeight: 1.25, fontWeight: 600, color: TXT_D1 }}>
           A guard cannot watch forty feeds. The platform watches all of them.
@@ -347,7 +353,7 @@ function DetectAI() {
         <p style={{ margin: "16px 0 0", fontFamily: mono, fontSize: 13, lineHeight: 1.6, fontWeight: 400, color: TXT_D2 }}>
           It alerts and logs. It does not deter — it fires your alarm, your lights, your PA. We don&apos;t sell you a strobe.
         </p>
-      </div>
+      </Reveal>
     </section>
   );
 }
