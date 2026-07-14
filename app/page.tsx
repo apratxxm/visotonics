@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { CountUp, Reveal, UnderlineDraw } from "@/components/motion";
+import { TestimonialPagerDesktop, TestimonialPagerMobile } from "@/components/testimonial-pager";
 import DecryptedText from "@/components/decrypted-text";
 
 /* ---------------------------------------------------------------------------
@@ -639,28 +640,6 @@ function ProofPartners() {
    placeholder. Section framing (eyebrow, headline, CTA, pager) is kept.
    ========================================================================= */
 
-const PH_MONO: CSSProperties = {
-  fontFamily: mono,
-  fontSize: 14,
-  lineHeight: 1.6,
-  letterSpacing: "0.02em",
-  color: TXT_D2,
-};
-
-function TestimonialPlaceholderCard() {
-  return (
-    <div style={{ boxSizing: "border-box", background: DARK_SURFACE, border: `1px solid ${BORDER_D}`, borderRadius: 8, padding: 50, display: "flex", flexDirection: "column", gap: 24 }}>
-      <div style={{ fontFamily: sans, fontSize: 22, lineHeight: 1.5, fontWeight: 400, letterSpacing: "-0.01em", color: TXT_D1, maxWidth: "30em" }}>
-        “Rollout was faster than we expected — <span style={{ color: TXT_D2 }}>no changes to our existing crane workflow. The dashboard gives our team visibility we never had before.”</span>
-      </div>
-      <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 4 }}>
-        <span style={{ fontFamily: sans, fontSize: 17, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>Yard Supervisor</span>
-        <span style={{ fontFamily: sans, fontSize: 15, color: TXT_L2 }}>CFS Mundra</span>
-      </div>
-    </div>
-  );
-}
-
 function Testimonials() {
   return (
     <section style={{ background: DARK }}>
@@ -690,21 +669,7 @@ function Testimonials() {
           </div>
 
           <div style={{ marginTop: 40, borderTop: `1px solid ${BORDER_D}`, paddingTop: 40, display: "grid", gridTemplateColumns: "3fr 1fr", gap: 0 }}>
-            <TestimonialPlaceholderCard />
-            <div style={{ boxSizing: "border-box", borderLeft: `1px solid ${BORDER_D}`, display: "flex", flexDirection: "column", padding: "0 0 0 24px" }}>
-              <span style={{ fontFamily: mono, fontSize: 32, letterSpacing: "0.02em", color: TXT_L2, textAlign: "right" }}>—/—&nbsp;</span>
-              <div style={{ marginTop: "auto", display: "flex", borderTop: `1px solid ${BORDER_D}`, borderBottom: `1px solid ${BORDER_D}` }}>
-                <span style={{ flex: 1, display: "flex", alignItems: "center", gap: 10, padding: "18px 17px", fontSize: 16, fontWeight: 500, color: TXT_D2 }}>
-                  <span style={{ fontFamily: mono, fontSize: 20 }}>←</span> Previous
-                </span>
-                <span style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 10, padding: "18px 17px", borderLeft: `1px solid ${BORDER_D}`, fontSize: 16, fontWeight: 500, color: TXT_D1 }}>
-                  Next <span style={{ fontFamily: mono, fontSize: 20 }}>→</span>
-                </span>
-              </div>
-              <UnderlineDraw href="/contact" style={{ padding: "20px 26px", fontSize: 16, fontWeight: 500, color: TXT_D1 }}>
-                Share your experience with Visotonics
-              </UnderlineDraw>
-            </div>
+            <TestimonialPagerDesktop />
           </div>
         </div>
       </Reveal>
@@ -716,15 +681,9 @@ function Testimonials() {
           See how industrial sites run inspection <span style={{ color: TXT_D2 }}>— without stopping the operations.</span>
         </h2>
         <div style={{ margin: "24px 0 0", borderTop: `1px solid ${BORDER_D}`, paddingTop: 24 }}>
-          <TestimonialPlaceholderCard />
-          <div style={{ marginTop: 20, display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: `1px solid ${BORDER_D}`, borderBottom: `1px solid ${BORDER_D}`, padding: "14px 0" }}>
-            <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 15, fontWeight: 500, color: TXT_D2 }}><span style={{ fontFamily: mono }}>←</span> Previous</span>
-            <span style={{ fontFamily: mono, fontSize: 15, color: TXT_L2 }}>—/—</span>
-            <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 15, fontWeight: 500, color: TXT_D1 }}>Next <span style={{ fontFamily: mono }}>→</span></span>
-          </div>
+          <TestimonialPagerMobile />
           <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 16 }}>
             <a href="/resources/case-studies" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 48, background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>See case studies</a>
-            <UnderlineDraw href="/contact" style={{ alignSelf: "center", fontSize: 15, fontWeight: 500, color: TXT_D1 }}>Share your experience with Visotonics</UnderlineDraw>
           </div>
         </div>
       </Reveal>
