@@ -391,11 +391,11 @@ export function SiteNav() {
                     <span style={caption}>AI vision tuned to four industries.</span>
                   </div>
                   <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
-                    <Link href="/industries" className="hover:opacity-80" style={caption}>
+                    <Link href="/industries" className="dt-underline-draw" style={{ ...caption, alignSelf: "flex-start" }}>
                       Home
                     </Link>
                     {INDUSTRIES_LINKS.map((l) => (
-                      <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
+                      <Link key={l.name} href={l.href} className="dt-underline-draw" style={{ ...caption, alignSelf: "flex-start" }}>
                         {l.name}
                       </Link>
                     ))}
@@ -419,14 +419,14 @@ export function SiteNav() {
                       style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s4)" }}
                     >
                       <div className="flex items-baseline justify-between">
-                        <Link href={env.href} className="hover:opacity-80" style={columnHeading}>
+                        <Link href={env.href} className="dt-underline-draw" style={{ ...columnHeading, alignSelf: "flex-start" }}>
                           {env.name}
                         </Link>
                         <span style={monoLabel}>{env.num}</span>
                       </div>
                       <div className="flex flex-col" style={{ gap: "var(--spacing-s3)" }}>
                         {env.products.map((p) => (
-                          <a key={p} href={productHref(env.href, p)} className="hover:opacity-80" style={caption}>
+                          <a key={p} href={productHref(env.href, p)} className="dt-underline-draw" style={{ ...caption, alignSelf: "flex-start" }}>
                             {p}
                           </a>
                         ))}
@@ -448,7 +448,7 @@ export function SiteNav() {
                   </div>
                   <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
                     {[...RESOURCES_COL_1, ...RESOURCES_COL_2].map((l) => (
-                      <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
+                      <Link key={l.name} href={l.href} className="dt-underline-draw" style={{ ...caption, alignSelf: "flex-start" }}>
                         {l.name}
                       </Link>
                     ))}
@@ -468,7 +468,7 @@ export function SiteNav() {
                   </div>
                   <div className="flex flex-col border-t" style={{ borderColor: "var(--border-dark-strong)", paddingTop: "var(--spacing-s4)", gap: "var(--spacing-s3)" }}>
                     {[...COMPANY_COL_1, ...COMPANY_COL_2].map((l) => (
-                      <Link key={l.name} href={l.href} className="hover:opacity-80" style={caption}>
+                      <Link key={l.name} href={l.href} className="dt-underline-draw" style={{ ...caption, alignSelf: "flex-start" }}>
                         {l.name}
                       </Link>
                     ))}
