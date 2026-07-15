@@ -26,6 +26,9 @@ const eyebrow: CSSProperties = {
 
 const OFFICES = [
   { region: "INDIA · UTTAR PRADESH", city: "Lucknow", note: "(Headquarters)" },
+  { region: "INDIA · MAHARASHTRA", city: "Mumbai", note: "" },
+  { region: "INDIA · GUJARAT", city: "Ahmedabad", note: "" },
+  { region: "INDIA · ODISHA", city: "Bhubaneshwar", note: "" },
   { region: "UNITED STATES · D.C.", city: "Washington", note: "" },
 ];
 
@@ -101,7 +104,7 @@ function OfficesGlobe() {
       <div className="hidden md:block" style={{ position: "relative", maxWidth: 1440, margin: "0 auto", minHeight: 900, boxSizing: "border-box", padding: "64px 96px 96px" }}>
         <span style={eyebrow}>Where we operate</span>
         <h1 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 40, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
-          Two sites, one vision layer.
+          Five sites, one vision layer.
         </h1>
 
         <div style={{ position: "relative", marginTop: 48, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -121,6 +124,15 @@ function OfficesGlobe() {
               <circle cx={790} cy={335} r={6} fill={SIGNAL} />
               <text x={790} y={312} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>LUCKNOW</text>
               <text x={790} y={356} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
+
+              <circle cx={735} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
+              <text x={735} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>MUMBAI</text>
+
+              <circle cx={705} cy={355} r={4} fill={TXT_D1} opacity={0.85} />
+              <text x={678} y={352} textAnchor="end" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>AHMEDABAD</text>
+
+              <circle cx={845} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
+              <text x={845} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>BHUBANESHWAR</text>
             </svg>
           </div>
         </div>
@@ -135,7 +147,7 @@ function OfficesGlobe() {
             paddingTop: 24,
           }}
         >
-          <span style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", color: "#6B7078" }}>2 SITES · 2 COUNTRIES</span>
+          <span style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", color: "#6B7078" }}>5 SITES · 2 COUNTRIES</span>
           <a href="#offices-list" style={{ fontSize: 15, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 3 }}>
             View full list
           </a>
@@ -146,7 +158,7 @@ function OfficesGlobe() {
       <div className="md:hidden" style={{ padding: "48px 24px 64px" }}>
         <span style={{ ...eyebrow, fontSize: 11 }}>Where we operate</span>
         <h1 style={{ margin: "16px 0 0", fontFamily: sans, fontSize: 32, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
-          Two sites, one vision layer.
+          Five sites, one vision layer.
         </h1>
 
         <div style={{ position: "relative", marginTop: 40 }}>
@@ -165,6 +177,15 @@ function OfficesGlobe() {
             <circle cx={790} cy={335} r={6} fill={SIGNAL} />
             <text x={790} y={312} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>LUCKNOW</text>
             <text x={790} y={356} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
+
+            <circle cx={735} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
+            <text x={735} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>MUMBAI</text>
+
+            <circle cx={705} cy={355} r={4} fill={TXT_D1} opacity={0.85} />
+            <text x={678} y={352} textAnchor="end" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>AHMEDABAD</text>
+
+            <circle cx={845} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
+            <text x={845} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>BHUBANESHWAR</text>
           </svg>
         </div>
 
@@ -178,7 +199,7 @@ function OfficesGlobe() {
             paddingTop: 20,
           }}
         >
-          <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.06em", color: "#6B7078" }}>2 SITES · 2 COUNTRIES</span>
+          <span style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.06em", color: "#6B7078" }}>5 SITES · 2 COUNTRIES</span>
         </div>
       </div>
     </div>

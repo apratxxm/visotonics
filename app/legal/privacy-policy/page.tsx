@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
           ],
         },
       ]}
-      contact="If you have any questions or concerns about this Privacy Policy or how we handle your personal information, please contact us at contact@excl.ai"
+      contact="If you have any questions or concerns about this Privacy Policy or how we handle your personal information, please contact us at contact@excl.ai — Registered address (India, Headquarters): Plot No-11, KH. No.-501SA-502SA, Shukla Vihar, Devpur, Rajajipuram, Lucknow, Uttar Pradesh-226017. U.S. office: 1317, 191ST SE Bothell, Washington, USA 98012."
     />
   );
 }
