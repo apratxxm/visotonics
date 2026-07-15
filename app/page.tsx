@@ -1,8 +1,19 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { CountUp, Reveal, UnderlineDraw } from "@/components/motion";
 import { TestimonialPagerDesktop, TestimonialPagerMobile } from "@/components/testimonial-pager";
+import { DrawSchematic } from "@/components/draw-schematic";
 import DecryptedText from "@/components/decrypted-text";
+
+// inlined (not <Image>) so the lead-card schematic can draw itself in via
+// DrawSchematic, same reveal used for every flagship SVG on the platform
+// pages — preserveAspectRatio stands in for the old object-fit: cover/top.
+const LEADCARD_SVG_RAW = readFileSync(path.join(process.cwd(), "public", "assets", "home-leadcard-schematic.svg"), "utf8");
+function leadcardSvg(preserveAspectRatio: string) {
+  return LEADCARD_SVG_RAW.replace(/<svg\b/, `<svg preserveAspectRatio="${preserveAspectRatio}" style="display:block;width:100%;height:100%"`);
+}
 
 /* ---------------------------------------------------------------------------
    Visotonics home page — Drafting Table
@@ -340,17 +351,15 @@ function HowItWorks() {
             {/* lead light card, cols 1-2 rows 1-2 */}
             <div style={{ gridColumn: "1 / span 2", gridRow: "1 / span 2", boxSizing: "border-box", background: LIGHT_SURFACE, borderRadius: 8, padding: 40, display: "flex", flexDirection: "column", justifyContent: "flex-end", overflow: "hidden" }}>
               <div style={{ flex: 1, minHeight: 0, marginBottom: 24, borderRadius: 6, overflow: "hidden", display: "flex" }}>
-                <Image
-                  src="/assets/home-leadcard-schematic.svg"
-                  alt="Existing CCTV covering yard, warehouse and factory — one vision layer, no new hardware"
-                  width={800}
-                  height={560}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", borderRadius: 6 }}
+                <DrawSchematic
+                  html={leadcardSvg("xMidYMin slice")}
+                  label="Existing CCTV covering yard, warehouse and factory — one vision layer, no new hardware"
+                  style={{ width: "100%", height: "100%", borderRadius: 6 }}
                 />
               </div>
-              <span style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                <span style={{ fontSize: 34, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>From the CCTV you already own.</span>
-                <span style={{ fontSize: 22, lineHeight: 1.5, color: TXT_L2, maxWidth: "34ch" }}>
+              <span style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                <span style={{ fontSize: 42, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>From the CCTV you already own.</span>
+                <span style={{ fontSize: 26, lineHeight: 1.5, color: TXT_L2, maxWidth: "34ch" }}>
                   No new hardware. The platform runs on the cameras already watching your yard, warehouse and factory.
                 </span>
               </span>
@@ -398,12 +407,10 @@ function HowItWorks() {
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ boxSizing: "border-box", background: LIGHT_SURFACE, borderRadius: 8, padding: 24, display: "flex", flexDirection: "column", gap: 12 }}>
               <div style={{ borderRadius: 6, overflow: "hidden", display: "flex" }}>
-                <Image
-                  src="/assets/home-leadcard-schematic.svg"
-                  alt="Existing CCTV covering yard, warehouse and factory — one vision layer, no new hardware"
-                  width={800}
-                  height={560}
-                  style={{ width: "100%", height: "auto", objectFit: "cover", borderRadius: 6 }}
+                <DrawSchematic
+                  html={leadcardSvg("xMidYMid meet")}
+                  label="Existing CCTV covering yard, warehouse and factory — one vision layer, no new hardware"
+                  style={{ width: "100%", height: "auto", borderRadius: 6 }}
                 />
               </div>
               <span style={{ fontSize: 22, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_L1 }}>From the CCTV you already own.</span>

@@ -93,8 +93,6 @@ const INDUSTRIES_LINKS: LinkItem[] = [
 const LANGUAGES = [
   { code: "EN", name: "English" },
   { code: "HI", name: "हिन्दी" },
-  { code: "AR", name: "العربية" },
-  { code: "ES", name: "Español" },
 ] as const;
 
 const monoLabel: CSSProperties = {
