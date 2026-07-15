@@ -116,23 +116,25 @@ function OfficesGlobe() {
               style={{ display: "block", width: "100%", height: "auto", filter: "invert(1)", mixBlendMode: "screen", opacity: 0.85 }}
             />
             <svg viewBox="0 0 1094 700" style={{ position: "absolute", inset: 0, width: "109.4%", height: "105.4%", left: "-7.4%", top: "-6.6%" }} fontFamily={mono}>
-              <path d="M 295 275 Q 520 160 790 335" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 5" fill="none" opacity={0.55} />
+              <path d="M 295 275 Q 515 165 797 330" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 5" fill="none" opacity={0.55} />
               <circle cx={295} cy={275} r={6} fill={TXT_D1} />
-              <text x={295} y={252} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>WASHINGTON</text>
-              <text x={295} y={296} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>U.S.A.</text>
+              <text x={295} y={254} textAnchor="middle" fill={TXT_D1} fontSize={12} letterSpacing={1}>WASHINGTON</text>
+              <text x={295} y={294} textAnchor="middle" fill={TXT_D2} fontSize={9} letterSpacing={0.5} opacity={0.65}>U.S.A.</text>
 
-              <circle cx={790} cy={335} r={6} fill={SIGNAL} />
-              <text x={790} y={312} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>LUCKNOW</text>
-              <text x={790} y={356} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
+              {/* India markers — placed via the derived PNG→viewBox mapping
+                  (s = 0.9488·p + (56.05, 43.83), from the 109.4%/105.4% overlay
+                  stretch + preserveAspectRatio letterboxing), against coastline
+                  pixels traced from the source image. Lucknow: north-central
+                  inland; Ahmedabad: Gujarat, SE of the Kathiawar loop; Mumbai:
+                  west coast (same longitude column as Ahmedabad, as in reality);
+                  Bhubaneshwar: east coast. Lucknow (HQ) is the only labeled dot. */}
+              <circle cx={797} cy={330} r={6} fill={SIGNAL} />
+              <text x={797} y={306} textAnchor="middle" fill={TXT_D1} fontSize={12} letterSpacing={1}>LUCKNOW</text>
+              <text x={797} y={318} textAnchor="middle" fill={TXT_D2} fontSize={9} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
 
-              <circle cx={735} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
-              <text x={735} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>MUMBAI</text>
-
-              <circle cx={705} cy={355} r={4} fill={TXT_D1} opacity={0.85} />
-              <text x={678} y={352} textAnchor="end" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>AHMEDABAD</text>
-
-              <circle cx={845} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
-              <text x={845} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>BHUBANESHWAR</text>
+              <circle cx={771} cy={336} r={3} fill={TXT_D1} opacity={0.85} />
+              <circle cx={773} cy={363} r={3} fill={TXT_D1} opacity={0.85} />
+              <circle cx={807} cy={346} r={3} fill={TXT_D1} opacity={0.85} />
             </svg>
           </div>
         </div>
@@ -140,17 +142,11 @@ function OfficesGlobe() {
         <div
           style={{
             marginTop: 48,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
             borderTop: `1px solid ${BORDER_D}`,
             paddingTop: 24,
           }}
         >
           <span style={{ fontFamily: mono, fontSize: 13, letterSpacing: "0.06em", color: "#6B7078" }}>5 SITES · 2 COUNTRIES</span>
-          <a href="#offices-list" style={{ fontSize: 15, fontWeight: 500, color: TXT_D1, textDecoration: "underline", textUnderlineOffset: 3 }}>
-            View full list
-          </a>
         </div>
       </div>
 
@@ -169,23 +165,25 @@ function OfficesGlobe() {
             style={{ display: "block", width: "100%", height: "auto", filter: "invert(1)", mixBlendMode: "screen", opacity: 0.85 }}
           />
           <svg viewBox="0 0 1094 700" style={{ position: "absolute", inset: 0, width: "109.4%", height: "105.4%", left: "-7.4%", top: "-6.6%" }} fontFamily={mono}>
-            <path d="M 295 275 Q 520 160 790 335" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 5" fill="none" opacity={0.55} />
+            <path d="M 295 275 Q 515 165 797 330" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 5" fill="none" opacity={0.55} />
             <circle cx={295} cy={275} r={6} fill={TXT_D1} />
-            <text x={295} y={252} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>WASHINGTON</text>
-            <text x={295} y={296} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>U.S.A.</text>
+            <text x={295} y={254} textAnchor="middle" fill={TXT_D1} fontSize={12} letterSpacing={1}>WASHINGTON</text>
+            <text x={295} y={294} textAnchor="middle" fill={TXT_D2} fontSize={9} letterSpacing={0.5} opacity={0.65}>U.S.A.</text>
 
-            <circle cx={790} cy={335} r={6} fill={SIGNAL} />
-            <text x={790} y={312} textAnchor="middle" fill={TXT_D1} fontSize={14} letterSpacing={1}>LUCKNOW</text>
-            <text x={790} y={356} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
+            {/* India markers — placed via the derived PNG→viewBox mapping
+                (s = 0.9488·p + (56.05, 43.83), from the 109.4%/105.4% overlay
+                stretch + preserveAspectRatio letterboxing), against coastline
+                pixels traced from the source image. Lucknow: north-central
+                inland; Ahmedabad: Gujarat, SE of the Kathiawar loop; Mumbai:
+                west coast (same longitude column as Ahmedabad, as in reality);
+                Bhubaneshwar: east coast. Lucknow (HQ) is the only labeled dot. */}
+            <circle cx={797} cy={330} r={6} fill={SIGNAL} />
+            <text x={797} y={306} textAnchor="middle" fill={TXT_D1} fontSize={12} letterSpacing={1}>LUCKNOW</text>
+            <text x={797} y={318} textAnchor="middle" fill={TXT_D2} fontSize={9} letterSpacing={0.5} opacity={0.65}>HQ · INDIA</text>
 
-            <circle cx={735} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
-            <text x={735} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>MUMBAI</text>
-
-            <circle cx={705} cy={355} r={4} fill={TXT_D1} opacity={0.85} />
-            <text x={678} y={352} textAnchor="end" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>AHMEDABAD</text>
-
-            <circle cx={845} cy={385} r={4} fill={TXT_D1} opacity={0.85} />
-            <text x={845} y={410} textAnchor="middle" fill={TXT_D2} fontSize={11} letterSpacing={0.5} opacity={0.75}>BHUBANESHWAR</text>
+            <circle cx={771} cy={336} r={3} fill={TXT_D1} opacity={0.85} />
+            <circle cx={773} cy={363} r={3} fill={TXT_D1} opacity={0.85} />
+            <circle cx={807} cy={346} r={3} fill={TXT_D1} opacity={0.85} />
           </svg>
         </div>
 
