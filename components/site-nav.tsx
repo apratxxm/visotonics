@@ -17,10 +17,10 @@ const PLATFORM_ENVIRONMENTS = [
       "Gate Vision",
       "Yard Vision",
       "Crane Vision",
-      "Work Vision",
       "Cargo Vision",
-      "Secure Vision",
       "Document Vision",
+      "Work Vision",
+      "Secure Vision",
     ],
   },
   {
@@ -40,7 +40,7 @@ const PLATFORM_ENVIRONMENTS = [
     num: "03",
     name: "Viso Factory",
     href: "/platform/viso-factory",
-    products: ["Production Vision", "Dimension Vision", "Audit Vision", "Secure Vision", "Work Vision"],
+    products: ["Production Vision", "Audit Vision", "Dimension Vision", "Work Vision", "Secure Vision"],
   },
   {
     num: "04",
