@@ -1,8 +1,6 @@
 <svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono',monospace">
 <rect width="800" height="560" fill="#F6F7F8"/>
 
-<line x1="40" y1="56" x2="760" y2="56" stroke="#13151A" opacity="0.18"/>
-
 <g id="camera" stroke="#13151A" fill="none" stroke-width="1">
 <rect x="358" y="86" width="84" height="40" opacity="0.9"/>
 <rect x="342" y="96" width="16" height="20" opacity="0.9"/>
@@ -40,8 +38,8 @@
 </g>
 <rect x="126" y="330" width="52" height="30" stroke="#ED510C" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"/>
 </g>
-<polyline points="152,330 152,296 118,296" stroke="#ED510C" stroke-width="1" fill="none"/>
-<text x="112" y="292" text-anchor="end" fill="#ED510C" font-size="10" letter-spacing="1">DENT</text>
+<polyline points="152,360 152,412 184,412" stroke="#ED510C" stroke-width="1" fill="none"/>
+<text x="190" y="422" fill="#ED510C" font-size="20" letter-spacing="1">DENT</text>
 
 <!-- WAREHOUSE VIEWPORT -->
 <g id="vp-wh">
@@ -70,8 +68,8 @@
 </g>
 <rect x="406" y="320" width="32" height="28" stroke="#ED510C" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"/>
 </g>
-<polyline points="438,334 470,410 502,410" stroke="#ED510C" stroke-width="1" fill="none"/>
-<text x="508" y="414" fill="#ED510C" font-size="10" letter-spacing="1">COUNT ▲</text>
+<polyline points="422,348 422,412 454,412" stroke="#ED510C" stroke-width="1" fill="none"/>
+<text x="460" y="422" fill="#ED510C" font-size="20" letter-spacing="1">COUNT ▲</text>
 
 <!-- FACTORY VIEWPORT -->
 <g id="vp-fct">
@@ -101,8 +99,7 @@
 </g>
 <rect x="618" y="302" width="44" height="42" stroke="#ED510C" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"/>
 </g>
-<polyline points="640,344 640,410 672,410" stroke="#ED510C" stroke-width="1" fill="none"/>
-<text x="678" y="414" fill="#ED510C" font-size="10" letter-spacing="1">INSPECT</text>
+<polyline points="640,344 640,412 672,412" stroke="#ED510C" stroke-width="1" fill="none"/>
+<text x="678" y="422" fill="#ED510C" font-size="20" letter-spacing="1">INSPECT</text>
 
-<line x1="40" y1="452" x2="760" y2="452" stroke="#13151A" opacity="0.18"/>
 </svg>

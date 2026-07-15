@@ -219,28 +219,19 @@ export function SiteFooter() {
           </span>
         </div>
 
-        {/* GIANT WORDMARK */}
+        {/* GIANT WORDMARK — spans the full content column width, not a fixed height */}
         <div
           aria-hidden="true"
-          className="hidden justify-center md:flex"
+          className="hidden md:block"
           style={{ padding: "var(--spacing-s12) 0" }}
         >
-          <span
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "220px",
-              lineHeight: "var(--text-slab--line-height)",
-              fontWeight: "var(--font-weight-slab)",
-              letterSpacing: "var(--tracking-slab)",
-              color: "var(--text-dark-primary)",
-              opacity: 0.09,
-              whiteSpace: "nowrap",
-              userSelect: "none",
-              textTransform: "lowercase",
-            }}
-          >
-            visotonics
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/visotonics-high-resolution-logo-transparent.png"
+            alt=""
+            className="pointer-events-none select-none"
+            style={{ display: "block", width: "100%", height: "auto", filter: "invert(1)", opacity: 0.09 }}
+          />
         </div>
       </div>
     </footer>
