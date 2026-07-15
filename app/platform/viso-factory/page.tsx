@@ -6,6 +6,7 @@ import {
   SectionAudit,
   SectionDimension,
   SectionProduction,
+  SectionProductsOverview,
   SectionSecure,
   SectionWork,
 } from "./sections";
@@ -67,7 +68,7 @@ function Hero() {
       <Cross color={CROSS_D} style={{ left: "calc(100% - 68px)", top: -4 }} />
 
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 860, padding: "104px 64px 0", boxSizing: "border-box" }}>
+      <div className="hidden md:block" style={{ position: "relative", zIndex: 1, padding: "104px 64px 48px", boxSizing: "border-box" }}>
         <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>OUR PLATFORM — YOUR CAMERAS · ON THE LINE</span>
         <h1 style={{ margin: "72px 0 0", paddingLeft: 6, fontFamily: sans, fontSize: 136, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
           <DecryptedText text="Viso Factory" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
@@ -75,14 +76,10 @@ function Hero() {
         <p style={{ margin: "40px 0 0", paddingLeft: 24, maxWidth: 620, fontFamily: sans, fontSize: 20, lineHeight: 1.5, color: TXT_D1 }}>
           Production and process, watched continuously — from the cameras already on your line.
         </p>
-
-        <div style={{ marginTop: 64, paddingLeft: 6, display: "flex", gap: 96 }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>{MANIFEST.slice(0, 3).map((m) => <ManifestLine key={m.id} item={m} />)}</div>
-          <div style={{ display: "flex", flexDirection: "column" }}>{MANIFEST.slice(3).map((m) => <ManifestLine key={m.id} item={m} />)}</div>
-        </div>
       </div>
 
-      {/* MOBILE */}
+      {/* MOBILE — keeps the manifest list (the products grid below the hero
+          is desktop-only) */}
       <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "40px 24px 0" }}>
         <span style={{ ...eyebrow(TXT_D2), fontSize: 11 }}>OUR PLATFORM — YOUR CAMERAS · ON THE LINE</span>
         <h1 style={{ margin: "24px 0 0", fontFamily: sans, fontSize: 54, lineHeight: 0.98, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
@@ -126,12 +123,13 @@ export default function VisoFactoryPage() {
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <Hero />
+              <Reveal as="div"><SectionProductsOverview /></Reveal>
               <Reveal as="div"><SectionProduction /></Reveal>
               <Reveal as="div"><SectionAudit /></Reveal>
               {/* Dimension is a light band — Reveal wraps inside it (viso-warehouse/sections.tsx) so the background paints immediately */}
               <SectionDimension />
-              <Reveal as="div"><SectionWork /></Reveal>
-              <Reveal as="div"><SectionSecure /></Reveal>
+              <Reveal as="div"><SectionWork n="04" /></Reveal>
+              <Reveal as="div"><SectionSecure n="05" /></Reveal>
             </div>
           </div>
         </div>

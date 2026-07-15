@@ -42,6 +42,71 @@ const CONTAINER_STEPS: { n: string; lines: string[]; alignEnd: boolean }[] = [
 ];
 
 /* =========================================================================
+   00 · PRODUCTS OVERVIEW — 3×3 card grid, one per system, flagship schematic
+   drawing itself in on view (same DrawSchematic 3-act animation used by each
+   product's own section below). Sits between the hero and 01 Container.
+   ========================================================================= */
+const PRODUCTS_OVERVIEW: { n: string; name: string; desc: string; id: string; file: string; label: string; wide?: string }[] = [
+  { n: "01", name: "Container Vision", desc: "Damage survey", id: "container-vision", file: "visotonics-container-schematic.svg", label: "Container damage-survey schematic" },
+  { n: "02", name: "Tank Vision", desc: "Tank health", id: "tank-vision", file: "visotonics-tank-schematic-dark.svg", label: "Tank health schematic" },
+  { n: "03", name: "Gate Vision", desc: "Identity at the gate", id: "gate-vision", file: "visotonics-gate-schematic.svg", label: "Gate identity-read schematic" },
+  { n: "04", name: "Yard Vision", desc: "Live location", id: "yard-vision", file: "hero-card-01-yard.svg", label: "Yard live-location schematic" },
+  { n: "05", name: "Crane Vision", desc: "Chain of custody", id: "crane-vision", file: "visotonics-crane-schematic-card.svg", label: "Crane-lift capture schematic" },
+  { n: "06", name: "Cargo Vision", desc: "Count with proof", id: "cargo-vision", file: "visotonics-cargo-schematic.svg", label: "Cargo live-count schematic" },
+  { n: "07", name: "Document Vision", desc: "Key-value extraction", id: "document-vision", file: "visotonics-document-schematic.svg", label: "Document key-value extraction schematic" },
+  { n: "08", name: "Work Vision", desc: "Attendance from the cameras", id: "work-vision", file: "work-vision-schematic-desktop.svg", label: "Work-vision shift-register schematic" },
+  // Secure's schematic is ultra-wide (viewBox 1046×340, ~3:1) — a 4:3 card
+  // letterboxes it down to a thin strip, so it spans both columns at its own
+  // wider aspect ratio instead of sharing a slot sized for the other eight.
+  { n: "09", name: "Secure Vision", desc: "Alerts and logs", id: "secure-vision", file: "warehouse-secure-schematic-desktop.svg", label: "Secure-vision alert schematic", wide: "1046 / 340" },
+];
+
+function ProductCard({ p }: { p: (typeof PRODUCTS_OVERVIEW)[number] }) {
+  return (
+    <a
+      href={`#${p.id}`}
+      className="hover:border-white/25"
+      style={{ display: "flex", flexDirection: "column", background: SURFACE_DARK, border: `1px solid ${BORDER_D}`, borderRadius: 8, overflow: "hidden", textDecoration: "none", transition: "border-color var(--duration-dur-1) var(--ease-standard)", gridColumn: p.wide ? "1 / -1" : undefined }}
+    >
+      {/* full-bleed media — schematic centred on its own #101216 canvas so the
+          contain-letterboxing is seamless; 4:3 contains every viewBox uncropped
+          (wide container/document, portrait crane) except Work/Secure, which
+          get their own native aspect ratio across the full spanned width */}
+      <div style={{ position: "relative", width: "100%", aspectRatio: p.wide ?? "4 / 3", borderBottom: `1px solid ${BORDER_D}` }}>
+        <Schematic file={p.file} label={p.label} fit="contain" style={{ position: "absolute", inset: 0 }} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: "24px 28px 28px" }}>
+        <div className="flex items-baseline" style={{ gap: 12 }}>
+          <span style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.04em", color: TXT_D2 }}>{p.n}</span>
+          <span style={{ fontFamily: sans, fontSize: 22, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>{p.name}</span>
+        </div>
+        <span style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.02em", color: TXT_D2 }}>— {p.desc}</span>
+      </div>
+    </a>
+  );
+}
+
+export function SectionProductsOverview() {
+  return (
+    <section className="hidden md:block" style={{ position: "relative" }}>
+      {/* the page's background Verticals split the 64px-inset sheet into 4
+          equal columns (lines at 64px / 25% / 50% / 75% / 100%-64px); each
+          card column occupies 2 of those. x=24 is the inset applied on BOTH
+          sides of each card column relative to its own pair of gridlines —
+          64+24 from the outer lines, and a 2×24=48 gap so each card's inner
+          edge sits the same 24px off the centre line too. */}
+      <div style={{ position: "relative", padding: "40px 88px 72px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 48 }}>
+          {PRODUCTS_OVERVIEW.map((p) => (
+            <ProductCard key={p.id} p={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================================
    01 · CONTAINER VISION [DMG]  (dark) — flagship strong-rule frame
    ========================================================================= */
 export function SectionContainer() {
@@ -711,7 +776,7 @@ const CARGO_MATERIALS = [
   ["01", "CARTONS"], ["02", "GUNNY BAGS"], ["03", "JUMBO BAGS"],
   ["04", "PALLETS"], ["05", "DRUMS"], ["06", "BARRELS"],
 ];
-export function SectionCargo() {
+export function SectionCargo({ n = "06" }: { n?: string }) {
   return (
     <section id="cargo-vision" className={ANCHOR_OFFSET} style={{ position: "relative", borderTop: `1px solid ${BORDER_D}` }}>
       <Cross color={CROSS_D} style={{ left: -4, top: -4, zIndex: 3 }} />
@@ -721,13 +786,13 @@ export function SectionCargo() {
       <div className="hidden md:block" style={{ position: "relative", paddingBottom: 96 }}>
         <EyebrowRule />
         <div style={{ position: "relative", zIndex: 1, padding: "112px 64px 0 88px" }}>
-          <span style={{ display: "block", ...eyebrow(TXT_D2) }}>06 — CARGO VISION</span>
+          <span style={{ display: "block", ...eyebrow(TXT_D2) }}>{n} — CARGO VISION</span>
           <h2 style={{ margin: "56px 0 0", fontFamily: sans, fontSize: 102, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.025em", color: TXT_D1 }}>
             Every case counted,<br />with video proof attached.
           </h2>
         </div>
 
-        <div aria-hidden="true" style={{ height: 520 }} />
+        <div aria-hidden="true" style={{ height: 72 }} />
 
         {/* centered demo slot (4:3) + caption */}
         <div style={{ position: "relative", zIndex: 1, margin: "0 64px", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -735,7 +800,7 @@ export function SectionCargo() {
           <p style={{ margin: "24px 0 0", textAlign: "center", fontFamily: sans, fontSize: 15, lineHeight: 1.5, color: TXT_D2 }}>Automatic, accurate count with video proof per session.</p>
         </div>
 
-        <div aria-hidden="true" style={{ height: 520 }} />
+        <div aria-hidden="true" style={{ height: 72 }} />
 
         {/* index band */}
         <div style={{ position: "relative", zIndex: 1, margin: "0 64px", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr 1.2fr 1fr", gap: 56, alignItems: "start" }}>
@@ -769,14 +834,14 @@ export function SectionCargo() {
       {/* MOBILE */}
       <div className="md:hidden" style={{ position: "relative", padding: "56px 24px 56px 40px" }}>
         <EyebrowRule mobile />
-        <span style={{ display: "block", ...eyebrow(TXT_D2), fontSize: 11 }}>06 — CARGO VISION</span>
+        <span style={{ display: "block", ...eyebrow(TXT_D2), fontSize: 11 }}>{n} — CARGO VISION</span>
         <h2 style={{ margin: "40px 0 0", fontFamily: sans, fontSize: 32, lineHeight: 1.1, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Every case counted, with video proof attached.</h2>
-        <div aria-hidden="true" style={{ height: 220 }} />
+        <div aria-hidden="true" style={{ height: 32 }} />
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <MediaFrame file="visotonics-cargo-schematic.svg" label="Cargo destuff live-count schematic" style={{ width: "100%", borderRadius: 8 }} />
           <p style={{ margin: "20px 0 0", textAlign: "center", fontFamily: sans, fontSize: 12, lineHeight: 1.5, color: TXT_D2 }}>Automatic, accurate count with video proof per session.</p>
         </div>
-        <div aria-hidden="true" style={{ height: 220 }} />
+        <div aria-hidden="true" style={{ height: 32 }} />
         <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
           <div>
             <span style={{ display: "block", fontFamily: sans, fontSize: 72, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>60%</span>
@@ -805,7 +870,7 @@ export function SectionCargo() {
 /* =========================================================================
    07 · DOCUMENT VISION [DOC]  (dark) — centered, no eyebrow-row gridline
    ========================================================================= */
-export function SectionDocument() {
+export function SectionDocument({ n = "07" }: { n?: string }) {
   return (
     <section id="document-vision" className={ANCHOR_OFFSET} style={{ position: "relative", borderTop: `1px solid ${BORDER_D}`, borderBottom: `1px solid ${BORDER_D}` }}>
       <Cross color={CROSS_D} style={{ left: 60, top: -4, zIndex: 3 }} />
@@ -815,10 +880,9 @@ export function SectionDocument() {
 
       {/* DESKTOP */}
       <div className="hidden md:block" style={{ position: "relative", zIndex: 1, padding: "100px 0" }}>
-        <span style={{ position: "absolute", top: 44, right: 64, fontFamily: mono, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED }}>07 · TRANSFORMATION, CENTERED</span>
         <p style={{ ...eyebrow(TXT_D2), margin: "0 0 0 88px", display: "flex", alignItems: "center", gap: 14 }}>
           <span aria-hidden="true" style={{ width: 8, height: 8, background: SIGNAL }} />
-          07 — DOCUMENT VISION
+          {n} — DOCUMENT VISION · KEY-VALUE EXTRACTION, WHERE GENERIC OCR FAILS
         </p>
         <h2 style={{ margin: "56px 0 0", textAlign: "center", fontFamily: sans, fontSize: 64, lineHeight: 1.08, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>
           Bill of Lading in. Structured data out.
@@ -833,7 +897,7 @@ export function SectionDocument() {
       <div className="md:hidden" style={{ position: "relative", zIndex: 1, padding: "48px 24px 56px" }}>
         <p style={{ ...eyebrow(TXT_D2), margin: 0, fontSize: 11, display: "flex", alignItems: "center", gap: 12 }}>
           <span aria-hidden="true" style={{ width: 7, height: 7, background: SIGNAL }} />
-          07 — DOCUMENT VISION
+          {n} — DOCUMENT VISION · KEY-VALUE EXTRACTION
         </p>
         <h2 style={{ margin: "28px 0 0", textAlign: "center", fontFamily: sans, fontSize: 30, lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.02em", color: TXT_D1 }}>Bill of Lading in. Structured data out.</h2>
         <div style={{ position: "relative", marginTop: 44, background: SURFACE_DARK, border: `1px solid ${BORDER_D}`, borderRadius: 8, overflow: "hidden" }}>

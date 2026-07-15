@@ -1,0 +1,106 @@
+<svg viewBox="0 0 1000 750" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono',monospace">
+<defs>
+<pattern id="ccorrc" width="12" height="10" patternUnits="userSpaceOnUse">
+<line x1="3" y1="0" x2="3" y2="10" stroke="#F4F5F7" stroke-width="1" opacity="0.6"/>
+<line x1="8" y1="0" x2="8" y2="10" stroke="#F4F5F7" stroke-width="1" opacity="0.22"/>
+</pattern>
+</defs>
+<rect width="1000" height="750" fill="#101216"/>
+
+<!-- content sits in a 28→600 band (h.572); shifted +61 to center it in the
+     750-tall canvas (89 margin top/bottom) instead of hugging the top -->
+<g transform="translate(0,61)">
+
+<!-- column divider — tight to the content band, not the full canvas -->
+<line x1="500" y1="28" x2="500" y2="600" stroke="#F4F5F7" stroke-width="1" opacity="0.14"/>
+
+<!-- ============================ LEFT — CRANE LIFT ============================ -->
+<text x="44" y="46" fill="#F4F5F7" font-size="17" letter-spacing="2" opacity="0.92">LIFT 0142</text>
+<text x="44" y="70" fill="#F4F5F7" font-size="12" letter-spacing="2" opacity="0.7">ALL FACES — SIMULTANEOUS</text>
+
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+<!-- spreader cables + beam -->
+<line x1="255" y1="96" x2="170" y2="132" opacity="0.8"/>
+<line x1="255" y1="96" x2="340" y2="132" opacity="0.8"/>
+<rect x="150" y="132" width="210" height="24" opacity="0.9"/>
+<line x1="168" y1="156" x2="168" y2="182" opacity="0.8"/>
+<line x1="342" y1="156" x2="342" y2="182" opacity="0.8"/>
+
+<!-- container -->
+<g id="container">
+<rect x="150" y="182" width="210" height="300" opacity="0.9"/>
+<rect x="162" y="194" width="186" height="276" fill="url(#ccorrc)" stroke="none"/>
+<rect x="162" y="194" width="186" height="276" opacity="0.3"/>
+<line x1="255" y1="182" x2="255" y2="482" opacity="0.5"/>
+<line x1="196" y1="194" x2="196" y2="458" opacity="0.75"/><circle cx="196" cy="204" r="3" opacity="0.8"/><circle cx="196" cy="448" r="3" opacity="0.8"/>
+<line x1="314" y1="194" x2="314" y2="458" opacity="0.75"/><circle cx="314" cy="204" r="3" opacity="0.8"/><circle cx="314" cy="448" r="3" opacity="0.8"/>
+<rect x="150" y="182" width="16" height="12" opacity="0.9"/><rect x="344" y="182" width="16" height="12" opacity="0.9"/>
+<rect x="150" y="470" width="16" height="12" opacity="0.9"/><rect x="344" y="470" width="16" height="12" opacity="0.9"/>
+</g>
+
+<!-- four cameras, every face -->
+<g id="cams" opacity="0.9">
+<rect x="52" y="214" width="28" height="18"/><circle cx="66" cy="223" r="5"/>
+<line x1="80" y1="223" x2="150" y2="244" stroke-dasharray="4 5" opacity="0.45"/>
+<rect x="420" y="214" width="28" height="18"/><circle cx="434" cy="223" r="5"/>
+<line x1="420" y1="223" x2="360" y2="244" stroke-dasharray="4 5" opacity="0.45"/>
+<rect x="52" y="420" width="28" height="18"/><circle cx="66" cy="429" r="5"/>
+<line x1="80" y1="429" x2="150" y2="420" stroke-dasharray="4 5" opacity="0.45"/>
+<rect x="420" y="420" width="28" height="18"/><circle cx="434" cy="429" r="5"/>
+<line x1="420" y1="429" x2="360" y2="420" stroke-dasharray="4 5" opacity="0.45"/>
+</g>
+</g>
+
+<!-- detection box (orange) on the container — now on the left -->
+<g stroke="#ED510C" fill="none">
+<rect x="204" y="322" width="104" height="92" stroke-width="1.5" fill="#ED510C" fill-opacity="0.14"/>
+</g>
+<path d="M232,352 Q246,338 264,346 Q282,340 288,358 Q296,372 282,382 Q274,396 256,390 Q240,394 232,380 Q224,366 232,352 Z" stroke="#F4F5F7" fill="none" opacity="0.6"/>
+<path d="M246,360 Q256,354 266,362 Q272,370 262,376 Q252,380 246,372 Q242,366 246,360 Z" stroke="#F4F5F7" fill="none" opacity="0.4"/>
+<g fill="#ED510C" font-size="12" letter-spacing="1" text-anchor="middle">
+<text x="255" y="512">SEVERITY — HIGH · CONF 0.87</text>
+</g>
+<text x="255" y="536" text-anchor="middle" fill="#F4F5F7" font-size="12" letter-spacing="1" opacity="0.85">SURVEYOR — ALERTED</text>
+<text x="255" y="586" text-anchor="middle" fill="#F4F5F7" font-size="11" letter-spacing="1" opacity="0.55">MULTI-CAMERA — EVERY FACE, EVERY LIFT</text>
+
+<!-- ======================= RIGHT — FRAME SELECT + CHAIN ====================== -->
+<text x="540" y="70" fill="#F4F5F7" font-size="11" letter-spacing="1" opacity="0.6">CANDIDATE FRAMES</text>
+
+<!-- four candidate face thumbnails, third selected -->
+<g stroke="#F4F5F7" fill="none" stroke-width="1">
+<rect x="540" y="92" width="88" height="66" opacity="0.7"/>
+<path d="M551,116 q11,-8 22,0 t22,0 t22,0" opacity="0.45"/>
+<path d="M551,136 q11,-8 22,0 t22,0 t22,0" opacity="0.45"/>
+<rect x="644" y="92" width="88" height="66" opacity="0.7"/>
+<path d="M655,110 q11,-10 22,0 t22,0 t22,0" opacity="0.45"/>
+<path d="M655,134 q11,-10 22,0 t22,0 t22,0" opacity="0.45"/>
+<g><rect x="748" y="92" width="88" height="66" stroke="#ED510C" stroke-width="1.5"/>
+<line x1="763" y1="98" x2="763" y2="152" opacity="0.75"/><line x1="781" y1="98" x2="781" y2="152" opacity="0.4"/><line x1="799" y1="98" x2="799" y2="152" opacity="0.75"/><line x1="817" y1="98" x2="817" y2="152" opacity="0.4"/>
+</g>
+<rect x="852" y="92" width="88" height="66" opacity="0.7"/>
+<path d="M863,118 q11,-9 22,0 t22,0 t22,0" opacity="0.45"/>
+<path d="M863,138 q11,-9 22,0 t22,0 t22,0" opacity="0.45"/>
+</g>
+<text x="792" y="84" fill="#ED510C" font-size="12" letter-spacing="1" text-anchor="middle">✓</text>
+
+<g fill="#F4F5F7" font-size="12" letter-spacing="1" text-anchor="middle">
+<text x="740" y="196" opacity="0.9">SHARPEST FRAME — SELECTED</text>
+<text x="740" y="220" font-size="11" opacity="0.55">VIBRATION — COMPENSATED · MOTION BLUR — CORRECTED</text>
+</g>
+
+<!-- timeline ruler -->
+<g stroke="#F4F5F7" opacity="0.7">
+<line x1="540" y1="308" x2="940" y2="308"/>
+<line x1="540" y1="300" x2="540" y2="316"/><line x1="620" y1="303" x2="620" y2="313"/><line x1="700" y1="303" x2="700" y2="313"/><line x1="780" y1="303" x2="780" y2="313"/><line x1="860" y1="303" x2="860" y2="313"/><line x1="940" y1="300" x2="940" y2="316"/>
+</g>
+<rect x="737" y="305" width="6" height="6" fill="#ED510C"/>
+<text x="740" y="340" text-anchor="middle" fill="#F4F5F7" font-size="12" letter-spacing="1" opacity="0.9">14:02:11</text>
+<text x="740" y="376" text-anchor="middle" fill="#F4F5F7" font-size="11" letter-spacing="1" opacity="0.75">TIME-STAMPED AT DISCHARGE / LOAD</text>
+
+<!-- chain of custody -->
+<line x1="540" y1="430" x2="940" y2="430" stroke="#F4F5F7" stroke-width="1" opacity="0.18"/>
+<text x="740" y="486" text-anchor="middle" fill="#F4F5F7" font-size="14" letter-spacing="2" opacity="0.7">VESSEL → YARD → GATE</text>
+<text x="740" y="512" text-anchor="middle" fill="#ED510C" font-size="11" letter-spacing="2">CHAIN OF CUSTODY</text>
+
+</g>
+</svg>

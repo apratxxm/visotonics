@@ -34,6 +34,60 @@ import { Schematic } from "../viso-yard/_media";
 
 export { SectionCargo, SectionDocument } from "../viso-yard/sections";
 
+/* =========================================================================
+   00 · PRODUCTS OVERVIEW — same card-grid pattern as Viso Yard: one card per
+   system, flagship schematic drawing itself in on view (DrawSchematic 3-act
+   animation), sits between the hero and 01 Cargo. Desktop-only (mobile keeps
+   its manifest list instead, same as Yard).
+   ========================================================================= */
+const PRODUCTS_OVERVIEW: { n: string; name: string; desc: string; id: string; file: string; label: string; wide?: string }[] = [
+  { n: "01", name: "Cargo Vision", desc: "Count with proof", id: "cargo-vision", file: "visotonics-cargo-schematic.svg", label: "Cargo live-count schematic" },
+  { n: "02", name: "Audit Vision", desc: "Event-linked proof", id: "audit-vision", file: "audit-schematic.svg", label: "Audit trail schematic" },
+  { n: "03", name: "Dimension Vision", desc: "Volumetric capture", id: "dimension-vision", file: "visotonics-dimension-schematic-dark.svg", label: "Dimension overview schematic" },
+  { n: "04", name: "Document Vision", desc: "Key-value extraction", id: "document-vision", file: "visotonics-document-schematic.svg", label: "Document key-value extraction schematic" },
+  // Work Vision made the same wide/spanned size as Secure Vision below, so
+  // the two matching-height cards close out the grid as a pair.
+  { n: "05", name: "Work Vision", desc: "Attendance from the cameras", id: "work-vision", file: "work-vision-schematic-desktop.svg", label: "Work-vision shift-register schematic", wide: "1046 / 340" },
+  { n: "06", name: "Secure Vision", desc: "Alerts and logs", id: "secure-vision", file: "warehouse-secure-schematic-desktop.svg", label: "Secure-vision alert schematic", wide: "1046 / 340" },
+];
+
+function ProductCard({ p }: { p: (typeof PRODUCTS_OVERVIEW)[number] }) {
+  return (
+    <a
+      href={`#${p.id}`}
+      className="hover:border-white/25"
+      style={{ display: "flex", flexDirection: "column", background: SURFACE_DARK, border: `1px solid ${BORDER_D}`, borderRadius: 8, overflow: "hidden", textDecoration: "none", transition: "border-color var(--duration-dur-1) var(--ease-standard)", gridColumn: p.wide ? "1 / -1" : undefined }}
+    >
+      <div style={{ position: "relative", width: "100%", aspectRatio: p.wide ?? "4 / 3", borderBottom: `1px solid ${BORDER_D}` }}>
+        <Schematic file={p.file} label={p.label} fit="contain" style={{ position: "absolute", inset: 0 }} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: "24px 28px 28px" }}>
+        <div className="flex items-baseline" style={{ gap: 12 }}>
+          <span style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.04em", color: TXT_D2 }}>{p.n}</span>
+          <span style={{ fontFamily: sans, fontSize: 22, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>{p.name}</span>
+        </div>
+        <span style={{ fontFamily: mono, fontSize: 14, letterSpacing: "0.02em", color: TXT_D2 }}>— {p.desc}</span>
+      </div>
+    </a>
+  );
+}
+
+export function SectionProductsOverview() {
+  return (
+    <section className="hidden md:block" style={{ position: "relative" }}>
+      {/* same 64+24 / 48-gap alignment to the page's 4-column background grid
+          as Viso Yard — see that file's SectionProductsOverview for the math. */}
+      <div style={{ position: "relative", padding: "40px 88px 72px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 48 }}>
+          {PRODUCTS_OVERVIEW.map((p) => (
+            <ProductCard key={p.id} p={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const CROSS_INK = "rgba(90,95,106,0.6)"; // corner ink on light bands
 const MUTED = "#6C7480";
 

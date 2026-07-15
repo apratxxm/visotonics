@@ -9,6 +9,7 @@ import {
   SectionCrane,
   SectionDocument,
   SectionGate,
+  SectionProductsOverview,
   SectionTank,
   SectionYard,
 } from "./sections";
@@ -37,28 +38,20 @@ import {
    Convert (home clone) is the remaining step 4.
 --------------------------------------------------------------------------- */
 
-/* ---- hero manifest -------------------------------------------------------- */
+/* mobile-only hero manifest — desktop dropped this in favour of the card grid
+   right below the hero, but mobile hides that grid, so mobile keeps the
+   quick-nav list as its only way to jump to a system before scrolling. */
 const MANIFEST = [
-  { n: "01", name: "CONTAINER VISION", desc: "damage survey", id: "container-vision" },
-  { n: "02", name: "TANK VISION", desc: "tank health", id: "tank-vision" },
-  { n: "03", name: "GATE VISION", desc: "identity at the gate", id: "gate-vision" },
-  { n: "04", name: "YARD VISION", desc: "live location", id: "yard-vision" },
-  { n: "05", name: "CRANE VISION", desc: "chain of custody", id: "crane-vision" },
-  { n: "06", name: "CARGO VISION", desc: "count with proof", id: "cargo-vision" },
-  { n: "07", name: "DOCUMENT VISION", desc: "key-value extraction", id: "document-vision" },
-  { n: "08", name: "WORK VISION", desc: "attendance from the cameras", id: "work-vision" },
-  { n: "09", name: "SECURE VISION", desc: "alerts and logs", id: "secure-vision" },
+  { n: "01", name: "CONTAINER VISION", id: "container-vision" },
+  { n: "02", name: "TANK VISION", id: "tank-vision" },
+  { n: "03", name: "GATE VISION", id: "gate-vision" },
+  { n: "04", name: "YARD VISION", id: "yard-vision" },
+  { n: "05", name: "CRANE VISION", id: "crane-vision" },
+  { n: "06", name: "CARGO VISION", id: "cargo-vision" },
+  { n: "07", name: "DOCUMENT VISION", id: "document-vision" },
+  { n: "08", name: "WORK VISION", id: "work-vision" },
+  { n: "09", name: "SECURE VISION", id: "secure-vision" },
 ];
-
-function ManifestLine({ item }: { item: (typeof MANIFEST)[number] }) {
-  return (
-    <a href={`#${item.id}`} className="flex items-baseline" style={{ height: 40, textDecoration: "none", color: TXT_D2 }}>
-      <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", width: 34, flex: "0 0 34px" }}>{item.n}</span>
-      <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", textTransform: "uppercase", color: TXT_D1 }}>{item.name}</span>
-      {item.desc ? <span style={{ fontFamily: mono, fontSize: 15, letterSpacing: "0.04em", marginLeft: 14 }}>— {item.desc}</span> : null}
-    </a>
-  );
-}
 
 function Hero() {
   return (
@@ -68,7 +61,7 @@ function Hero() {
       <Cross color={CROSS_D} style={{ left: "calc(100% - 68px)", top: -4 }} />
 
       {/* DESKTOP */}
-      <div className="hidden md:block" style={{ position: "relative", zIndex: 1, minHeight: 900, padding: "104px 64px 0", boxSizing: "border-box" }}>
+      <div className="hidden md:block" style={{ position: "relative", zIndex: 1, padding: "104px 64px 48px", boxSizing: "border-box" }}>
         <span style={{ ...eyebrow(TXT_D2), display: "block", paddingLeft: 24 }}>VISO YARD — NINE SYSTEMS, YOUR CAMERAS</span>
         <h1 style={{ margin: "72px 0 0", paddingLeft: 6, fontFamily: sans, fontSize: 136, lineHeight: 1, fontWeight: 600, letterSpacing: "-0.035em", textTransform: "uppercase", color: TXT_D1 }}>
           <DecryptedText text="Viso Yard" animateOn="view" sequential revealDirection="start" speed={55} encryptedClassName="v-enc" />
@@ -76,17 +69,6 @@ function Hero() {
         <p style={{ margin: "40px 0 0", paddingLeft: 24, maxWidth: 592, fontFamily: sans, fontSize: 20, lineHeight: 1.5, color: TXT_D1 }}>
           Every container, every checkpoint, on the record — from the CCTV you already own.
         </p>
-
-        <div style={{ marginTop: 64, paddingLeft: 6, display: "flex", gap: 96 }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>{MANIFEST.slice(0, 5).map((m) => <ManifestLine key={m.id} item={m} />)}</div>
-          <div style={{ display: "flex", flexDirection: "column" }}>{MANIFEST.slice(5).map((m) => <ManifestLine key={m.id} item={m} />)}</div>
-        </div>
-
-        <span style={{ display: "block", marginTop: 56, paddingLeft: 6, fontFamily: mono, fontSize: 14, letterSpacing: "0.06em", color: TXT_D2, opacity: 0.6 }}>
-          GATE_04 :: VSTU 907032 1 :: READ 0.99 :: 14:02:11
-        </span>
-
-        <div aria-hidden="true" style={{ position: "absolute", left: 64, right: 64, bottom: 40, height: 1, background: BORDER_D_STRONG }} />
       </div>
 
       {/* MOBILE */}
@@ -138,6 +120,7 @@ export default function VisoYardPage() {
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <Hero />
+              <Reveal as="div"><SectionProductsOverview /></Reveal>
               <Reveal as="div"><SectionContainer /></Reveal>
               {/* Tank is a light band — Reveal wraps inside it (sections.tsx) so the light background paints immediately */}
               <SectionTank />
