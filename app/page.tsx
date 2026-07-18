@@ -670,9 +670,9 @@ function Testimonials() {
                 See how industrial sites run inspection <span style={{ color: TXT_D2 }}>— without stopping the operations.</span>
               </h2>
             </div>
-            <a href="/resources/case-studies" className="dt-outline" style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", height: 47, padding: "0 24px", background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 18, fontWeight: 500, textDecoration: "none" }}>
+            {/* <a href="/resources/case-studies" className="dt-outline" style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", height: 47, padding: "0 24px", background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 18, fontWeight: 500, textDecoration: "none" }}>
               See case studies
-            </a>
+            </a> */}
           </div>
 
           <div style={{ marginTop: 40, borderTop: `1px solid ${BORDER_D}`, paddingTop: 40, display: "grid", gridTemplateColumns: "3fr 1fr", gap: 0 }}>
@@ -689,9 +689,9 @@ function Testimonials() {
         </h2>
         <div style={{ margin: "24px 0 0", borderTop: `1px solid ${BORDER_D}`, paddingTop: 24 }}>
           <TestimonialPagerMobile />
-          <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 16 }}>
+          {/* <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 16 }}>
             <a href="/resources/case-studies" className="dt-outline" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: 48, background: "transparent", color: TXT_D1, border: `1px solid rgba(244,245,247,0.28)`, borderRadius: 8, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>See case studies</a>
-          </div>
+          </div> */}
         </div>
       </Reveal>
     </section>
