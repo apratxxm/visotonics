@@ -13,6 +13,10 @@ const nextConfig = {
       { source: "/product", destination: "/platform/viso-yard", permanent: true },
       { source: "/products", destination: "/platform/viso-yard", permanent: true },
       { source: "/platform", destination: "/platform/viso-yard", permanent: true },
+      { source: "/company", destination: "/company/about", permanent: true },
+      { source: "/about", destination: "/company/about", permanent: true },
+      { source: "/about-us", destination: "/company/about", permanent: true },
+      { source: "/about_us", destination: "/company/about", permanent: true },
       { source: "/terms_and_conditions", destination: "/legal/terms-and-conditions", permanent: true },
       { source: "/privacy_policy", destination: "/legal/privacy-policy", permanent: true },
     ];
