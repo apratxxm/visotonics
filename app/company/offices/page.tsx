@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { pageMeta } from "@/lib/seo";
 
 /* ---------------------------------------------------------------------------
    /company/offices
@@ -31,6 +32,13 @@ const OFFICES = [
   { region: "INDIA · ODISHA", city: "Bhubaneshwar", note: "" },
   { region: "UNITED STATES · D.C.", city: "Washington", note: "" },
 ];
+
+export const metadata = pageMeta({
+  title: "Offices",
+  description:
+    "Visotonics office locations — Lucknow (HQ), Mumbai, Ahmedabad and Bhubaneshwar in India, and Washington in the USA.",
+  path: "/company/offices",
+});
 
 export default function OfficesPage() {
   return (

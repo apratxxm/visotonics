@@ -1,4 +1,6 @@
 import DecryptedText from "@/components/decrypted-text";
+import { JsonLd, productSchema } from "@/components/json-ld";
+import { pageMeta } from "@/lib/seo";
 import { Reveal } from "@/components/motion";
 import { WarehouseRailDesktop, WarehouseRulerMobile } from "./rail";
 import { Convert } from "./convert";
@@ -98,9 +100,32 @@ function Hero() {
 
 /* ========================================================================= */
 
+export const metadata = pageMeta({
+  title: "Viso Warehouse — Warehouse & DC Vision",
+  description:
+    "Every case counted, every pallet dimensioned, every order proven — on the cameras already covering your floor. Cargo counting, dimensioning, document extraction, attendance and security for warehouses and distribution centres.",
+  path: "/platform/viso-warehouse",
+});
+
 export default function VisoWarehousePage() {
   return (
     <>
+      <JsonLd
+        data={productSchema({
+          name: "Viso Warehouse",
+          description:
+            "AI vision for warehouses and distribution centres — case counting, pallet dimensioning, document extraction, attendance and security from existing CCTV.",
+          path: "/platform/viso-warehouse",
+          features: [
+            "Cargo Vision — count with proof",
+            "Audit Vision — event-linked proof",
+            "Dimension Vision — volumetric capture",
+            "Document Vision — key-value extraction",
+            "Work Vision — attendance from the cameras",
+            "Secure Vision — alerts and logs",
+          ],
+        })}
+      />
       <WarehouseRulerMobile />
 
       <div style={{ position: "relative", background: CANVAS_DARK }}>

@@ -1,4 +1,6 @@
 import DecryptedText from "@/components/decrypted-text";
+import { JsonLd, productSchema } from "@/components/json-ld";
+import { pageMeta } from "@/lib/seo";
 import { Reveal } from "@/components/motion";
 import { YardRailDesktop, YardRulerMobile } from "./rail";
 import { Convert } from "./convert";
@@ -98,9 +100,35 @@ function Hero() {
 
 /* ========================================================================= */
 
+export const metadata = pageMeta({
+  title: "Viso Yard — Container & Terminal Vision",
+  description:
+    "Every container, every checkpoint, on the record — from the CCTV you already own. Nine vision systems for container terminals and yards: damage detection, OCR, gate automation, crane, cargo and yard tracking.",
+  path: "/platform/viso-yard",
+});
+
 export default function VisoYardPage() {
   return (
     <>
+      <JsonLd
+        data={productSchema({
+          name: "Viso Yard",
+          description:
+            "AI vision for container terminals and yards — damage detection, container/ISO OCR, gate automation and yard tracking from existing CCTV.",
+          path: "/platform/viso-yard",
+          features: [
+            "Container Vision",
+            "Tank Vision",
+            "Gate Vision",
+            "Yard Vision",
+            "Crane Vision",
+            "Cargo Vision",
+            "Document Vision",
+            "Work Vision",
+            "Secure Vision",
+          ],
+        })}
+      />
       <YardRulerMobile />
 
       <div style={{ position: "relative", background: CANVAS_DARK }}>

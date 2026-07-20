@@ -1,4 +1,12 @@
 import { LegalDoc } from "@/components/legal-doc";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({
+  title: "Privacy Policy",
+  description:
+    "How Visotonics (a brand of VisionXcel Technologies Pvt. Ltd.) collects, uses, discloses and protects your information across our services, website and mobile applications.",
+  path: "/legal/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (

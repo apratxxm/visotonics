@@ -1,4 +1,12 @@
 import { LegalDoc } from "@/components/legal-doc";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({
+  title: "Terms & Conditions",
+  description:
+    "The terms and conditions governing use of Visotonics' vision-based technology solutions, tools and related services.",
+  path: "/legal/terms-and-conditions",
+});
 
 export default function TermsAndConditionsPage() {
   return (

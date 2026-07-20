@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { pageMeta } from "@/lib/seo";
 
 /* ---------------------------------------------------------------------------
    /company/about
@@ -135,6 +136,13 @@ function TeamSection() {
     </div>
   );
 }
+
+export const metadata = pageMeta({
+  title: "About",
+  description:
+    "Visotonics is building India's foundational AI vision platform for inspection and monitoring of container terminals, warehouses and factories — powered entirely by existing CCTV.",
+  path: "/company/about",
+});
 
 export default function AboutPage() {
   return (

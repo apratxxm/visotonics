@@ -1,4 +1,6 @@
 import DecryptedText from "@/components/decrypted-text";
+import { JsonLd, productSchema } from "@/components/json-ld";
+import { pageMeta } from "@/lib/seo";
 import { Reveal } from "@/components/motion";
 import { FactoryRailDesktop, FactoryRulerMobile } from "./rail";
 import { Convert } from "./convert";
@@ -103,9 +105,31 @@ function Hero() {
 
 /* ========================================================================= */
 
+export const metadata = pageMeta({
+  title: "Viso Factory — Production & Line Vision",
+  description:
+    "Production and process, watched continuously — from the cameras already on your line. Per-shift count, SKU and damage tracking, dimensioning, attendance and security for manufacturing.",
+  path: "/platform/viso-factory",
+});
+
 export default function VisoFactoryPage() {
   return (
     <>
+      <JsonLd
+        data={productSchema({
+          name: "Viso Factory",
+          description:
+            "AI vision for manufacturing lines — production count, SKU and damage detection per shift, dimensioning, attendance and security from existing CCTV.",
+          path: "/platform/viso-factory",
+          features: [
+            "Production Vision — count, SKU and damage per shift",
+            "Audit Vision — event-linked proof",
+            "Dimension Vision — volumetric capture",
+            "Work Vision — attendance from the cameras",
+            "Secure Vision — alerts and logs",
+          ],
+        })}
+      />
       <FactoryRulerMobile />
 
       <div style={{ position: "relative", background: CANVAS_DARK }}>

@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { pageMeta } from "@/lib/seo";
 import { Reveal, UnderlineDraw } from "@/components/motion";
 import { Schematic } from "../platform/viso-yard/_media";
 
@@ -523,6 +524,13 @@ function Closing() {
 }
 
 /* ========================================================================= */
+
+export const metadata = pageMeta({
+  title: "Industries — Ports, Warehousing, Manufacturing & Logistics",
+  description:
+    "How Visotonics applies AI vision across ports & terminals, warehousing & distribution, manufacturing, and logistics & supply chain — automated inspection and monitoring on existing CCTV.",
+  path: "/industries",
+});
 
 export default function IndustriesPage() {
   return (

@@ -1,4 +1,6 @@
 import type { CSSProperties } from "react";
+import { JsonLd, productSchema } from "@/components/json-ld";
+import { pageMeta } from "@/lib/seo";
 import { Reveal } from "@/components/motion";
 
 /* Every section here sets its own inline background (no shared ambient canvas
@@ -360,9 +362,25 @@ function DetectAI() {
 
 /* ========================================================================= */
 
+export const metadata = pageMeta({
+  title: "Viso Data — Compression, Trace & Detect AI",
+  description:
+    "Same footage, fewer bytes, analytics unaffected. On-premise video compression, traceability and detection AI that runs in front of your existing CCTV storage.",
+  path: "/platform/viso-data",
+});
+
 export default function VisoDataPage() {
   return (
     <>
+      <JsonLd
+        data={productSchema({
+          name: "Viso Data",
+          description:
+            "On-premise video data platform — Compression AI (smaller footage, analytics unaffected), Trace AI and Detect AI running in front of existing CCTV storage.",
+          path: "/platform/viso-data",
+          features: ["Compression AI", "Trace AI", "Detect AI"],
+        })}
+      />
       <CompressionAI />
       <TraceAI />
       <DetectAI />
