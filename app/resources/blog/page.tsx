@@ -1,5 +1,13 @@
 import { Reveal } from "@/components/motion";
 import { BlogList } from "./blog-list";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({
+  title: "Blog",
+  description:
+    "Engineering and product notes from Visotonics on AI vision for logistics — container damage detection, gate automation, yard management and document processing.",
+  path: "/resources/blog",
+});
 
 /* ---------------------------------------------------------------------------
    /resources/blog — "Blogs" index. Ported from Claude Design canvas
