@@ -15,6 +15,15 @@ import {
   TXT_D2,
   Verticals,
 } from "../_shared";
+import { pageMeta } from "@/lib/seo";
+
+// Auth surface — never index.
+export const metadata = pageMeta({
+  title: "Register",
+  description: "Request access to the Visotonics client portal.",
+  path: "/client-portal/register",
+  noindex: true,
+});
 
 /* ---------------------------------------------------------------------------
    /client-portal/register — Register

@@ -14,6 +14,15 @@ import {
   TXT_D2,
   Verticals,
 } from "../_shared";
+import { pageMeta } from "@/lib/seo";
+
+// Auth surface — never index.
+export const metadata = pageMeta({
+  title: "Reset password",
+  description: "Reset your Visotonics client portal password.",
+  path: "/client-portal/reset-password",
+  noindex: true,
+});
 
 /* ---------------------------------------------------------------------------
    /client-portal/reset-password
