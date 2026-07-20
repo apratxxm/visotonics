@@ -3,6 +3,13 @@ import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { JsonLd, organizationSchema, websiteSchema } from "@/components/json-ld";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -16,8 +23,42 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Visotonics — AI Vision Platform for Industrial Operations",
-  description: "AI vision for yards, warehouses and factories — from the CCTV you already own.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    "AI vision",
+    "computer vision",
+    "container damage detection",
+    "container terminal automation",
+    "warehouse monitoring",
+    "factory inspection",
+    "CCTV analytics",
+    "OCR container number",
+    "logistics AI",
+    "Visotonics",
+  ],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  verification: {
+    google: "UMY75_YxXBSbBq23uXBHTC5TWLQ2ujbExvFx8HQb7UM",
+  },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    url: "/",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
@@ -34,6 +75,8 @@ export default function RootLayout({
         <noscript>
           <style>{`.v-reveal,.v-reveal-mono{opacity:1!important;transform:none!important}.v-dec{background:transparent!important;color:inherit!important}`}</style>
         </noscript>
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
         <SiteNav />
         <main className="flex-1">{children}</main>
         <SiteFooter />
