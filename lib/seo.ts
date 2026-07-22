@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://visotonics.com";
 export const SITE_NAME = "Visotonics";
 export const DEFAULT_TITLE =
-  "Visotonics — AI Vision Platform for Industrial Operations";
+  "Visotonics — Vision-AI Platform for Industrial Operations";
 export const DEFAULT_DESCRIPTION =
   "Visotonics turns the CCTV you already own into an AI vision layer for yards, warehouses and factories — container damage detection, OCR, counting and inspection with no new hardware.";
 

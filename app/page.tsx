@@ -143,7 +143,7 @@ function Hero() {
               textAlign: "center",
             }}
           >
-            <DecryptedText text="AI Vision Platform" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
+            <DecryptedText text="Vision-AI Platform" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
             <br />
             <DecryptedText text="for Industrial Operations" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
           </h1>
@@ -214,7 +214,7 @@ function Hero() {
         </div>
         <div style={{ position: "relative", zIndex: 1, padding: "40px 20px", borderBottom: `1px solid ${GRID_D}`, textAlign: "center" }}>
           <h1 style={{ margin: 0, fontFamily: sans, fontSize: 44, lineHeight: 1.05, fontWeight: 600, letterSpacing: "-0.01em", color: TXT_D1 }}>
-            <DecryptedText text="AI Vision Platform" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
+            <DecryptedText text="Vision-AI Platform" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
             <br />
             <DecryptedText text="for Industrial Operations" animateOn="view" revealDirection="center" speed={45} maxIterations={14} encryptedClassName="v-enc" />
           </h1>

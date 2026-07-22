@@ -7,7 +7,7 @@ import { ImageResponse } from "next/og";
    subset only). Individual routes inherit this unless they define their own.
 --------------------------------------------------------------------------- */
 
-export const alt = "Visotonics — AI Vision Platform for Industrial Operations";
+export const alt = "Visotonics — Vision-AI Platform for Industrial Operations";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,7 +49,7 @@ export default function OpengraphImage() {
               textTransform: "uppercase",
             }}
           >
-            AI Vision Platform
+            Vision-AI Platform
           </div>
         </div>
 
