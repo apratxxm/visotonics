@@ -61,18 +61,27 @@ const monoLabel: CSSProperties = {
   color: "var(--text-dark-secondary)",
 };
 
+const menuTitle: CSSProperties = {
+  fontFamily: "var(--font-sans)",
+  fontSize: "var(--text-title)",
+  lineHeight: "var(--text-title--line-height)",
+  fontWeight: "var(--font-weight-title)",
+  letterSpacing: "var(--tracking-title)",
+  color: "var(--text-dark-primary)",
+};
+
 const caption: CSSProperties = {
-  fontSize: "var(--text-caption)",
-  lineHeight: "var(--text-caption--line-height)",
+  fontSize: "var(--text-body-lg)",
+  lineHeight: "var(--text-body-lg--line-height)",
   color: "var(--text-dark-secondary)",
 };
 
 const btnBase: CSSProperties = {
-  height: 44,
-  padding: "0 20px",
+  height: 56,
+  padding: "0 32px",
   borderRadius: 0,
   fontFamily: "var(--font-sans)",
-  fontSize: "var(--text-body)",
+  fontSize: "var(--text-body-lg)",
   fontWeight: 600,
   cursor: "pointer",
   whiteSpace: "nowrap",
@@ -102,25 +111,18 @@ export function ConsentBanner() {
       }}
     >
       <div
-        className="mx-auto flex max-w-[1360px] flex-wrap items-center px-16"
-        style={{ gap: "var(--spacing-s6)", padding: "var(--spacing-s6) var(--spacing-s16)" }}
+        className="mx-auto flex max-w-[1360px] flex-col px-16"
+        style={{ padding: "var(--spacing-s16) var(--spacing-s16) var(--spacing-s12)" }}
       >
-        <div style={{ flex: "1 1 320px", minWidth: 0, display: "flex", flexDirection: "column", gap: "var(--spacing-s2, 0.5rem)" }}>
-          <span style={monoLabel}>Cookies</span>
-          <p style={{ ...caption, margin: 0 }}>
-            We use cookies to understand site traffic and improve your experience.
-            You can accept analytics cookies or keep only what&apos;s necessary.
-          </p>
-        </div>
-        <div className="flex" style={{ gap: "var(--spacing-s3, 0.75rem)", flex: "0 0 auto" }}>
-          <button
-            type="button"
-            onClick={() => writeConsent("denied")}
-            className="dt-outline cursor-pointer"
-            style={{ ...btnBase, background: "transparent", color: "var(--text-dark-primary)", border: "1px solid var(--border-dark-strong)" }}
-          >
-            Necessary only
-          </button>
+        <span style={monoLabel}>Cookies</span>
+        <p style={{ ...menuTitle, margin: "var(--spacing-s4) 0 0", maxWidth: "18ch", textWrap: "balance" }}>
+          We use cookies to understand site traffic.
+        </p>
+        <p style={{ ...caption, margin: "var(--spacing-s3) 0 0", maxWidth: "48ch" }}>
+          You can accept analytics cookies to help us improve the site, or keep
+          only what&apos;s strictly necessary for it to function.
+        </p>
+        <div className="flex flex-wrap justify-end" style={{ gap: "var(--spacing-s4)", marginTop: "var(--spacing-s12)" }}>
           <button
             type="button"
             onClick={() => writeConsent("granted")}
@@ -128,6 +130,14 @@ export function ConsentBanner() {
             style={{ ...btnBase, background: "var(--text-dark-primary)", color: "var(--canvas-dark)", border: "none" }}
           >
             Accept
+          </button>
+          <button
+            type="button"
+            onClick={() => writeConsent("denied")}
+            className="dt-outline cursor-pointer"
+            style={{ ...btnBase, background: "transparent", color: "var(--text-dark-primary)", border: "1px solid var(--border-dark-strong)" }}
+          >
+            Necessary only
           </button>
         </div>
       </div>
