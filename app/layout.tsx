@@ -4,6 +4,10 @@ import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd, organizationSchema, websiteSchema } from "@/components/json-ld";
+import { ConsentBanner } from "@/components/analytics/consent-banner";
+import { TrackingScripts } from "@/components/analytics/tracking-scripts";
+import { ConditionalFooter } from "@/components/campaign/campaign-chrome";
+import { CampaignFooter } from "@/components/campaign/campaign-footer";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -79,7 +83,9 @@ export default function RootLayout({
         <JsonLd data={websiteSchema()} />
         <SiteNav />
         <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <ConditionalFooter full={<SiteFooter />} minimal={<CampaignFooter />} />
+        <ConsentBanner />
+        <TrackingScripts />
       </body>
     </html>
   );
