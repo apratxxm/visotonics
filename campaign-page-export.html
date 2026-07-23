@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visotonics — Campaign landing (Signal split) — design export</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!--
+  Visotonics campaign landing page — "Signal split" (V1).
+  Self-contained export for design refinement. Faithful to the live build:
+  app/campaigns/[slug]/page.tsx + components/campaign/campaign-landing.tsx.
+
+  DESIGN TOKENS (literal, from app/platform/viso-yard/_shared.tsx)
+    CANVAS_DARK  #0A0B0E   SURFACE_DARK #101216   CANVAS_LIGHT #ECEDEF
+    TXT_D1 #F4F5F7  TXT_D2 #A6ADB8   TXT_L1 #13151A  TXT_L2 #5A5F6A
+    SIGNAL #ED510C  (registration dots + primary button ONLY)
+    GRID_D rgba(244,245,247,0.08)   CROSS_D rgba(244,245,247,0.4)
+    BORDER_D rgba(244,245,247,0.10) RULE_D rgba(244,245,247,0.14)
+    GRID_L #D4D6DB  CROSS_L rgba(19,21,26,0.30)
+    Fonts: Archivo (sans) · IBM Plex Mono (mono)
+
+  DRAFTING GRAMMAR (shared across the whole site)
+    · 5 verticals at 64px / 25% / 50% / 75% / (100%-64px)
+    · 9px registration Cross (two 1px lines, offset 4px)
+    · 3px SIGNAL Dot on gridline intersections / rule endpoints
+    · content sits in hairline "rule bands" with a Dot at the rule's left
+      end and a Cross at the right (NOT floating cards)
+    · eyebrow = mono 13px / 500 / 0.08em / uppercase
+
+  LAYOUT: one viewport under the 72px site nav.
+    log row (48px) → media | form (50/50 on centre vertical) → light metrics band.
+    The metrics band is the dark→light canvas flip (same as home "Metrics").
+-->
+<style>
+  :root{
+    --canvas:#0A0B0E; --surface:#101216; --light:#ECEDEF;
+    --ink:#F4F5F7; --sub:#A6ADB8; --l1:#13151A; --l2:#5A5F6A;
+    --signal:#ED510C;
+    --grid-d:rgba(244,245,247,0.08); --cross-d:rgba(244,245,247,0.4);
+    --border-d:rgba(244,245,247,0.10); --rule-d:rgba(244,245,247,0.14);
+    --input-b:rgba(244,245,247,0.14); --grid-l:#D4D6DB; --cross-l:rgba(19,21,26,0.30);
+    --log-ink:rgba(244,245,247,0.3);
+    --sans:'Archivo',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--canvas);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .eyebrow{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+
+  /* ---- site nav (72px) — simplified context ---- */
+  .nav{height:72px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 40px;border-bottom:1px solid var(--grid-d)}
+  .nav .brand{font-family:var(--mono);font-weight:500;font-size:22px;letter-spacing:-.01em}
+  .nav .links{display:flex;gap:34px;align-items:center;font-size:15px;color:var(--ink)}
+  .nav .links span.mut{color:var(--sub)}
+  .nav .right{display:flex;gap:24px;align-items:center;font-size:15px}
+  .nav .contact{border:1px solid rgba(244,245,247,0.28);border-radius:999px;padding:9px 20px}
+
+  /* ---- sheet: one viewport ---- */
+  .sheet{position:relative;width:100%;max-width:1440px;margin:0 auto;
+    height:calc(100vh - 72px);min-height:700px;display:flex;flex-direction:column}
+  .chrome{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .v{position:absolute;top:0;bottom:0;width:1px;background:var(--grid-d)}
+  .v1{left:64px}.v2{left:calc(64px + (100% - 128px)*.25)}.v3{left:50%}
+  .v4{left:calc(64px + (100% - 128px)*.75)}.v5{left:calc(100% - 64px)}
+  .hr{position:absolute;left:0;right:0;top:48px;height:1px;background:var(--grid-d)}
+  .cx{position:absolute;width:9px;height:9px}
+  .cx::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:var(--cross-d)}
+  .cx::after{content:"";position:absolute;top:0;bottom:0;left:4px;width:1px;background:var(--cross-d)}
+  .cx.l::before,.cx.l::after{background:var(--cross-l)}
+  .dot{position:absolute;width:3px;height:3px;background:var(--signal)}
+
+  /* ---- log row ---- */
+  .logrow{position:relative;z-index:1;height:48px;padding:0 88px;display:flex;
+    align-items:center;justify-content:space-between;flex:0 0 auto}
+  .logrow .eyebrow{color:var(--log-ink);white-space:nowrap}
+
+  /* ---- body ---- */
+  .body{position:relative;z-index:1;flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:0}
+  .mediacol{padding:28px 48px 28px 64px;display:flex;min-height:0}
+  .media{position:relative;flex:1;background:#000;border:1px solid var(--border-d);
+    display:flex;align-items:center;justify-content:center}
+  .media .inner{position:absolute;inset:20px;border:1px solid rgba(244,245,247,0.07)}
+  .media .cx{--_:0}
+  .play{width:88px;height:88px;border:1px solid rgba(244,245,247,0.28);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .media:hover .play{transform:scale(1.05)}
+  .play .tri{width:0;height:0;border-left:22px solid var(--ink);
+    border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:7px}
+  .telemetry{position:absolute;font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--sub);opacity:.6}
+  .telemetry.bl{left:36px;bottom:34px}
+  .telemetry.tr{right:36px;top:34px;letter-spacing:.08em}
+
+  .formcol{padding:28px 64px 28px 48px;display:flex;flex-direction:column;justify-content:center;min-height:0}
+  .convert{position:relative;border-top:1px solid var(--rule-d);padding-top:28px}
+  .convert>.dot{left:-1px;top:-2px}
+  .convert>.cx{right:-4px;top:-5px}
+  .convert .eyebrow{display:block;color:var(--sub)}
+  .convert h1{margin-top:20px;font-size:clamp(28px,2.5vw,34px);line-height:1.05;font-weight:600;
+    letter-spacing:-.02em;color:var(--ink);text-wrap:balance;max-width:16ch}
+  .convert .lede{margin-top:18px;font-size:16px;line-height:1.55;color:var(--sub);max-width:44ch}
+
+  form{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+  .field{height:48px;background:rgba(244,245,247,0.02);border:1px solid var(--input-b);border-radius:6px;
+    padding:0 16px;color:var(--ink);font-family:var(--sans);font-size:16px;width:100%}
+  .field::placeholder{color:var(--sub);opacity:.9}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .submit{margin-top:10px;height:52px;background:var(--signal);color:var(--canvas);border:none;border-radius:6px;
+    font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;transition:background .15s}
+  .submit:hover{background:#f4f5f7}
+  .note{margin-top:6px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--sub);opacity:.6}
+
+  /* ---- metrics band (dark → light flip) ---- */
+  .band{position:relative;background:var(--light);flex:0 0 auto}
+  .band .cx{position:absolute}
+  .band .grid{display:grid;grid-template-columns:repeat(5,1fr);padding:0 64px}
+  .band .cell{position:relative;padding:22px 28px 20px 0;display:flex;flex-direction:column;justify-content:flex-end}
+  .band .cell + .cell{padding-left:28px;border-left:1px solid var(--grid-l)}
+  .band .n{font-family:var(--sans);font-size:clamp(30px,2.9vw,44px);font-weight:500;
+    letter-spacing:-.02em;line-height:.9;font-variant-numeric:tabular-nums;color:var(--l1)}
+  .band .lbl{margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;line-height:1.35;color:var(--l2)}
+
+  @media (max-width:820px){
+    .nav .links{display:none}
+    .sheet{height:auto;min-height:0}
+    .body{grid-template-columns:1fr}
+    .v,.hr,.chrome .cx,.chrome .dot{display:none}
+    .mediacol{padding:16px 20px 0}.media{height:260px;flex:none}
+    .formcol{padding:28px 20px 0}
+    .band .grid{grid-template-columns:1fr 1fr;padding:0 20px}
+    .band .cell{padding:20px 16px 18px 0}
+    .band .cell + .cell{padding-left:0;border-left:none}
+    .band .cell:nth-child(even){padding-left:16px;border-left:1px solid var(--grid-l)}
+    .band .cell:nth-child(n+3){border-top:1px solid var(--grid-l)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SITE NAV (72px, simplified context) ============ -->
+<nav class="nav">
+  <span class="brand">visotonics</span>
+  <div class="links">
+    <span>Platform ▾</span><span>Industries ▾</span><span>Resources ▾</span><span>Company ▾</span>
+  </div>
+  <div class="right">
+    <span class="mut">EN ▾</span><span>Log in</span><span class="contact">Contact</span>
+  </div>
+</nav>
+
+<!-- ============ CAMPAIGN SHEET ============ -->
+<div class="sheet">
+  <!-- drafting chrome -->
+  <div class="chrome" aria-hidden="true">
+    <div class="v v1"></div><div class="v v2"></div><div class="v v3"></div><div class="v v4"></div><div class="v v5"></div>
+    <div class="hr"></div>
+    <div class="cx" style="left:60px;top:44px"></div>
+    <div class="cx" style="left:calc(100% - 68px);top:44px"></div>
+    <div class="dot" style="left:calc(64px + (100% - 128px)*.25);top:47px"></div>
+    <div class="dot" style="left:50%;bottom:120px"></div>
+  </div>
+
+  <!-- log row -->
+  <div class="logrow">
+    <span class="eyebrow">VISO YARD — NINE SYSTEMS, YOUR CAMERAS</span>
+    <span class="eyebrow">SCAN 01&nbsp;·&nbsp;LIVE READ</span>
+  </div>
+
+  <!-- body -->
+  <div class="body">
+    <!-- media pane -->
+    <div class="mediacol">
+      <div class="media">
+        <div class="inner"></div>
+        <div class="cx" style="left:16px;top:16px"></div>
+        <div class="cx" style="right:16px;bottom:16px"></div>
+        <div class="play"><div class="tri"></div></div>
+        <span class="telemetry bl">GATE_04&nbsp;::&nbsp;VSTU&nbsp;907032&nbsp;::&nbsp;READ&nbsp;0.99</span>
+        <span class="telemetry tr">Demo · coming soon</span>
+      </div>
+    </div>
+
+    <!-- form column -->
+    <div class="formcol">
+      <div class="convert">
+        <div class="dot"></div>
+        <div class="cx"></div>
+        <span class="eyebrow">Book a walkthrough</span>
+        <h1>Turn your terminal CCTV into a system of record.</h1>
+        <p class="lede">Leave your number — we'll send the Viso Yard brochure and set up a 20-minute demo on your cameras.</p>
+        <form onsubmit="return false">
+          <input class="field" type="text" placeholder="Full name" autocomplete="name">
+          <input class="field" type="tel" placeholder="Phone" autocomplete="tel">
+          <div class="frow">
+            <input class="field" type="email" placeholder="Work email (optional)" autocomplete="email">
+            <input class="field" type="text" placeholder="Company (optional)" autocomplete="organization">
+          </div>
+          <button class="submit" type="submit">Get the brochure</button>
+          <span class="note">Brochure emailed shortly · demo optional</span>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- metrics band (dark → light flip) -->
+  <div class="band">
+    <div class="cx l" style="left:60px;top:-4px"></div>
+    <div class="cx l" style="left:calc(100% - 68px);top:-4px"></div>
+    <div class="grid">
+      <div class="cell"><span class="n">400K</span><span class="lbl">image reads / day</span></div>
+      <div class="cell"><span class="n">90%</span><span class="lbl">lower inspection cost</span></div>
+      <div class="cell"><span class="n">99%</span><span class="lbl">reporting-time reduction</span></div>
+      <div class="cell"><span class="n">70%</span><span class="lbl">faster gate turnaround</span></div>
+      <div class="cell"><span class="n">60%</span><span class="lbl">less inventory shrinkage</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
