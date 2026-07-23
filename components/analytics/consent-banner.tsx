@@ -48,21 +48,31 @@ export function useConsent(): Consent {
   return consent;
 }
 
-const CANVAS = "#0A0B0E";
-const SURFACE = "#101216";
-const TXT_D1 = "#F4F5F7";
-const TXT_D2 = "#A6ADB8";
-const SIGNAL = "#ED510C";
-const BORDER_D = "rgba(244,245,247,0.14)";
-const mono = "var(--font-plex-mono)";
-const sans = "var(--font-archivo)";
+// Same typography tokens the nav's mega-menu panels use (components/site-nav.tsx),
+// so the banner reads as the same system rather than a bespoke popup. No accent
+// color here — this is a neutral, functional banner, not a promotional one.
+const monoLabel: CSSProperties = {
+  fontFamily: "var(--font-mono)",
+  fontSize: "var(--text-mono-label)",
+  lineHeight: "var(--text-mono-label--line-height)",
+  fontWeight: "var(--font-weight-mono-label)",
+  letterSpacing: "var(--tracking-mono-label)",
+  textTransform: "uppercase",
+  color: "var(--text-dark-secondary)",
+};
+
+const caption: CSSProperties = {
+  fontSize: "var(--text-caption)",
+  lineHeight: "var(--text-caption--line-height)",
+  color: "var(--text-dark-secondary)",
+};
 
 const btnBase: CSSProperties = {
-  height: 40,
-  padding: "0 18px",
-  borderRadius: 6,
-  fontFamily: sans,
-  fontSize: 14,
+  height: 44,
+  padding: "0 20px",
+  borderRadius: 0,
+  fontFamily: "var(--font-sans)",
+  fontSize: "var(--text-body)",
   fontWeight: 600,
   cursor: "pointer",
   whiteSpace: "nowrap",
@@ -80,49 +90,46 @@ export function ConsentBanner() {
     <div
       role="dialog"
       aria-label="Cookie consent"
+      className="border-t"
       style={{
         position: "fixed",
-        left: 16,
-        right: 16,
-        bottom: 16,
+        left: 0,
+        right: 0,
+        bottom: 0,
         zIndex: 200,
-        maxWidth: 720,
-        margin: "0 auto",
-        background: SURFACE,
-        border: `1px solid ${BORDER_D}`,
-        borderRadius: 10,
-        padding: "18px 20px",
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        gap: 14,
-        boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+        borderColor: "var(--border-dark)",
+        background: "var(--canvas-dark)",
       }}
     >
-      <div style={{ flex: "1 1 320px", minWidth: 0 }}>
-        <span style={{ display: "block", fontFamily: mono, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: SIGNAL }}>
-          Cookies
-        </span>
-        <p style={{ margin: "6px 0 0", fontFamily: sans, fontSize: 14, lineHeight: 1.5, color: TXT_D2 }}>
-          We use cookies to understand site traffic and improve your experience.
-          You can accept analytics cookies or keep only what&apos;s necessary.
-        </p>
-      </div>
-      <div style={{ display: "flex", gap: 10, flex: "0 0 auto" }}>
-        <button
-          type="button"
-          onClick={() => writeConsent("denied")}
-          style={{ ...btnBase, background: "transparent", color: TXT_D1, border: `1px solid ${BORDER_D}` }}
-        >
-          Necessary only
-        </button>
-        <button
-          type="button"
-          onClick={() => writeConsent("granted")}
-          style={{ ...btnBase, background: SIGNAL, color: CANVAS, border: "none" }}
-        >
-          Accept
-        </button>
+      <div
+        className="mx-auto flex max-w-[1360px] flex-wrap items-center px-16"
+        style={{ gap: "var(--spacing-s6)", padding: "var(--spacing-s6) var(--spacing-s16)" }}
+      >
+        <div style={{ flex: "1 1 320px", minWidth: 0, display: "flex", flexDirection: "column", gap: "var(--spacing-s2, 0.5rem)" }}>
+          <span style={monoLabel}>Cookies</span>
+          <p style={{ ...caption, margin: 0 }}>
+            We use cookies to understand site traffic and improve your experience.
+            You can accept analytics cookies or keep only what&apos;s necessary.
+          </p>
+        </div>
+        <div className="flex" style={{ gap: "var(--spacing-s3, 0.75rem)", flex: "0 0 auto" }}>
+          <button
+            type="button"
+            onClick={() => writeConsent("denied")}
+            className="dt-outline cursor-pointer"
+            style={{ ...btnBase, background: "transparent", color: "var(--text-dark-primary)", border: "1px solid var(--border-dark-strong)" }}
+          >
+            Necessary only
+          </button>
+          <button
+            type="button"
+            onClick={() => writeConsent("granted")}
+            className="dt-fill cursor-pointer"
+            style={{ ...btnBase, background: "var(--text-dark-primary)", color: "var(--canvas-dark)", border: "none" }}
+          >
+            Accept
+          </button>
+        </div>
       </div>
     </div>
   );
