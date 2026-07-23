@@ -73,7 +73,10 @@ export async function POST(request: Request) {
   try {
     const { Resend } = await import("resend");
     const resend = new Resend(apiKey);
-    await resend.emails.send({
+    // The Resend SDK does NOT throw on API-level rejections (e.g. sandbox
+    // restrictions on unverified domains) — it returns { data, error }. Must
+    // check `error` explicitly or a rejected send silently reports success.
+    const { data, error } = await resend.emails.send({
       // Uses Resend's shared onboarding sender until a verified domain is set.
       from: process.env.LEAD_FROM_EMAIL || "Visotonics Leads <onboarding@resend.dev>",
       to: [to],
@@ -81,9 +84,16 @@ export async function POST(request: Request) {
       subject: `New lead — ${module} (${campaign})`,
       text: lines.join("\n"),
     });
+
+    if (error) {
+      console.error("[api/lead] Resend rejected the send:", error);
+      return NextResponse.json({ ok: true, delivered: false, error: error.message });
+    }
+
+    console.log("[api/lead] Resend accepted, id:", data?.id);
     return NextResponse.json({ ok: true, delivered: true });
   } catch (err) {
-    console.error("[api/lead] Resend send failed:", err);
+    console.error("[api/lead] Resend send threw:", err);
     // Still acknowledge to the visitor; the warning is logged for us.
     return NextResponse.json({ ok: true, delivered: false });
   }
