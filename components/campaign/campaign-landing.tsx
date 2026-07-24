@@ -145,7 +145,7 @@ function LeadForm({ campaign, module: mod }: { campaign: Campaign; module: Modul
       campaign: campaign.slug,
       module: mod.name,
     };
-    if (!payload.name.trim() || !payload.phone.trim()) return;
+    if (!payload.name.trim() || !payload.phone.trim() || !payload.email.trim()) return;
 
     setStatus("sending");
     try {
@@ -192,7 +192,7 @@ function LeadForm({ campaign, module: mod }: { campaign: Campaign; module: Modul
       <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
         <Field label="Full name" name="name" type="text" autoComplete="name" required />
         <Field label="Phone" name="phone" type="tel" autoComplete="tel" required />
-        <Field label="Work email" name="email" type="email" autoComplete="email" optional />
+        <Field label="Work email" name="email" type="email" autoComplete="email" required />
         <Field label="Company" name="company" type="text" autoComplete="organization" optional />
       </div>
       <button
