@@ -77,14 +77,12 @@ function MediaPane({ videoUrl, onPlay, height }: { videoUrl?: string; onPlay: ()
 }
 
 /* --------------------------------------------------------- benchmark line */
-/* "Better than mainstream model providers" — the real, live Viso Yard claim. */
 function BenchmarkLine({ compact = false }: { compact?: boolean }) {
   return (
     <div style={{ position: "relative", paddingLeft: 18 }}>
-      <div style={{ position: "absolute", left: 0, top: compact ? 7 : 9, width: 3, height: 3, background: SIGNAL }} />
-      <p style={{ margin: 0, fontFamily: sans, fontSize: compact ? 15 : 17, lineHeight: 1.5, color: TXT_D1 }}>
-        Better than mainstream vision models where it counts:{" "}
-        <span style={{ color: TXT_D2 }}>{CREDENTIALS.benchmark}</span>
+      <div style={{ position: "absolute", left: 0, top: compact ? 7 : 8, width: 3, height: 3, background: SIGNAL }} />
+      <p style={{ margin: 0, fontFamily: sans, fontSize: compact ? 16 : 19, lineHeight: 1.4, fontWeight: 500, color: TXT_D1, maxWidth: "42ch" }}>
+        {CREDENTIALS.benchmark}
       </p>
     </div>
   );
@@ -197,13 +195,13 @@ function LeadForm({ campaign, module: mod }: { campaign: Campaign; module: Modul
       </div>
       <button
         type="submit"
-        className="dt-signal-fill cursor-pointer"
+        className="dt-fill cursor-pointer"
         disabled={status === "sending"}
         style={{
           marginTop: 32,
           width: "100%",
           height: 52,
-          background: SIGNAL,
+          background: TXT_D1,
           color: CANVAS_DARK,
           border: "none",
           borderRadius: 6,
@@ -300,10 +298,12 @@ export function CampaignLanding({ campaign, module: mod }: { campaign: Campaign;
 
         {/* footage + request */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 480px", padding: "40px 88px 48px" }}>
-          <div style={{ paddingRight: 56, display: "flex", flexDirection: "column", gap: 20 }}>
-            <span style={{ ...eyebrow(TXT_D2), fontSize: 12 }}>FIG. 01 — LIVE READ / GATE_04</span>
+          <div style={{ paddingRight: 56, display: "flex", flexDirection: "column" }}>
+            <span style={{ ...eyebrow(TXT_D2), fontSize: 12, marginBottom: 20 }}>FIG. 01 — LIVE READ / GATE_04</span>
             <MediaPane videoUrl={campaign.videoUrl} onPlay={() => setVideoOpen(true)} height={400} />
-            <BenchmarkLine />
+            <div style={{ marginTop: 32 }}>
+              <BenchmarkLine />
+            </div>
           </div>
           <div style={{ borderLeft: "1px solid rgba(244,245,247,0.14)", paddingLeft: 40, display: "flex", flexDirection: "column" }}>
             <span style={{ ...eyebrow(TXT_D2), fontSize: 12 }}>Request — 4 fields</span>
